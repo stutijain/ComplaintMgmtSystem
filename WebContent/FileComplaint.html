@@ -22,9 +22,9 @@
 
 	<h1 align="center" ><font color="green" size="5"> FILE COMPLAINT</font></h1>
 	
-<form action="complaint" method="post">
+<form action="complaint" method="post" enctype='multipart/form-data'>
 	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Complaint Type : </font>
-	<select>
+	<select name="type">
 	  <option value="Complaint">Complaint</option>
 	  <option value="Feedback">Feedback</option>
 	</select>
@@ -35,7 +35,7 @@
 
 <form action="complaint" method="post">
 	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Complaint Category : </font>
-	<select>
+	<select name="category">
 	  <option value="ITS">IT-Services</option>
 	  <option value="PWDE">PWD-Electrical</option>
 	  <option value="PWDC">PWD-Civil</option>
@@ -46,32 +46,32 @@
 <br>
 
 <form action="complaint" method="post">
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Location : </font><input type="text" name="complaint"></p>
+	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Location : </font><input type="text" name="location"></p>
 </form>
 	
 <br>
 
 <form action="complaint" method="post">
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Sub-Location : </font><input type="text" name="complaint"></p>
+	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Sub-Location : </font><input type="text" name="sub_location"></p>
 </form>
 
 <br>
 
 <form action="complaint" method="post">
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Subject : </font><input type="text" name="complaint"></p>
+	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Subject : </font><input type="text" name="subject"></p>
 </form>
 
 <br>
 
 <form action="complaint" method="post">
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Details : </font><input type="text" name="complaint"></p>
+	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Details : </font><input type="text" name="details"></p>
 </form>
 
 <br>
 
 <form action="complaint" method="post">
 	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Priority : </font>
-	<select>
+	<select name="priority">
 	  <option value="Major">Major</option>
 	  <option value="Minor">Minor</option>
 	  <option value="Critical">Critical</option>
@@ -82,25 +82,25 @@
 <br>
 
 <form action="complaint" method="post">
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Complainant Name : </font><input type="text" name="complaint"></p>
+	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Complainant Name : </font><input type="text" name="name"></p>
 </form>
 
 <br>
 
 <form action="complaint" method="post">
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Email : </font><input type="email" name="complaint"></p>
+	<p style="margin: 0px 0px 0px 100px" ><font size="3">Email : </font><input type="email" name="email"></p>
 </form>
 
 <br>
 
 <form action="complaint" method="post">
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Contact : </font><input type="text" name="complaint"></p>
+	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Contact : </font><input type="text" name="contact"></p>
 </form>
 
 <br>
 
 <form action="complaint" method="post">
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Attachment : </font><input type="file" name="pic" accept=".gif, .jpg,.pdf, .doc">
+	<p style="margin: 0px 0px 0px 100px" ><font size="3">Attachment : </font><input type="file" name="attach" accept=".gif, .jpg,.pdf, .doc">
 	(pdf, jpg, gif and doc accepted)
 	</p>
 </form>
