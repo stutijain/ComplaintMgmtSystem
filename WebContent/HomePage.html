@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Home Page </title>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 190px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: green;  
+  overflow-x: hidden;
+  padding-top: 190px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;  
+  display: block;
+}
+
+.sidenav a:hover {
+  color: orange;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>	
+</head>
+
+<body>
+
+<div style="margin: 10px 200px 0px 200px" align="center" >
+		
+   		<img style="float: left;margin: 0px -120px 0px 170px" src="https://upload.wikimedia.org/wikipedia/en/4/4e/Indira_Gandhi_Delhi_Technical_University_for_Women_logo.png"  width="86" height="80" />				
+        <font color="green" size="5"><b> Indira Gandhi Delhi Technical University for Women </b></font><br>
+        <font size="4" >(Established by Govt. of Delhi vide Act 9 of 2012) </font><br>
+        <font color="green" size="4" >(<i>Formerly</i> Indira Gandhi Institute of Technology) </font>	
+	    <br style="clear:both;" />
+
+</div>
+
+<br>
+<hr color="green" size="3">
+<br>
+
+<div class="sidenav">
+  <a href="#Login">Login</a>
+  <a href="#Register">Register</a>
+  <a href="#File Complaint">File Complaint</a>
+  <a href="#Search Complaint">Search Complaint</a>
+</div>
+
+<form action="login" method="post" >	
+	<p style="text-align:center;" ><font size="3" > Enter Username : </font> <input type="text" placeholder="Username" ></p>
+	<p style="text-align:center;" ><font size="3" > Enter Password : </font> <input type="password" placeholder="Password" ></p>	
+	<p style="text-align:center;" ><input type="submit" value="Login" ></p>			
+</form>
+
+
+<form action="register" method="post">	
+	<p style="text-align:center;" ><input type="submit" value="Register"></p>	
+</form>
+
+<br>
+
+<p style="text-align:center;" ><a href="" > <font size="4"> File Your Complaint </font></a></p>
+
+<br>
+
+<form action="search" method="post">
+	<p style="text-align:center;" ><font size="4">Search Comapint Number</font></p>
+	<p style="text-align:center;" ><input type="text" placeholder="Search Complaint Number...."></p>
+</form>
+	
+	
+</body>
+</html>
