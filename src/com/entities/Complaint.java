@@ -1,4 +1,4 @@
-package com.ComplaintMgmt;
+package com.entities;
 
 public class Complaint {
 	String type;

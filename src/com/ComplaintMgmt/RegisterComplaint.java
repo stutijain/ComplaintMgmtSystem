@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.entities.Complaint;
+
 @MultipartConfig
 public class RegisterComplaint extends HttpServlet {
 
