@@ -18,11 +18,11 @@
     <url-pattern>/cancel</url-pattern>
   </servlet-mapping>
     <servlet>
-    <servlet-name>ComplaintCancel</servlet-name>
+    <servlet-name>ComplaintSearch</servlet-name>
     <servlet-class>com.ComplaintMgmt.SearchComplaint</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ComplaintCancel</servlet-name>
+    <servlet-name>ComplaintSearch</servlet-name>
     <url-pattern>/search</url-pattern>
   </servlet-mapping>
 </web-app>
