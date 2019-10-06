@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -20,7 +21,6 @@ public class SearchComplaint extends HttpServlet {
 
 	public SearchComplaint() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -34,13 +34,28 @@ public class SearchComplaint extends HttpServlet {
 
 			Statement stmnt = con.createStatement();
 			ResultSet rs = stmnt.executeQuery("SELECT * FROM complaint_details where complaint_no=" + com_no);
-			out.println("Complaint:");
-			while (rs.next()) {
-				out.println(rs.getString(1) + ", " + rs.getString(2) + " , " + rs.getString(3) + ", " + rs.getString(4)
-						+ rs.getString(5) + ", " + rs.getString(6) + " , " + rs.getString(7) + ", " + rs.getString(8)
-						+ rs.getString(9) + ", " + rs.getString(10) + " , " + rs.getString(11) + ", " + rs.getString(12)
-						+ ", " + rs.getString(13));
+			
+			out.print("<table width=25% border=1>");
+			out.print("<center><h1>Result:</h1></center>");
+
+			ResultSetMetaData rsmd = rs.getMetaData();
+
+			while (rs.next())
+
+			{
+				out.print("<tr>");
+
+				/* Printing column names */
+				for (int i = 1; i < rsmd.getColumnCount(); i++) {
+					if (rsmd.getColumnName(i).equals("attachment"))
+						continue;
+					out.print("<td>" + rsmd.getColumnName(i) + "</td>");
+
+					out.print("<td>" + rs.getString(i) + "</td></tr>");
+				}
 			}
+
+			out.print("</table>");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
