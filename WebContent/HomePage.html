@@ -67,25 +67,30 @@ body {
   <a href="#Search Complaint">Search Complaint</a>
 </div>
 
-<form action="login" method="post" >	
+<form action="login" method="post" >
+	<p style="text-align:center;" id="Login" ><font size="3" color="green"><b> Login </b></font></p>	
 	<p style="text-align:center;" ><font size="3" > Enter Username : </font> <input type="text" placeholder="Username" ></p>
 	<p style="text-align:center;" ><font size="3" > Enter Password : </font> <input type="password" placeholder="Password" ></p>	
 	<p style="text-align:center;" ><input type="submit" value="Login" ></p>			
-</form>
-
-
-<form action="register" method="post">	
-	<p style="text-align:center;" ><input type="submit" value="Register"></p>	
+	<p style="text-align:center;" ><a href="" > <font size="2"> Forgot Password? </font></a></p>
 </form>
 
 <br>
 
+<form action="register" method="post">	
+	<p style="text-align:center;" id="Register" ><font size="3" color="green"><b> Register </b></font></p>
+	<p style="text-align:center;" ><input type="submit" value="Register The Complaint"></p>	
+</form>
+
+<br>
+
+<p style="text-align:center;" id="File Complaint" ><font size="3" color="green"><b> File Your Complaint </b></font></p>
 <p style="text-align:center;" ><a href="" > <font size="4"> File Your Complaint </font></a></p>
 
 <br>
 
 <form action="search" method="post">
-	<p style="text-align:center;" ><font size="4">Search Complaint Number</font></p>
+	<p style="text-align:center;" id="Search Complaint" ><font size="3" color="green"><b> Search Complaint Number </b></font></p>	
 	<p style="text-align:center;" ><input type="text" placeholder="Search Complaint Number...." name="number" required="required"></p>	
 	<p style="text-align:center;" ><input type="submit" value="Submit" ></p>	
 </form>
