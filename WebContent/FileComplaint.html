@@ -6,92 +6,130 @@
 </head>
 <body>
 
-<div style="margin: 10px 200px 0px 200px" align="center" >
-		
-   		<img style="float: left;margin: 0px -120px 0px 120px" src="https://upload.wikimedia.org/wikipedia/en/4/4e/Indira_Gandhi_Delhi_Technical_University_for_Women_logo.png"  width="86" height="80" />				
-        <font color="green" size="5"><b> Indira Gandhi Delhi Technical University for Women </b></font><br>
-        <font size="4" >(Established by Govt. of Delhi vide Act 9 of 2012) </font><br>
-        <font color="green" size="4" >(<i>Formerly</i> Indira Gandhi Institute of Technology) </font>	
-	    <br style="clear:both;" />
+	<div style="margin: 10px 200px 0px 200px" align="center">
 
-</div>
+		<img style="float: left; margin: 0px -120px 0px 120px"
+			src="https://upload.wikimedia.org/wikipedia/en/4/4e/Indira_Gandhi_Delhi_Technical_University_for_Women_logo.png"
+			width="86" height="80" /> <font color="green" size="5"><b>
+				Indira Gandhi Delhi Technical University for Women </b></font><br> <font
+			size="4">(Established by Govt. of Delhi vide Act 9 of 2012) </font><br>
+		<font color="green" size="4">(<i>Formerly</i> Indira Gandhi
+			Institute of Technology)
+		</font> <br style="clear: both;" />
 
-<br>
-<hr color="green" size="3">
-<br>
+	</div>
 
-	<h1 align="center" ><font color="green" size="5"> FILE COMPLAINT</font></h1>
-	
-<form action="complaint" method="post">
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Complaint Type : </font>
-	<select>
-	  <option value="Complaint">Complaint</option>
-	  <option value="Feedback">Feedback</option>
-	</select>
-	</p>
-	
-<br>	
+	<br>
+	<hr color="green" size="3">
+	<br>
 
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Complaint Category : </font>
-	<select>
-	  <option value="ITS">IT-Services</option>
-	  <option value="PWDE">PWD-Electrical</option>
-	  <option value="PWDC">PWD-Civil</option>
-	</select>
-	</p>
+	<h1 align="center">
+		<font color="green" size="5"> FILE COMPLAINT</font>
+	</h1>
 
-<br>
+	<form action="complaint" method="post" enctype='multipart/form-data'>
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Complaint Type : </font> <select name="type"
+				required="required">
+				<option value="Select" />
+				<option value="Complaint">Complaint</option>
+				<option value="Feedback">Feedback</option>
+			</select>
+		</p>
 
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Location : </font><input type="text" name="complaint"></p>
-	
-<br>
+		<br>
 
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Sub-Location : </font><input type="text" name="complaint"></p>
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Complaint Category : </font> <select name="category"
+				required="required">
+				<option value="Select" />
+				<option value="ITS">IT-Services</option>
+				<option value="PWDE">PWD-Electrical</option>
+				<option value="PWDC">PWD-Civil</option>
+			</select>
+		</p>
 
-<br>
+		<br>
 
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Subject : </font><input type="text" name="complaint"></p>
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Location : </font><input type="text" name="location"
+				required="required">
+		</p>
 
-<br>
+		<br>
 
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Details : </font><input type="text" name="complaint"></p>
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Sub-Location : </font><input type="text"
+				name="sub_location" required="required">
+		</p>
 
-<br>
+		<br>
 
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Priority : </font>
-	<select>
-	  <option value="Major">Major</option>
-	  <option value="Minor">Minor</option>
-	  <option value="Critical">Critical</option>
-	</select>
-	</p>
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Subject : </font><input type="text" name="subject"
+				required="required">
+		</p>
 
-<br>
+		<br>
 
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Complainant Name : </font><input type="text" name="complaint"></p>
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Details : </font><input type="text" name="details"
+				required="required">
+		</p>
 
-<br>
+		<br>
 
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Email : </font><input type="email" name="complaint"></p>
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Priority : </font> <select name="priority"
+				required="required">
+				<option value="Select" />
+				<option value="Major">Major</option>
+				<option value="Minor">Minor</option>
+				<option value="Critical">Critical</option>
+			</select>
+		</p>
 
-<br>
+		<br>
 
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Contact : </font><input type="text" name="complaint"></p>
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Complainant Name : </font><input type="text"
+				name="name" required="required">
+		</p>
 
-<br>
+		<br>
 
-	<p style="margin: 0px 0px 0px 100px" ><font size="3" >Attachment : </font><input type="file" name="pic" accept=".gif, .jpg,.pdf, .doc">
-	(pdf, jpg, gif and doc accepted)
-	</p>
-		
-<br> 
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Email : </font><input type="email" name="email"
+				required="required">
+		</p>
 
-	<p style="margin: 0px 0px 0px 200px" ><input type="submit" value="Submit"></p>	
+		<br>
 
-<br>
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Contact : </font><input type="text" name="contact"
+				required="required">
+		</p>
 
-	<p style="margin: 0px 0px 0px 200px" ><input type="submit" value="Cancel"></p>	
-</form>		
+		<br>
+
+		<p style="margin: 0px 0px 0px 100px">
+			<font size="3">Attachment : </font><input type="file" name="attach"
+				accept=".gif, .jpg,.pdf, .doc"> (pdf, jpg, gif and doc
+			accepted)
+		</p>
+
+		<br>
+
+		<p style="margin: 0px 0px 0px 200px">
+			<input type="submit" value="Submit">
+		</p>
+
+		<br>
+
+		<p style="margin: 0px 0px 0px 200px">
+			<input type="submit" value="Cancel">
+		</p>
+	</form>
 
 
 </body>
