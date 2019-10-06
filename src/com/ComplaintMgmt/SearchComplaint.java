@@ -49,7 +49,7 @@ public class SearchComplaint extends HttpServlet {
 				for (int i = 1; i < rsmd.getColumnCount(); i++) {
 					if (rsmd.getColumnName(i).equals("attachment"))
 						continue;
-					out.print("<td>" + rsmd.getColumnName(i) + "</td>");
+					out.print("<td>" + rsmd.getColumnName(i).toUpperCase() + "</td>");
 
 					out.print("<td>" + rs.getString(i) + "</td></tr>");
 				}
