@@ -35,8 +35,8 @@ public class SearchComplaint extends HttpServlet {
 			Statement stmnt = con.createStatement();
 			ResultSet rs = stmnt.executeQuery("SELECT * FROM complaint_details where complaint_no=" + com_no);
 			
-			out.print("<table width=25% border=1>");
-			out.print("<center><h1>Result:</h1></center>");
+			out.print("<table width=25% border=1 align=centre>");
+			out.print("<center><h1>Complaint details</h1></center>");
 
 			ResultSetMetaData rsmd = rs.getMetaData();
 
