@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>ComplaintMgmt</display-name>
-	<servlet>
-		<servlet-name>ComplaintController</servlet-name>
-		<servlet-class>com.ComplaintMgmt.RegisterComplaint</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ComplaintController</servlet-name>
-		<url-pattern>/complaint</url-pattern>
-	</servlet-mapping>
+  <servlet>
+    <servlet-name>ComplaintController</servlet-name>
+    <servlet-class>com.ComplaintMgmt.RegisterComplaint</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ComplaintController</servlet-name>
+    <url-pattern>/complaint</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ComplaintCancel</servlet-name>
+    <servlet-class>com.ComplaintMgmt.CancelComplaint</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ComplaintCancel</servlet-name>
+    <url-pattern>/cancel</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>ComplaintCancel</servlet-name>
+    <servlet-class>com.ComplaintMgmt.SearchComplaint</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ComplaintCancel</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
 </web-app>
