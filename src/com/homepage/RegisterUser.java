@@ -59,10 +59,10 @@ public class RegisterUser extends HttpServlet {
 			}
 			
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Email ID already Registered");			
+			out.println("Email ID already Registered");				
 						
 		} catch (ClassNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "Failure");
+			out.println("Failure");			
 			
 		}
 		
