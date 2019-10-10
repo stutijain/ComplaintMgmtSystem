@@ -27,5 +27,14 @@
     <servlet-name>ComplaintSearch</servlet-name>
     <url-pattern>/search</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>RegisterUser</servlet-name>
+    <servlet-class>com.homepage.RegisterUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterUser</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
 
 </web-app>
