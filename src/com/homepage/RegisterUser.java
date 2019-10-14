@@ -15,24 +15,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
-import com.entities.Complaint;
+import com.entities.User;
 
 @MultipartConfig
 public class RegisterUser extends HttpServlet {
-
+	
 	private static final long serialVersionUID = 1L;
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		Complaint complaint = new Complaint();	
-		complaint.setCategory(request.getParameter("category"));
-		complaint.setName((String) request.getParameter("name"));
-		complaint.setEmp_id(request.getParameter("emp_id"));
-		complaint.setDesg(request.getParameter("desg"));
-		complaint.setDept(request.getParameter("dept"));
-		complaint.setEmail(request.getParameter("email"));
-		complaint.setContact(request.getParameter("cont_no"));
-		complaint.setAddr(request.getParameter("addr"));
-		complaint.setPass(request.getParameter("pass"));
+		User user = new User();	
+		user.setCategory(request.getParameter("category"));
+		user.setName((String) request.getParameter("name"));
+		user.setEmp_id(request.getParameter("emp_id"));
+		user.setDesg(request.getParameter("desg"));
+		user.setDept(request.getParameter("dept"));
+		user.setEmail(request.getParameter("email"));
+		user.setContact(request.getParameter("cont_no"));
+		user.setAddr(request.getParameter("addr"));
+		user.setPass(request.getParameter("pass"));
 		String email = request.getParameter("email");		
 		
 		PrintWriter out = response.getWriter();
@@ -49,15 +49,15 @@ public class RegisterUser extends HttpServlet {
 						+ " values(?,?,?,?,?,?,?,?,?)";
 				
 				PreparedStatement st = con.prepareStatement(sql);
-				st.setString(1, complaint.getCategory());
-				st.setString(2, complaint.getName());
-				st.setString(3, complaint.getEmp_id());
-				st.setString(4, complaint.getDesg());
-				st.setString(5, complaint.getDept());
-				st.setString(6, complaint.getEmail());
-				st.setString(7, complaint.getContact());
-				st.setString(8, complaint.getAddr());
-				st.setString(9, complaint.getPass());			
+				st.setString(1, user.getCategory());
+				st.setString(2, user.getName());
+				st.setString(3, user.getEmp_id());
+				st.setString(4, user.getDesg());
+				st.setString(5, user.getDept());
+				st.setString(6, user.getEmail());
+				st.setString(7, user.getContact());
+				st.setString(8, user.getAddr());
+				st.setString(9, user.getPass());			
 				int flag = st.executeUpdate();
 				if (flag == 1) {				
 					out.println("Registered Successfully!");
