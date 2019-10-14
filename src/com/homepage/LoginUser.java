@@ -19,10 +19,8 @@ public class LoginUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		System.out.println(email);	
-		String pass = request.getParameter("password");
-		System.out.println(pass);
+		String email = request.getParameter("email");		
+		String pass = request.getParameter("password");		
 		PrintWriter out = response.getWriter();
 		
 		try {
@@ -33,11 +31,9 @@ public class LoginUser extends HttpServlet {
 			Statement stmnt = con.createStatement();
 			ResultSet rs = stmnt.executeQuery("SELECT * FROM user_details where email='"+email+"' and password='"+pass+"'");
 			if(rs.next()){
-				out.println("Login Successful");
-//				JOptionPane.showMessageDialog(null, "Login Successfully....");
+				out.println("Login Successful");				
 			}else{
 				out.println("Incorrect Username or Password");
-//				JOptionPane.showMessageDialog(null, "Incorrect Username or Password");
 			}
 			
 			
