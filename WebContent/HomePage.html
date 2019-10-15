@@ -3,74 +3,86 @@
 <head>
 <title> Home Page </title>
 <style>
-body {
+body {	
   font-family: "Lato", sans-serif;
 }
 
-.sidenav {
-  height: 100%;
-  width: 190px;
-  position: fixed;
-  z-index: 1;
+ .navbar {
+  overflow: hidden;
+  background-color: black;
   top: 0;
-  left: 0;
-  background-color: green;  
-  overflow-x: hidden;
-  padding-top: 190px;
 }
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
+.navbar a{
+	float: left;
+	top: 0;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+  	text-decoration: none;
+  	font-size: 17px;
+}
+ 
+ .topnav {
+  overflow: hidden;
+  background: linear-gradient(to bottom, #009933 0%, #003300 100%);
+  top: 0;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
-  font-size: 20px;
-  color: white;  
-  display: block;
+  font-size: 17px;
 }
 
-.sidenav a:hover {
+.topnav a:hover {  
   color: orange;
 }
 
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 20px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
 </style>	
 </head>
 
 <body>
 
-<div style="margin: 10px 200px 0px 200px" align="center" >
-		
+<div style="margin: 10px 200px 0px 200px" align="center" id="Top">
    		<img style="float: left;margin: 0px -120px 0px 170px" src="https://upload.wikimedia.org/wikipedia/en/4/4e/Indira_Gandhi_Delhi_Technical_University_for_Women_logo.png"  width="86" height="80" />				
         <font color="green" size="5"><b> Indira Gandhi Delhi Technical University for Women </b></font><br>
         <font size="4" >(Established by Govt. of Delhi vide Act 9 of 2012) </font><br>
         <font color="green" size="4" >(<i>Formerly</i> Indira Gandhi Institute of Technology) </font>	
 	    <br style="clear:both;" />
-
 </div>
 
 <br>
-<hr color="green" size="3">
-<br>
 
-<div class="sidenav">
+<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+<div class="topnav">
+
+  <p align="center"><font color="white" size="5">Complaint Management System </font></p>
+  <hr color="black" size="2" style="margin-bottom: -1px; margin-top: -1px;">
+  <a href="https://igdtuw.ac.in/" style="margin-left: 20px;">Home</a>
+  <a href="https://igdtuw.ac.in/index.php?option=com_content&view=article&id=1&Itemid=2">About Us</a>
   <a href="#Login">Login</a>
   <a href="#Register">Register</a>
   <a href="#File Complaint">File Complaint</a>
-  <a href="#Search Complaint">Search Complaint</a>
+  <a href="#Search Complaint">Track Complaint</a>	
+  
 </div>
+<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6" size="5">
 
-<form action="login" method="post" >
+<br>
+
+<form action="login" method="post">
 	<p style="text-align:center;" id="Login" ><font size="3" color="green"><b> Login </b></font></p>	
-	<p style="text-align:center;" ><font size="3" > Enter Username : </font> <input type="text" placeholder="Username" name="email"></p>
-	<p style="text-align:center;" ><font size="3" > Enter Password : </font> <input type="password" placeholder="Password" name="password"></p>	
+	<p style="text-align:center;" ><font size="3" > Username : </font> <input type="text" placeholder="Enter Username..." name="email"></p>
+	<p style="text-align:center;" ><font size="3" > Password : </font> <input type="password" placeholder="Enter Password..." name="password"></p>	
 	<p style="text-align:center;" ><input type="submit" value="Login" ></p>			
 	<p style="text-align:center;" ><a href="" > <font size="2"> Forgot Password? </font></a></p>
 </form>
@@ -90,10 +102,19 @@ body {
 <br>
 
 <form action="search" method="post">
-	<p style="text-align:center;" id="Search Complaint" ><font size="3" color="green"><b> Search Complaint Number </b></font></p>	
-	<p style="text-align:center;" ><input type="text" placeholder="Search Complaint Number...." name="number" required="required"></p>	
+	<p style="text-align:center;" id="Search Complaint" ><font size="3" color="green"><b> Track Your Complaint </b></font></p>	
+	<p style="text-align:center;" ><input type="text" placeholder="Enter Complaint Number...." name="number" required="required"></p>	
 	<p style="text-align:center;" ><input type="submit" value="Submit" ></p>	
 </form>
+
+<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+<div class="navbar">  	   
+  <a href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
+  <a href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact Us</a>
+  <br>
+  <a href="#Top" style="float: right; color: red; font-size: 14px" > Top </a>
+</div>
+<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6" size="5">
 	
 	
 </body>
