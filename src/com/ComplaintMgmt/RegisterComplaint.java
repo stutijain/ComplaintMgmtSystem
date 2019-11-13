@@ -78,5 +78,9 @@ public class RegisterComplaint extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		String[] receivers = new String[] {complaint.getEmail()};
+		
+		SendEmail.main(receivers);
 	}
 }
