@@ -73,24 +73,19 @@ public class RegisterComplaint extends HttpServlet {
 			st.setBlob(11, inputStream);
 			st.setString(12, LocalTime.now().toString());
 			st.setString(13, LocalDate.now().toString());
-
-			// String toEmail = complaint.getEmail();
-			// String subject = "Complaint Registration";
-			// String fromEmail = "goelrishi9@gmail.com";
-			// String password = "rekhagoel";
-			// String username = "goelrishi9";
+			
 			int flag = st.executeUpdate();
 			if (flag == 1) {
-//				Statement stmt = con.createStatement();
-//				String query = "select max(complaint_no) from complaint_details";
-//				ResultSet rs = stmt.executeQuery(query);
+				Statement stmt = con.createStatement();
+				
+//				retrieves data for the latest complaint
+				String query = "SELECT * FROM complaint_details where complaint_no=(select max(complaint_no) from complaint_details);";
+				ResultSet rs = stmt.executeQuery(query);
 				int comp_no=0;
-//				while(rs.next()){
-//		            //Retrieve by column name
-//		            comp_no = rs.getInt("complaint_no");     
-//		         }
-		 
-//				String comp_no = null;
+				while(rs.next()){
+		            //Retrieve by column name
+		            comp_no = rs.getInt("complaint_no");     
+		         }
 				request.setAttribute("email", complaint.getEmail());
 				request.setAttribute("complaint_no", comp_no+"");
 				sendmail.doPost(request, response);
