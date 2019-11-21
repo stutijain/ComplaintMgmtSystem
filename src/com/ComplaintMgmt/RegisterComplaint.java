@@ -6,7 +6,9 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -19,13 +21,12 @@ import javax.servlet.http.Part;
 
 import com.entities.Complaint;
 
-
 @MultipartConfig
 
 public class RegisterComplaint extends HttpServlet {
-	
+
 	SendMail sendmail = new SendMail();
-//	MailSenderBean mailSender = new MailSenderBean() ;
+	// MailSenderBean mailSender = new MailSenderBean() ;
 
 	private static final long serialVersionUID = 1788L;
 
@@ -50,11 +51,11 @@ public class RegisterComplaint extends HttpServlet {
 		}
 		PrintWriter out = response.getWriter();
 		try {
-			
+
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
 					"abcdef");
-			
+
 			String sql = "insert into complaint_details (type,category,location,sub_location,subject,details,priority,name,email,contact,attachment,time,date)"
 					+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -72,18 +73,28 @@ public class RegisterComplaint extends HttpServlet {
 			st.setBlob(11, inputStream);
 			st.setString(12, LocalTime.now().toString());
 			st.setString(13, LocalDate.now().toString());
-			
-//			String toEmail = complaint.getEmail();
-//			String subject = "Complaint Registration";				
-//			String fromEmail = "goelrishi9@gmail.com";
-//			String password = "rekhagoel";
-//			String username = "goelrishi9";
+
+			// String toEmail = complaint.getEmail();
+			// String subject = "Complaint Registration";
+			// String fromEmail = "goelrishi9@gmail.com";
+			// String password = "rekhagoel";
+			// String username = "goelrishi9";
 			int flag = st.executeUpdate();
 			if (flag == 1) {
-				
-				System.out.print("Send");
+//				Statement stmt = con.createStatement();
+//				String query = "select max(complaint_no) from complaint_details";
+//				ResultSet rs = stmt.executeQuery(query);
+				int comp_no=0;
+//				while(rs.next()){
+//		            //Retrieve by column name
+//		            comp_no = rs.getInt("complaint_no");     
+//		         }
+		 
+//				String comp_no = null;
+				request.setAttribute("email", complaint.getEmail());
+				request.setAttribute("complaint_no", comp_no+"");
 				sendmail.doPost(request, response);
-		
+
 			} else {
 				out.println("Failed");
 			}
@@ -92,6 +103,6 @@ public class RegisterComplaint extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-				
+
 	}
 }
