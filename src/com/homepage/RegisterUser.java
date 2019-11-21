@@ -13,8 +13,6 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
-
 import com.entities.User;
 
 @MultipartConfig
@@ -43,7 +41,8 @@ public class RegisterUser extends HttpServlet {
 			Statement stmnt = con.createStatement();
 			ResultSet rs = stmnt.executeQuery("SELECT * FROM user_details where email='"+email+"'");
 			if(rs.next()){
-				JOptionPane.showMessageDialog(null, "Already Registered");				
+				out.println("Already Registered!!!");
+//				JOptionPane.showMessageDialog(null, "Already Registered");				
 			}else{
 				String sql = "insert into user_details (category,name,emp_id,designation,department,email,contact_no,address,password)"
 						+ " values(?,?,?,?,?,?,?,?,?)";
@@ -59,7 +58,8 @@ public class RegisterUser extends HttpServlet {
 				st.setString(8, user.getAddr());
 				st.setString(9, user.getPass());			
 				int flag = st.executeUpdate();
-				if (flag == 1) {				
+				if (flag == 1) {	
+					
 					out.println("Registered Successfully!");
 				} else {
 					out.println("Failed!");

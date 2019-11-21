@@ -17,10 +17,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.entities.Complaint;	
+import com.entities.Complaint;
+
 
 @MultipartConfig
+
 public class RegisterComplaint extends HttpServlet {
+	
+	SendMail sendmail = new SendMail();
+//	MailSenderBean mailSender = new MailSenderBean() ;
 
 	private static final long serialVersionUID = 1788L;
 
@@ -67,9 +72,18 @@ public class RegisterComplaint extends HttpServlet {
 			st.setBlob(11, inputStream);
 			st.setString(12, LocalTime.now().toString());
 			st.setString(13, LocalDate.now().toString());
+			
+//			String toEmail = complaint.getEmail();
+//			String subject = "Complaint Registration";				
+//			String fromEmail = "goelrishi9@gmail.com";
+//			String password = "rekhagoel";
+//			String username = "goelrishi9";
 			int flag = st.executeUpdate();
 			if (flag == 1) {
-				out.println("Added!");
+				
+				System.out.print("Send");
+				sendmail.doPost(request, response);
+		
 			} else {
 				out.println("Failed");
 			}
@@ -78,9 +92,6 @@ public class RegisterComplaint extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		String[] receivers = new String[] {complaint.getEmail()};
-		
-		SendEmail.main(receivers);
+				
 	}
 }

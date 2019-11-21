@@ -9,8 +9,6 @@
     <servlet-name>ComplaintController</servlet-name>
     <url-pattern>/complaint</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>ComplaintCancel</servlet-name>
     <servlet-class>com.ComplaintMgmt.CancelComplaint</servlet-class>
@@ -19,8 +17,6 @@
     <servlet-name>ComplaintCancel</servlet-name>
     <url-pattern>/cancel</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>ComplaintSearch</servlet-name>
     <servlet-class>com.ComplaintMgmt.SearchComplaint</servlet-class>
@@ -29,8 +25,6 @@
     <servlet-name>ComplaintSearch</servlet-name>
     <url-pattern>/search</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>RegisterUser</servlet-name>
     <servlet-class>com.homepage.RegisterUser</servlet-class>
@@ -39,8 +33,6 @@
     <servlet-name>RegisterUser</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>LoginUser</servlet-name>
     <servlet-class>com.homepage.LoginUser</servlet-class>
