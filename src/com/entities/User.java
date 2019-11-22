@@ -6,7 +6,7 @@ public class User {
 	String name;
 	String email;
 	String contact;
-	String emp_id;
+	Integer emp_id;
 	String desg;
 	String dept;
 	String addr;
@@ -44,11 +44,11 @@ public class User {
 		this.contact = contact;
 	}
 
-	public String getEmp_id() {
+	public Integer getEmp_id() {
 		return emp_id;
 	}
 
-	public void setEmp_id(String emp_id) {
+	public void setEmp_id(Integer emp_id) {
 		this.emp_id = emp_id;
 	}
 

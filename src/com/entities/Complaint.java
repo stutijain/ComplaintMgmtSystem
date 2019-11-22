@@ -1,24 +1,15 @@
 package com.entities;
 
 public class Complaint {
-	String type;
 	String category;
 	String location;
 	String sub_location;
-	String subject;
 	String details;
 	String priority;
 	String name;
+	String designation;
 	String email;
 	String contact;
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
 
 	public String getCategory() {
 		return category;
@@ -44,12 +35,12 @@ public class Complaint {
 		this.sub_location = sub_location;
 	}
 
-	public String getSubject() {
-		return subject;
+	public String getDesignation() {
+		return designation;
 	}
 
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setDesignation(String designation) {
+		this.designation = designation;
 	}
 
 	public String getDetails() {

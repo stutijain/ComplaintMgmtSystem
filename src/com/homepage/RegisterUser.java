@@ -24,7 +24,10 @@ public class RegisterUser extends HttpServlet {
 		User user = new User();	
 		user.setCategory(request.getParameter("category"));
 		user.setName((String) request.getParameter("name"));
-		user.setEmp_id(request.getParameter("emp_id"));
+		
+//		this is level basically
+		user.setEmp_id(Integer.parseInt(request.getParameter("emp_id")));
+		
 		user.setDesg(request.getParameter("desg"));
 		user.setDept(request.getParameter("dept"));
 		user.setEmail(request.getParameter("email"));
@@ -44,19 +47,19 @@ public class RegisterUser extends HttpServlet {
 				out.println("Already Registered!!!");
 //				JOptionPane.showMessageDialog(null, "Already Registered");				
 			}else{
-				String sql = "insert into user_details (category,name,emp_id,designation,department,email,contact_no,address,password)"
+				String sql = "insert into user_details (category,name,level,designation,department,email,contact_no,address,password)"
 						+ " values(?,?,?,?,?,?,?,?,?)";
 				
 				PreparedStatement st = con.prepareStatement(sql);
 				st.setString(1, user.getCategory());
 				st.setString(2, user.getName());
-				st.setString(3, user.getEmp_id());
+				st.setInt(3, user.getEmp_id());
 				st.setString(4, user.getDesg());
 				st.setString(5, user.getDept());
 				st.setString(6, user.getEmail());
 				st.setString(7, user.getContact());
 				st.setString(8, user.getAddr());
-				st.setString(9, user.getPass());			
+				st.setString(9, user.getPass());
 				int flag = st.executeUpdate();
 				if (flag == 1) {	
 					

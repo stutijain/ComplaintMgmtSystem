@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -32,11 +33,10 @@ public class RegisterComplaint extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		Complaint complaint = new Complaint();
-		complaint.setType(request.getParameter("type"));
 		complaint.setCategory(request.getParameter("category"));
 		complaint.setLocation((String) request.getParameter("location"));
 		complaint.setSub_location(request.getParameter("sub_location"));
-		complaint.setSubject(request.getParameter("subject"));
+		complaint.setDesignation(request.getParameter("designation"));
 		complaint.setDetails(request.getParameter("details"));
 		complaint.setPriority(request.getParameter("priority"));
 		complaint.setName(request.getParameter("name"));
@@ -56,23 +56,22 @@ public class RegisterComplaint extends HttpServlet {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
 					"abcdef");
 
-			String sql = "insert into complaint_details (type,category,location,sub_location,subject,details,priority,name,email,contact,attachment,time,date)"
-					+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into complaint_details (category,location,sub_location,details,priority,name,email,contact,attachment,time,date,designation)"
+					+ " values(?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, complaint.getType());
-			st.setString(2, complaint.getCategory());
-			st.setString(3, complaint.getLocation());
-			st.setString(4, complaint.getSub_location());
-			st.setString(5, complaint.getSubject());
-			st.setString(6, complaint.getDetails());
-			st.setString(7, complaint.getPriority());
-			st.setString(8, complaint.getName());
-			st.setString(9, complaint.getEmail());
-			st.setString(10, complaint.getContact());
-			st.setBlob(11, inputStream);
-			st.setString(12, LocalTime.now().toString());
-			st.setString(13, LocalDate.now().toString());
+			st.setString(1, complaint.getCategory());
+			st.setString(2, complaint.getLocation());
+			st.setString(3, complaint.getSub_location());
+			st.setString(4, complaint.getDetails());
+			st.setString(5, complaint.getPriority());
+			st.setString(6, complaint.getName());
+			st.setString(7, complaint.getEmail());
+			st.setString(8,complaint.getContact());
+			st.setBlob(9, inputStream);
+			st.setString(10, LocalTime.now().toString());
+			st.setString(11, LocalDate.now().toString());
+			st.setString(12, complaint.getDesignation());
 			
 			int flag = st.executeUpdate();
 			if (flag == 1) {
@@ -86,7 +85,15 @@ public class RegisterComplaint extends HttpServlet {
 		            //Retrieve by column name
 		            comp_no = rs.getInt("complaint_no");     
 		         }
-				request.setAttribute("email", complaint.getEmail());
+				
+				query="select email from user_details where level=1 AND category like '"+complaint.getCategory()+"';";
+				rs=stmt.executeQuery(query);
+				ArrayList<String>emails=new ArrayList<>();
+				while(rs.next())
+					emails.add(rs.getString("email"));
+				
+				request.setAttribute("complaint", complaint);
+				request.setAttribute("emails", emails);
 				request.setAttribute("complaint_no", comp_no+"");
 				sendmail.doPost(request, response);
 

@@ -2,6 +2,7 @@ package com.ComplaintMgmt;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -9,12 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import com.mysql.cj.protocol.Message;
+import com.entities.Complaint;
 
 /**
  * Servlet implementation class SendMail
  */
-//@WebServlet("/SendMail")
 public class SendMail extends HttpServlet {
 	
 	@EJB
@@ -25,8 +25,10 @@ public class SendMail extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String toEmail = (String) request.getAttribute("email");
-		String subject = "Complaint Registration";
+		
+		Complaint complaint=(Complaint)request.getAttribute("complaint");
+		@SuppressWarnings("unchecked")
+		ArrayList<String> emails=(ArrayList<String>) request.getAttribute("emails");
 		String complaint_no=(String) request.getAttribute("complaint_no");
 		String fromEmail = "project.2020.final.year@gmail.com";
 		String password = "Project@20";
@@ -34,7 +36,7 @@ public class SendMail extends HttpServlet {
 		
 		try(PrintWriter out = response.getWriter()){
 			
-			mailSender.sendEmail(fromEmail, username, password, toEmail, subject,complaint_no);
+			mailSender.sendEmail(fromEmail, username, password, complaint,complaint_no,emails);
 			System.out.println("sent");
 			
 			out.println("<!DOCTYPE html>");
