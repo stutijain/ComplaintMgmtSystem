@@ -15,7 +15,7 @@ import com.entities.Complaint;
 
 public class MailSenderBean {
 
-	public void sendEmail(String fromEmail, String username, String password, Complaint complaint, String complaint_no,
+	public void sendEmail(String fromEmail, String username, String password, Complaint complaint,
 			ArrayList<String> emails) {
 
 		Properties props = System.getProperties();
@@ -32,14 +32,6 @@ public class MailSenderBean {
 
 		Session mailSession = Session.getDefaultInstance(props, null);
 		mailSession.setDebug(true);
-		InternetAddress[] address = new InternetAddress[emails.size()];
-		for (int i = 0; i < emails.size(); i++) {
-			try {
-				address[i] = new InternetAddress(emails.get(i));
-			} catch (AddressException e) {
-				e.printStackTrace();
-			}
-		}
 
 		Message mailMessage = new MimeMessage(mailSession);
 		try {
@@ -47,8 +39,8 @@ public class MailSenderBean {
 			mailMessage.setFrom(new InternetAddress(fromEmail));
 			mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(complaint.getEmail()));
 			subject = "Complaint Registration";
-			message = "Your complaint has been successfully registered. Your complaint number is "
-					+ complaint_no + ".\nTo track the status of your complaint kindly visit the portal.";
+			message = "Your complaint has been successfully registered. Your complaint number is " + complaint.getComplaint_no()
+					+ ".\nTo track the status of your complaint kindly visit the portal.";
 			mailMessage.setText(message);
 			mailMessage.setSubject(subject);
 
@@ -62,21 +54,34 @@ public class MailSenderBean {
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
-		Message userMsg = new MimeMessage(mailSession);
-		try {
-			
-			userMsg.setFrom(new InternetAddress(fromEmail));
-			userMsg.setRecipients(Message.RecipientType.TO, address);
-			message="complaint no: "+complaint_no+"\nDetails: "+complaint.getDetails()+"\nPriority: "+complaint.getPriority();
-			userMsg.setText(message);
-			userMsg.setSubject("New complaint");
 
-			Transport transport = mailSession.getTransport("smtp");
-			transport.connect("smtp.gmail.com", username, password);
-			transport.sendMessage(userMsg, userMsg.getAllRecipients());
-		} catch (MessagingException e) {
-			e.printStackTrace();
+		if (emails.size() > 0) {
+			InternetAddress[] address = new InternetAddress[emails.size()];
+			for (int i = 0; i < emails.size(); i++) {
+				try {
+					address[i] = new InternetAddress(emails.get(i));
+				} catch (AddressException e) {
+					e.printStackTrace();
+				}
+			}
+
+			Message userMsg = new MimeMessage(mailSession);
+			try {
+
+				userMsg.setFrom(new InternetAddress(fromEmail));
+				userMsg.setRecipients(Message.RecipientType.TO, address);
+				message = "complaint no: " + complaint.getComplaint_no() + "\nDetails: " + complaint.getDetails() + "\nPriority: "
+						+ complaint.getPriority();
+				userMsg.setText(message);
+				userMsg.setSubject("New complaint");
+
+				Transport transport = mailSession.getTransport("smtp");
+				transport.connect("smtp.gmail.com", username, password);
+				transport.sendMessage(userMsg, userMsg.getAllRecipients());
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
+
 		}
-
 	}
 }
