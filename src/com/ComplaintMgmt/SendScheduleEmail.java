@@ -26,12 +26,6 @@ public class SendScheduleEmail implements Job  {
 	String password;
 	String username;
 
-	
-	protected void run(String fromEmail, String username, String password, Complaint complaint, String complaint_no, ArrayList<String> emails){
-		MailSenderBean mailSender=new MailSenderBean();
-		mailSender.sendEmail(fromEmail, username, password, complaint,complaint_no, emails);
-		System.out.print("Mail Sent");
-	}
 
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {						
