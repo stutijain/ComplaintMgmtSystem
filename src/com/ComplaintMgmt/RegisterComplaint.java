@@ -42,6 +42,9 @@ public class RegisterComplaint extends HttpServlet {
 		complaint.setName(request.getParameter("name"));
 		complaint.setEmail(request.getParameter("email"));
 		complaint.setContact(request.getParameter("contact"));
+		complaint.setDate( LocalTime.now().toString());
+		complaint.setTime( LocalDate.now().toString());
+		complaint.setCom_status("Pending");
 		InputStream inputStream = null; // input stream of the upload file
 
 		// obtains the upload file part in this multipart request
@@ -56,8 +59,8 @@ public class RegisterComplaint extends HttpServlet {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
 					"abcdef");
 
-			String sql = "insert into complaint_details (category,location,sub_location,details,priority,name,email,contact,attachment,time,date,designation)"
-					+ " values(?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into complaint_details (category,location,sub_location,details,priority,name,email,contact,attachment,time,date,designation,com_status)"
+					+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, complaint.getCategory());
@@ -69,9 +72,10 @@ public class RegisterComplaint extends HttpServlet {
 			st.setString(7, complaint.getEmail());
 			st.setString(8,complaint.getContact());
 			st.setBlob(9, inputStream);
-			st.setString(10, LocalTime.now().toString());
-			st.setString(11, LocalDate.now().toString());
+			st.setString(10,complaint.getTime());
+			st.setString(11,complaint.getDate());
 			st.setString(12, complaint.getDesignation());
+			st.setString(13, complaint.getCom_status());
 			
 			int flag = st.executeUpdate();
 			if (flag == 1) {
@@ -91,10 +95,9 @@ public class RegisterComplaint extends HttpServlet {
 				ArrayList<String>emails=new ArrayList<>();
 				while(rs.next())
 					emails.add(rs.getString("email"));
-				
+				complaint.setComplaint_no(comp_no);
 				request.setAttribute("complaint", complaint);
 				request.setAttribute("emails", emails);
-				request.setAttribute("complaint_no", comp_no+"");
 				sendmail.doPost(request, response);
 				
 				

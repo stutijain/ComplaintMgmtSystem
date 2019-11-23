@@ -10,6 +10,10 @@ public class Complaint {
 	String designation;
 	String email;
 	String contact;
+	String com_status;
+	int complaint_no;
+	String date;
+	String time;
 
 	public String getCategory() {
 		return category;
@@ -82,5 +86,37 @@ public class Complaint {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
+
+	public String getCom_status() {
+		return com_status;
+	}
+
+	public void setCom_status(String com_status) {
+		this.com_status = com_status;
+	}
+
+	public int getComplaint_no() {
+		return complaint_no;
+	}
+
+	public void setComplaint_no(int complaint_no) {
+		this.complaint_no = complaint_no;
+	}
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 
 }

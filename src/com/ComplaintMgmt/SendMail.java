@@ -29,14 +29,13 @@ public class SendMail extends HttpServlet {
 		Complaint complaint=(Complaint)request.getAttribute("complaint");
 		@SuppressWarnings("unchecked")
 		ArrayList<String> emails=(ArrayList<String>) request.getAttribute("emails");
-		String complaint_no=(String) request.getAttribute("complaint_no");
 		String fromEmail = "project.2020.final.year@gmail.com";
 		String password = "Project@20";
 		String username = "project.2020.final.year@gmail.com";
 		
 		try(PrintWriter out = response.getWriter()){
 			
-			mailSender.sendEmail(fromEmail, username, password, complaint,complaint_no,emails);
+			mailSender.sendEmail(fromEmail, username, password, complaint,emails);
 			System.out.println("sent");
 			
 			out.println("<!DOCTYPE html>");
@@ -47,7 +46,7 @@ public class SendMail extends HttpServlet {
 			out.println("<body>");
 			out.println("<h1>Mail Status!!!</h1>");
 			out.println("<b>Mail Sent Successfully</b><br>");
-			out.println("<b>Your complaint has been successfully registered. Your compalint number is "+complaint_no+"</b><br>");
+			out.println("<b>Your complaint has been successfully registered. Your compalint number is "+complaint.getComplaint_no()+"</b><br>");
 			out.println("</body>");
 			out.println("</html>");
 		}
