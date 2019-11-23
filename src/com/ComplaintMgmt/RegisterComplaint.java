@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
 
 import com.entities.Complaint;
 
@@ -96,15 +96,18 @@ public class RegisterComplaint extends HttpServlet {
 				request.setAttribute("emails", emails);
 				request.setAttribute("complaint_no", comp_no+"");
 				sendmail.doPost(request, response);
+				
+				
+				ScheduleEmail se = new ScheduleEmail();
+				se.scdMail(complaint.getCategory(), complaint.getDetails(), complaint.getPriority(), Integer.toString(comp_no));
+						
 
 			} else {
 				out.println("Failed");
 			}
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 
 	}
 }
