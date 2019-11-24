@@ -17,21 +17,23 @@ public class ScheduleEmail {
 		
 		try {
 		BasicConfigurator.configure();				
-		JobDetail j = JobBuilder.newJob(SendScheduleEmail.class).build(); 			
+		JobDetail j = JobBuilder.newJob(SendScheduleEmail.class).build(); 
+		
+		String tName = "Trigger" + System.currentTimeMillis();
 				
 		Trigger t1 = TriggerBuilder.newTrigger()
-						  .withIdentity("Trigger")
+						  .withIdentity(tName)
 						  .withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInHours(12))
 						  .build();
 		
 		Trigger t2 = TriggerBuilder.newTrigger()
-				  .withIdentity("Trigger")
+				  .withIdentity(tName)
 				  .withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInHours(6))
 				  .build();
 		
 		Trigger t3 = TriggerBuilder.newTrigger()
-				  .withIdentity("Trigger")
-				  .withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInSeconds(60))
+				  .withIdentity(tName)
+				  .withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInHours(2))
 				  .build();
 		
 		j.getJobDataMap().put(SendScheduleEmail.category, category);
