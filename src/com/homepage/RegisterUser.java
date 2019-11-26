@@ -63,7 +63,16 @@ public class RegisterUser extends HttpServlet {
 				int flag = st.executeUpdate();
 				if (flag == 1) {	
 					
-					out.println("Registered Successfully!");
+					out.println("<!DOCTYPE html>");
+					out.println("<html>");
+					out.println("<body>");
+					out.println("<h1>Registered Successfully!</h1>");
+					out.println("<br><br>");
+					out.println("Web page redirects after 5 seconds");
+					out.println("</body>");
+					out.println("</html>");
+					
+					response.setHeader("Refresh", "5; HomePage.html");
 				} else {
 					out.println("Failed!");
 				}

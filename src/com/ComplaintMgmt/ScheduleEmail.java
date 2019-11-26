@@ -28,7 +28,7 @@ public class ScheduleEmail {
 		
 		Trigger t2 = TriggerBuilder.newTrigger()
 				  .withIdentity(tName)
-				  .withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInHours(6))
+				  .withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInSeconds(30))
 				  .build();
 		
 		Trigger t3 = TriggerBuilder.newTrigger()

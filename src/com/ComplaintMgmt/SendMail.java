@@ -47,8 +47,13 @@ public class SendMail extends HttpServlet {
 			out.println("<h1>Mail Status!!!</h1>");
 			out.println("<b>Mail Sent Successfully</b><br>");
 			out.println("<b>Your complaint has been successfully registered. Your compalint number is "+complaint.getComplaint_no()+"</b><br>");
+			out.println("<br><br>");
+			out.println("Web page redirects after 5 seconds");
 			out.println("</body>");
 			out.println("</html>");
+						
+			response.setHeader("Refresh", "5; HomePage.html");
+			
 		}
 	}
 

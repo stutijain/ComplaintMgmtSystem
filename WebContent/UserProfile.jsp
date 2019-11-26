@@ -8,6 +8,55 @@
 <meta charset="ISO-8859-1">
 <title>User Profile</title>
 <style>
+body {	
+  font-family: "Lato", sans-serif;
+}
+
+ .navbar {
+  overflow: hidden;
+  background-color: black;
+  top: 0;
+}
+
+.navbar a{
+	top: 0;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+  	text-decoration: none;
+  	font-size: 17px;
+}
+ 
+ .topnav {
+  overflow: hidden;
+  background: linear-gradient(to bottom, #009933 0%, #003300 100%);
+  top: 0;
+}
+
+.topnav a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {  
+  color: orange;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+form {
+	vertical-align: top;
+}
+
+</style>
+
+<style>
 	th {
 		background-color: #00b300;
 		color: white;
@@ -23,6 +72,11 @@
 </head>
 
 <body>
+
+<%
+	response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
+%>
+
 <div style="margin: 1vh 10vw 0vh 10vw" align="center" id="Top">
    		<img style="float: left;margin: 0vh 5vw 0vh 5vw" src="https://upload.wikimedia.org/wikipedia/en/4/4e/Indira_Gandhi_Delhi_Technical_University_for_Women_logo.png"  width="86" height="80" />				
         <font color="green" size="5"><b> Indira Gandhi Delhi Technical University for Women </b></font><br>
@@ -41,7 +95,7 @@
 <div style="margin-right: 5vw; float: right;">
 	<span>Name: TODO</span>
 	<br>
-	<form action="TODO" method="TODO">
+	<form action="Logout" method="post">
 	  <input type="submit" value="Logout">
 	</form>
 </div>

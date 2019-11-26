@@ -31,7 +31,8 @@ public class RegisterComplaint extends HttpServlet {
 
 	private static final long serialVersionUID = 1788L;
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {		
+		
 		Complaint complaint = new Complaint();
 		complaint.setCategory(request.getParameter("category"));
 		complaint.setLocation((String) request.getParameter("location"));
@@ -95,14 +96,13 @@ public class RegisterComplaint extends HttpServlet {
 				ArrayList<String>emails=new ArrayList<>();
 				while(rs.next())
 					emails.add(rs.getString("email"));
-				complaint.setComplaint_no(comp_no);
-				request.setAttribute("complaint", complaint);
-				request.setAttribute("emails", emails);
-				sendmail.doPost(request, response);
-				
-				
-				ScheduleEmail se = new ScheduleEmail();
-				se.scdMail(complaint.getCategory(), complaint.getDetails(), complaint.getPriority(), Integer.toString(comp_no));
+					complaint.setComplaint_no(comp_no);
+					request.setAttribute("complaint", complaint);
+					request.setAttribute("emails", emails);
+					sendmail.doPost(request, response);
+								
+					ScheduleEmail se = new ScheduleEmail();
+					se.scdMail(complaint.getCategory(), complaint.getDetails(), complaint.getPriority(), Integer.toString(comp_no));
 						
 
 			} else {
