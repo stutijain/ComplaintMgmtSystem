@@ -49,10 +49,10 @@
 <div style="display: flex;">
 	<form action="TODO" method="TODO">
 	<select name="category" >
-		<option value="ITS">Pending</option>
-		<option value="PWDE">In Progress</option>
-		<option value="PWDC">Completed</option>
-		<option value="OTH">Not completed</option>
+		<option value="Pending">Pending</option>
+		<option value="In Progress">In Progress</option>
+		<option value="Completed">Completed</option>
+		<option value="Not completed">Not completed</option>
 	</select>
 	  <input type="submit" value="Search">
 	</form>
@@ -77,7 +77,7 @@
    <th><b>Name</b></th> 
    <th><b>Category</b></th> 
   <th><b>Location</b></th> 
-  <th><b>Designation</b></th> 
+  <th><b>Complaint No</b></th> 
   <th><b>Priority</b></th>
   <th><b>Status</b></th>
  </tr> 
@@ -87,18 +87,27 @@ for(Complaint comp:allComplaints){%>
      <td><%=comp.getName()%></td> 
      <td><%=comp.getCategory() %></td> 
      <td><%=comp.getLocation() %></td> 
-     <td><%=comp.getDesignation() %></td> 
+     <td><text name="number"><%=comp.getComplaint_no() %></td> 
      <td><%=comp.getPriority() %></td> 
      <td><%=comp.getCom_status() %></td> 
      <td>
-	     <form action="TODO" method="TODO">
-		  <input type="submit" value="Attend">
+	     <form action="expand" method="post">
+		  <input type="submit" value="Show Details">
 		</form>
 	</td>
  </tr> 
  <%}%>
  
 </table>  
+<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+<div class="navbar">  	   
+  <a href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
+  <a href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact Us</a>
+  <br>
+  <a href="#Top" style="float: right; color: red; font-size: 14px" > Top </a>
+</div>
+<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6" size="5">
+	
 </body>
 
 </html>
