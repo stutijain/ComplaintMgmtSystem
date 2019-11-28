@@ -102,6 +102,7 @@ public class Complaint {
 	public void setComplaint_no(int complaint_no) {
 		this.complaint_no = complaint_no;
 	}
+
 	public String getDate() {
 		return date;
 	}
@@ -117,6 +118,5 @@ public class Complaint {
 	public void setTime(String time) {
 		this.time = time;
 	}
-
 
 }

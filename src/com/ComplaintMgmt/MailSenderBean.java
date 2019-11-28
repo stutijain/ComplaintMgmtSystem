@@ -39,8 +39,8 @@ public class MailSenderBean {
 			mailMessage.setFrom(new InternetAddress(fromEmail));
 			mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(complaint.getEmail()));
 			subject = "Complaint Registration";
-			message = "Your complaint has been successfully registered. Your complaint number is " + complaint.getComplaint_no()
-					+ ".\nTo track the status of your complaint kindly visit the portal.";
+			message = "Your complaint has been successfully registered. Your complaint number is "
+					+ complaint.getComplaint_no() + ".\nTo track the status of your complaint kindly visit the portal.";
 			mailMessage.setText(message);
 			mailMessage.setSubject(subject);
 
@@ -70,8 +70,8 @@ public class MailSenderBean {
 
 				userMsg.setFrom(new InternetAddress(fromEmail));
 				userMsg.setRecipients(Message.RecipientType.TO, address);
-				message = "complaint no: " + complaint.getComplaint_no() + "\nDetails: " + complaint.getDetails() + "\nPriority: "
-						+ complaint.getPriority();
+				message = "complaint no: " + complaint.getComplaint_no() + "\nDetails: " + complaint.getDetails()
+						+ "\nPriority: " + complaint.getPriority();
 				userMsg.setText(message);
 				userMsg.setSubject("New complaint");
 

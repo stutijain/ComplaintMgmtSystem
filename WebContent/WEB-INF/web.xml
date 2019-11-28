@@ -49,5 +49,4 @@
     <servlet-name>ShowDetails</servlet-name>
     <url-pattern>/expand</url-pattern>
   </servlet-mapping>
-  
 </web-app>

@@ -12,14 +12,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SchdMailSender {
-	
-	public void schdEmail(ArrayList<String> emails, String details, String comp_no, String priority){
-		
+
+	public void schdEmail(ArrayList<String> emails, String details, String comp_no, String priority) {
+
 		String fromEmail = "project.2020.final.year@gmail.com";
 		String password = "Project@20";
 		String username = "project.2020.final.year@gmail.com";
-		
-		
+
 		Properties props = System.getProperties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.auth", "true");
@@ -40,15 +39,14 @@ public class SchdMailSender {
 			} catch (AddressException e) {
 				e.printStackTrace();
 			}
-		}  
-		
-		
+		}
+
 		Message userMsg = new MimeMessage(mailSession);
 		try {
-			
+
 			userMsg.setFrom(new InternetAddress(fromEmail));
 			userMsg.setRecipients(Message.RecipientType.TO, address);
-			message="complaint no: "+comp_no+"\nDetails: "+details+"\nPriority: "+priority;
+			message = "complaint no: " + comp_no + "\nDetails: " + details + "\nPriority: " + priority;
 			userMsg.setText(message);
 			userMsg.setSubject("New complaint");
 
