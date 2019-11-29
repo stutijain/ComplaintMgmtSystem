@@ -17,52 +17,54 @@ import com.entities.User;
 
 @MultipartConfig
 public class RegisterUser extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		User user = new User();	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		User user = new User();
 		user.setCategory(request.getParameter("category"));
 		user.setName((String) request.getParameter("name"));
-		
-//		this is level basically
+		user.setDob((String) request.getParameter("dob"));
+		// this is level basically
 		user.setEmp_id(Integer.parseInt(request.getParameter("emp_id")));
-		
+
 		user.setDesg(request.getParameter("desg"));
 		user.setDept(request.getParameter("dept"));
 		user.setEmail(request.getParameter("email"));
 		user.setContact(request.getParameter("cont_no"));
 		user.setAddr(request.getParameter("addr"));
 		user.setPass(request.getParameter("pass"));
-		String email = request.getParameter("email");		
-		
+		String email = request.getParameter("email");
+
 		PrintWriter out = response.getWriter();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
 					"abcdef");
 			Statement stmnt = con.createStatement();
-			ResultSet rs = stmnt.executeQuery("SELECT * FROM user_details where email='"+email+"'");
-			if(rs.next()){
+			ResultSet rs = stmnt.executeQuery("SELECT * FROM user_details where email='" + email + "'");
+			if (rs.next()) {
 				out.println("Already Registered!!!");
-//				JOptionPane.showMessageDialog(null, "Already Registered");				
-			}else{
-				String sql = "insert into user_details (category,name,level,designation,department,email,contact_no,address,password)"
-						+ " values(?,?,?,?,?,?,?,?,?)";
-				
+				response.setHeader("Refresh", "2; Registration.html");
+
+			} else {
+				String sql = "insert into user_details (category,name,dob,level,designation,department,email,contact_no,address,password)"
+						+ " values(?,?,?,?,?,?,?,?,?,?)";
+
 				PreparedStatement st = con.prepareStatement(sql);
 				st.setString(1, user.getCategory());
 				st.setString(2, user.getName());
-				st.setInt(3, user.getEmp_id());
-				st.setString(4, user.getDesg());
-				st.setString(5, user.getDept());
-				st.setString(6, user.getEmail());
-				st.setString(7, user.getContact());
-				st.setString(8, user.getAddr());
-				st.setString(9, user.getPass());
+				st.setString(3, user.getDob());
+				st.setInt(4, user.getEmp_id());
+				st.setString(5, user.getDesg());
+				st.setString(6, user.getDept());
+				st.setString(7, user.getEmail());
+				st.setString(8, user.getContact());
+				st.setString(9, user.getAddr());
+				st.setString(10, user.getPass());
 				int flag = st.executeUpdate();
-				if (flag == 1) {	
-					
+				if (flag == 1) {
+
 					out.println("<!DOCTYPE html>");
 					out.println("<html>");
 					out.println("<body>");
@@ -71,21 +73,22 @@ public class RegisterUser extends HttpServlet {
 					out.println("Web page redirects after 5 seconds");
 					out.println("</body>");
 					out.println("</html>");
-					
+
 					response.setHeader("Refresh", "5; HomePage.html");
 				} else {
 					out.println("Failed!");
+					response.setHeader("Refresh", "2; HomePage.html");
 				}
 			}
-							
+
 		} catch (SQLException e) {
-			out.println("Email ID already Registered");				
-						
+			out.println("Email ID already Registered");
+			response.setHeader("Refresh", "1; Registration.html");
+
 		} catch (ClassNotFoundException e) {
-			out.println("Failure");			
-			
+			out.println("Failure");
+
 		}
-		
-		
+
 	}
 }

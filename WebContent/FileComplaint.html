@@ -3,50 +3,58 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>File Complaint</title>
-<style >
-
- .navbar {
-  overflow: hidden;
-  background-color: black;
-  top: 0;
+<style>
+body {
+	text-align: center;
 }
 
-.navbar a{
+form {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.navbar {
+	overflow: hidden;
+	background-color: black;
+	top: 0;
+}
+
+.navbar a {
 	float: left;
 	top: 0;
 	color: white;
 	text-align: center;
 	padding: 14px 16px;
-  	text-decoration: none;
-  	font-size: 17px;
+	text-decoration: none;
+	font-size: 17px;
 }
 
- .topnav {
-	  overflow: hidden;
-	  background: linear-gradient(to bottom, #009933 0%, #003300 100%);
-	  top: 0;
-	}
-	
-	.topnav a {
-	  float: left;
-	  color: #f2f2f2;
-	  text-align: center;
-	  padding: 14px 16px;
-	  text-decoration: none;
-	  font-size: 17px;
-	}
-	
-	.topnav a:hover {  
-	  color: orange;
-	}
-	
-	.topnav a.active {
-	  background-color: #4CAF50;
-	  color: white;
-	}
+.topnav {
+	overflow: hidden;
+	background: linear-gradient(to bottom, #009933 0%, #003300 100%);
+	top: 0;
+}
+
+.topnav a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.topnav a:hover {
+	color: orange;
+}
+
+.topnav a.active {
+	background-color: #4CAF50;
+	color: white;
+}
 </style>
 </head>
-<body>	
+<body>
 
 	<div style="margin: 10px 200px 0px 200px" align="center" id="Top">
 
@@ -61,126 +69,132 @@
 	</div>
 
 	<br>
-	
+
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="topnav">
-	  <hr color="black" size="2" style="margin-bottom: -1px; margin-top: -1px;">
-	  <a href="HomePage.html" style="margin-left: 20px;">Home</a>
-	  <a href="https://igdtuw.ac.in/index.php?option=com_content&view=article&id=1&Itemid=2">About Us</a>  
+		<hr color="black" size="2"
+			style="margin-bottom: -1px; margin-top: -1px;">
+		<a href="HomePage.html" style="margin-left: 20px;">Home</a> <a
+			href="https://igdtuw.ac.in/index.php?option=com_content&view=article&id=1&Itemid=2">About
+			Us</a>
 	</div>
-	<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6" size="5">
+	<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6"
+		size="5">
 
 	<h1 align="center">
 		<font color="green" size="5"> FILE COMPLAINT</font>
 	</h1>
 
-	<form action="complaint" method="post" enctype='multipart/form-data'>
+	<div style="text-align: left;">
 
-		<p style="margin: 0px 0px 0px 100px">
-			<font size="3">Complaint Category : </font> <select name="category"
-				required="required">
-				<option value="Select" />
-				<option value="ITS">IT-Services</option>
-				<option value="PWDE">PWD-Electrical</option>
-				<option value="PWDC">PWD-Civil</option>
-			</select>
-		</p>
+		<form action="complaint" method="post" enctype='multipart/form-data'>
+
+			<p style="margin: 0px 0px 0px 100px">
+				<font size="3">Complaint Category : </font> <select name="category"
+					required="required">
+					<option value="Select" />
+					<option value="ITS">IT-Services</option>
+					<option value="PWDE">PWD-Electrical</option>
+					<option value="PWDC">PWD-Civil</option>
+				</select>
+			</p>
+
+			<br>
+
+			<p style="margin: 0px 0px 0px 100px">
+				<font size="3">Location : </font><input type="text" name="location"
+					required="required">
+			</p>
+
+			<br>
+
+			<p style="margin: 0px 0px 0px 100px">
+				<font size="3">Sub-Location : </font><input type="text"
+					name="sub_location" required="required">
+			</p>
+
+			<br>
+
+			<p style="margin: 0px 0px 0px 100px">
+				<font size="3">Complaint Details : </font><input type="text"
+					name="details" required="required">
+			</p>
+
+			<br>
+
+			<p style="margin: 0px 0px 0px 100px">
+				<font size="3">Priority : </font> <select name="priority"
+					required="required">
+					<option value="Select" />
+					<option value="Major">Major</option>
+					<option value="Minor">Minor</option>
+					<option value="Critical">Critical</option>
+				</select>
+			</p>
+
+			<br>
+
+			<p style="margin: 0px 0px 0px 100px">
+				<font size="3">Complainant Name : </font><input type="text"
+					name="name" required="required">
+			</p>
+
+			<br>
+
+			<p style="margin: 0px 0px 0px 100px">
+				<font size="3">Designation : </font><input type="text"
+					name="designation" required="required">
+			</p>
+
+			<br>
+
+			<p style="margin: 0px 0px 0px 100px">
+				<font size="3">Email : </font><input type="email" name="email"
+					required="required">
+			</p>
+
+			<br>
+
+			<p style="margin: 0px 0px 0px 100px">
+				<font size="3">Contact : </font><input type="text" name="contact"
+					required="required">
+			</p>
+
+			<br>
+
+			<p style="margin: 0px 0px 0px 100px">
+				<font size="3">Attachment : </font><input type="file" name="attach"
+					accept=".gif, .jpg,.pdf, .doc"> <br> (pdf, jpg, gif
+				and doc accepted)
+			</p>
+
+			<br>
+
+			<p style="margin: 0px 0px 0px 200px">
+				<input type="submit" value="Submit">
+			</p>
+
+			<br>
+		</form>
+
+		<form action="cancel">
+			<p style="margin: 0px 0px 0px 200px">
+				<input type="submit" value="Cancel">
+			</p>
+		</form>
 
 		<br>
 
-		<p style="margin: 0px 0px 0px 100px">
-			<font size="3">Location : </font><input type="text" name="location"
-				required="required">
-		</p>
-
-		<br>
-
-		<p style="margin: 0px 0px 0px 100px">
-			<font size="3">Sub-Location : </font><input type="text"
-				name="sub_location" required="required">
-		</p>
-
-		<br>
-
-		<p style="margin: 0px 0px 0px 100px">
-			<font size="3">Complaint Details : </font><input type="text" name="details"
-				required="required">
-		</p>
-
-		<br>
-
-		<p style="margin: 0px 0px 0px 100px">
-			<font size="3">Priority : </font> <select name="priority"
-				required="required">
-				<option value="Select" />
-				<option value="Major">Major</option>
-				<option value="Minor">Minor</option>
-				<option value="Critical">Critical</option>
-			</select>
-		</p>
-
-		<br>
-
-		<p style="margin: 0px 0px 0px 100px">
-			<font size="3">Complainant Name : </font><input type="text"
-				name="name" required="required">
-		</p>
-
-		<br>
-
-		<p style="margin: 0px 0px 0px 100px">
-			<font size="3">Designation : </font><input type="text" name="designation"
-				required="required">
-		</p>
-
-		<br>
-
-		<p style="margin: 0px 0px 0px 100px">
-			<font size="3">Email : </font><input type="email" name="email"
-				required="required">
-		</p>
-
-		<br>
-
-		<p style="margin: 0px 0px 0px 100px">
-			<font size="3">Contact : </font><input type="text" name="contact"
-				required="required">
-		</p>
-
-		<br>
-
-		<p style="margin: 0px 0px 0px 100px">
-			<font size="3">Attachment : </font><input type="file" name="attach"
-				accept=".gif, .jpg,.pdf, .doc"> (pdf, jpg, gif and doc
-			accepted)
-		</p>
-
-		<br>
-
-		<p style="margin: 0px 0px 0px 200px">
-			<input type="submit" value="Submit">
-		</p>
-
-		<br>
-	</form>
-	
-	<form action="cancel">
-		<p style="margin: 0px 0px 0px 200px">
-			<input type="submit" value="Cancel">
-		</p>
-	</form>
-	
-	<br>
-	
-	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
-	<div class="navbar">  	   
-	  <a href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
-	  <a href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact Us</a>
-	  <br>
-	  <a href="#Top" style="float: right; color: red; font-size: 14px" > Top </a>
-	</div>
-	<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6" size="5">
-
-
+		<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+		<div class="navbar">
+			<a
+				href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
+			<a
+				href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact
+				Us</a> <br> <a href="#Top"
+				style="float: right; color: red; font-size: 14px"> Top </a>
+		</div>
+		<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6"
+			size="5">
 </body>
 </html>

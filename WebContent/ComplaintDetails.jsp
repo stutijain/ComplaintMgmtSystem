@@ -1,75 +1,79 @@
-<%@page import="com.entities.Complaint"%> 
-<%@page import="java.util.ArrayList"%> 
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@page import="com.entities.Complaint"%>
+<%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Complaint Details</title>
 <style>
-body {	
-  font-family: "Lato", sans-serif;
+body {
+	font-family: "Lato", sans-serif;
 }
 
- .navbar {
-  overflow: hidden;
-  background-color: black;
-  top: 0;
+.navbar {
+	overflow: hidden;
+	background-color: black;
+	top: 0;
 }
 
-.navbar a{
+.navbar a {
 	top: 0;
 	color: white;
 	text-align: center;
 	padding: 14px 16px;
-  	text-decoration: none;
-  	font-size: 17px;
+	text-decoration: none;
+	font-size: 17px;
 }
- 
- .topnav {
-  overflow: hidden;
-  background: linear-gradient(to bottom, #009933 0%, #003300 100%);
-  top: 0;
+
+.topnav {
+	overflow: hidden;
+	background: linear-gradient(to bottom, #009933 0%, #003300 100%);
+	top: 0;
 }
 
 .topnav a {
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
 }
 
-.topnav a:hover {  
-  color: orange;
+.topnav a:hover {
+	color: orange;
 }
 
 .topnav a.active {
-  background-color: #4CAF50;
-  color: white;
+	background-color: #4CAF50;
+	color: white;
 }
 
 form {
 	vertical-align: top;
 }
-
 </style>
-	
+
 
 </head>
 <body>
-<div style="margin: 1vh 10vw 0vh 10vw" align="center" id="Top">
-   		<img style="float: left;margin: 0vh 5vw 0vh 5vw" src="https://upload.wikimedia.org/wikipedia/en/4/4e/Indira_Gandhi_Delhi_Technical_University_for_Women_logo.png"  width="86" height="80" />				
-        <font color="green" size="5"><b> Indira Gandhi Delhi Technical University for Women </b></font><br>
-        <font size="4" >(Established by Govt. of Delhi vide Act 9 of 2012) </font><br>
-        <font color="green" size="4" >(<i>Formerly</i> Indira Gandhi Institute of Technology) </font>	
-	    <br style="clear:both;" />
-</div>
+	<div style="margin: 10px 200px 0px 200px" align="center" id="Top">
 
-<br>
+		<img style="float: left; margin: 0px -120px 0px 120px"
+			src="https://upload.wikimedia.org/wikipedia/en/4/4e/Indira_Gandhi_Delhi_Technical_University_for_Women_logo.png"
+			width="86" height="80" /> <font color="green" size="5"><b>
+				Indira Gandhi Delhi Technical University for Women </b></font><br> <font
+			size="4">(Established by Govt. of Delhi vide Act 9 of 2012) </font><br>
+		<font color="green" size="4">(<i>Formerly</i> Indira Gandhi
+			Institute of Technology)
+		</font> <br style="clear: both;" />
+	</div>
 
-<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
-<div class="topnav">
+	<br>
+
+	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+	<div class="topnav">
+
 
   <p align="center"><font color="white" size="5">Complaint Management System </font></p>
   <hr color="black" size="2" style="margin-bottom: 3vh; margin-top: 3vh;">
@@ -142,15 +146,17 @@ form {
 <td>Complaint Status</td>
 <td><%=comp.getCom_status()%></td>
 </tr>
-
-</table>
- <hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
-<div class="navbar">  	   
-  <a href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
-  <a href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact Us</a>
-  <br>
-  <a href="#Top" style="float: right; color: red; font-size: 14px" > Top </a>
-</div>
-<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6" size="5">
- </body>
- </html>
+	</table>
+	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+	<div class="navbar">
+		<a
+			href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
+		<a
+			href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact
+			Us</a> <br> <a href="#Top"
+			style="float: right; color: red; font-size: 14px"> Top </a>
+	</div>
+	<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6"
+		size="5">
+</body>
+</html>

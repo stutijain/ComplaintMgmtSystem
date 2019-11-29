@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-
 import com.entities.Complaint;
 
 @MultipartConfig
@@ -31,8 +30,8 @@ public class RegisterComplaint extends HttpServlet {
 
 	private static final long serialVersionUID = 1788L;
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {		
-		
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
 		Complaint complaint = new Complaint();
 		complaint.setCategory(request.getParameter("category"));
 		complaint.setLocation((String) request.getParameter("location"));
@@ -43,8 +42,8 @@ public class RegisterComplaint extends HttpServlet {
 		complaint.setName(request.getParameter("name"));
 		complaint.setEmail(request.getParameter("email"));
 		complaint.setContact(request.getParameter("contact"));
-		complaint.setDate( LocalTime.now().toString());
-		complaint.setTime( LocalDate.now().toString());
+		complaint.setDate(LocalTime.now().toString());
+		complaint.setTime(LocalDate.now().toString());
 		complaint.setCom_status("Pending");
 		InputStream inputStream = null; // input stream of the upload file
 
@@ -71,46 +70,47 @@ public class RegisterComplaint extends HttpServlet {
 			st.setString(5, complaint.getPriority());
 			st.setString(6, complaint.getName());
 			st.setString(7, complaint.getEmail());
-			st.setString(8,complaint.getContact());
+			st.setString(8, complaint.getContact());
 			st.setBlob(9, inputStream);
-			st.setString(10,complaint.getTime());
-			st.setString(11,complaint.getDate());
+			st.setString(10, complaint.getTime());
+			st.setString(11, complaint.getDate());
 			st.setString(12, complaint.getDesignation());
 			st.setString(13, complaint.getCom_status());
-			
+
 			int flag = st.executeUpdate();
 			if (flag == 1) {
 				Statement stmt = con.createStatement();
-				
-//				retrieves data for the latest complaint
+
+				// retrieves data for the latest complaint
 				String query = "SELECT * FROM complaint_details where complaint_no=(select max(complaint_no) from complaint_details);";
 				ResultSet rs = stmt.executeQuery(query);
-				int comp_no=0;
-				while(rs.next()){
-		            //Retrieve by column name
-		            comp_no = rs.getInt("complaint_no");     
-		         }
-				
-				query="select email from user_details where level=1 AND category like '"+complaint.getCategory()+"';";
-				rs=stmt.executeQuery(query);
-				ArrayList<String>emails=new ArrayList<>();
-				while(rs.next())
+				int comp_no = 0;
+				while (rs.next()) {
+					// Retrieve by column name
+					comp_no = rs.getInt("complaint_no");
+				}
+
+				query = "select email from user_details where level=1 AND category like '" + complaint.getCategory()
+						+ "';";
+				rs = stmt.executeQuery(query);
+				ArrayList<String> emails = new ArrayList<>();
+				while (rs.next())
 					emails.add(rs.getString("email"));
-					complaint.setComplaint_no(comp_no);
-					request.setAttribute("complaint", complaint);
-					request.setAttribute("emails", emails);
-					sendmail.doPost(request, response);
-								
-					ScheduleEmail se = new ScheduleEmail();
-					se.scdMail(complaint.getCategory(), complaint.getDetails(), complaint.getPriority(), Integer.toString(comp_no));
-						
+				complaint.setComplaint_no(comp_no);
+				request.setAttribute("complaint", complaint);
+				request.setAttribute("emails", emails);
+				sendmail.doPost(request, response);
+
+				ScheduleEmail se = new ScheduleEmail();
+				se.scdMail(complaint.getCategory(), complaint.getDetails(), complaint.getPriority(),
+						Integer.toString(comp_no));
 
 			} else {
 				out.println("Failed");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		}
 
 	}
 }

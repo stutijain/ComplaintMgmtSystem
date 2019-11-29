@@ -2,7 +2,7 @@ package com.entities;
 
 public class User {
 
-	String category;	
+	String category;
 	String name;
 	String email;
 	String contact;
@@ -11,7 +11,8 @@ public class User {
 	String dept;
 	String addr;
 	String pass;
-	
+	String dob;
+
 	public String getCategory() {
 		return category;
 	}
@@ -26,6 +27,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 
 	public String getEmail() {
