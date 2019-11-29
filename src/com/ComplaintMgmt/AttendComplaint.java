@@ -54,7 +54,7 @@ public class AttendComplaint extends HttpServlet {
 			complaint.setCom_status(rs.getString("com_status"));
 			request.setAttribute("data", complaint);
 
-			RequestDispatcher rd = request.getRequestDispatcher("ComplaintDetails.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("ChangeStatus.jsp");
 			rd.forward(request, response);
 			}
 			

@@ -82,7 +82,16 @@ form {
 <center><h1>Complaint details</h1></center>
 <%Complaint comp=(Complaint)request.getAttribute("data"); %>
 
-
+<form action="attend" method="post" style="margin-bottom: 3vh; margin-top: 3vh;">
+	<select name="category" >
+		<option value="Pending">Pending</option>
+		<option value="In Progress">In Progress</option>
+		<option value="Completed">Completed</option>
+		<option value="Not completed">Not completed</option>
+	</select>
+	<input type="hidden" name="number" value= <%=comp.getComplaint_no()%> >
+	<input type="submit" value="Change Complaint Status" >
+</form>
   
 <table width=25% border=1 style="border:1px solid black;margin-left:auto;margin-right:auto;">
 <tr>

@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 /**
  * Servlet implementation class ForgotPassword
  */
-@WebServlet("/ForgotPassword")
+//@WebServlet("/ForgotPassword")
 public class ForgotPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
