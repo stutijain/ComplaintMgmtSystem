@@ -41,29 +41,25 @@ public class LoginUser extends HttpServlet {
 				out.println("Login Successful");
 				User user = new User();
 				user.setCategory(rs.getString("category"));
+				
+				ArrayList<Complaint> complaints=new ArrayList<>();
 				ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where category like '"
 						+ user.getCategory() + "' and com_status like 'Pending';");
-				ArrayList<Complaint> complaints = new ArrayList<Complaint>();
-				while (allComplaints.next()) {
-					Complaint complaint = new Complaint();
-					complaint.setCategory(allComplaints.getString("category"));
-					complaint.setLocation(allComplaints.getString("location"));
-					complaint.setSub_location(allComplaints.getString("sub_location"));
-					complaint.setDesignation(allComplaints.getString("designation"));
-					complaint.setDetails(allComplaints.getString("details"));
-					complaint.setPriority(allComplaints.getString("priority"));
-					complaint.setName(allComplaints.getString("name"));
-					complaint.setEmail(allComplaints.getString("email"));
-					complaint.setContact(allComplaints.getString("contact"));
-					complaint.setTime(allComplaints.getString("time"));
-					complaint.setDate(allComplaints.getString("date"));
-					complaint.setComplaint_no(Integer.parseInt(allComplaints.getString("complaint_no")));
-					complaint.setCom_status(allComplaints.getString("com_status"));
-
-					complaints.add(complaint);
-
-				}
-
+				addComplaints(allComplaints,complaints);
+				
+				ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where category like '"
+						+ user.getCategory() + "' and com_status like 'In Progress';");
+				addComplaints(allComplaintsInP,complaints);
+				
+				ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where category like '"
+						+ user.getCategory() + "' and com_status like 'Completed';");
+				addComplaints(allComplaintsComp,complaints);
+				
+				ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where category like '"
+						+ user.getCategory() + "' and com_status like 'Not Completed';");
+				addComplaints(allComplaintsNotComp,complaints);
+				
+				
 				request.setAttribute("data", complaints);
 
 				RequestDispatcher rd = request.getRequestDispatcher("UserProfile.jsp");
@@ -81,6 +77,28 @@ public class LoginUser extends HttpServlet {
 			e.printStackTrace();
 		}
 
+	}
+	public void addComplaints(ResultSet allComplaints,ArrayList<Complaint> complaints) throws NumberFormatException, SQLException{
+		while (allComplaints.next()) {
+			Complaint complaint = new Complaint();
+			complaint.setCategory(allComplaints.getString("category"));
+			complaint.setLocation(allComplaints.getString("location"));
+			complaint.setSub_location(allComplaints.getString("sub_location"));
+			complaint.setDesignation(allComplaints.getString("designation"));
+			complaint.setDetails(allComplaints.getString("details"));
+			complaint.setPriority(allComplaints.getString("priority"));
+			complaint.setName(allComplaints.getString("name"));
+			complaint.setEmail(allComplaints.getString("email"));
+			complaint.setContact(allComplaints.getString("contact"));
+			complaint.setTime(allComplaints.getString("time"));
+			complaint.setDate(allComplaints.getString("date"));
+			complaint.setComplaint_no(Integer.parseInt(allComplaints.getString("complaint_no")));
+			complaint.setCom_status(allComplaints.getString("com_status"));
+
+			complaints.add(complaint);
+
+		}
+		
 	}
 
 }

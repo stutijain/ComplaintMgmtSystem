@@ -43,11 +43,37 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>ShowDetails</servlet-name>
-    <servlet-class>com.ComplaintMgmt.SearchComplaint</servlet-class>
+    <servlet-class>com.ComplaintMgmt.UserProfile</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ShowDetails</servlet-name>
     <url-pattern>/expand</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>AttendComplaints</servlet-name>
+    <servlet-class>com.ComplaintMgmt.AttendComplaint</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AttendComplaints</servlet-name>
+    <url-pattern>/attend</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>searchByName</servlet-name>
+    <servlet-class>com.ComplaintMgmt.searchByName</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchByName</servlet-name>
+    <url-pattern>/searchByName</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>searchBystatus</servlet-name>
+    <servlet-class>com.ComplaintMgmt.searchByStatus</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchBystatus</servlet-name>
+    <url-pattern>/status</url-pattern>
+  </servlet-mapping>
 </web-app>

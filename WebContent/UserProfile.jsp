@@ -1,5 +1,12 @@
 <%@page import="com.entities.Complaint"%> 
 <%@page import="java.util.ArrayList"%> 
+<%@page import="java.sql.Connection"%> 
+<%@page import="java.sql.DriverManager"%> 
+<%@page import="java.sql.ResultSet"%> 
+<%@page import="java.sql.SQLException"%> 
+<%@page import="java.sql.Statement"%> 
+<%@page import="java.io.IOException"%> 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 
 <!DOCTYPE html>
@@ -101,7 +108,7 @@ form {
 </div>
 
 <div style="display: flex;">
-	<form action="TODO" method="TODO">
+	<form action="status" method="post">
 	<select name="category" >
 		<option value="Pending">Pending</option>
 		<option value="In Progress">In Progress</option>
@@ -113,7 +120,7 @@ form {
 	
 	&nbsp;&nbsp;
 	
-	<form action="TODO" method="TODO">
+	<form action="searchByName" method="post">
 	  <input type="search" name="searchByName" placeholder="Search by Name">
 	  <input type="submit" value="Search">
 	</form>
@@ -138,17 +145,19 @@ form {
 <%ArrayList<Complaint>allComplaints=(ArrayList<Complaint>)request.getAttribute("data");
 for(Complaint comp:allComplaints){%>
  <tr> 
+     <form action="expand" method="post">
      <td><%=comp.getName()%></td> 
      <td><%=comp.getCategory() %></td> 
      <td><%=comp.getLocation() %></td> 
-     <td><text name="number"><%=comp.getComplaint_no() %></td> 
+     <td><input type="hidden" name="number" value= <%=comp.getComplaint_no()%> ><%=comp.getComplaint_no() %></td> 
      <td><%=comp.getPriority() %></td> 
      <td><%=comp.getCom_status() %></td> 
      <td>
-	     <form action="expand" method="post">
-		  <input type="submit" value="Show Details">
-		</form>
+	     
+	     <input type="submit" value="Show Details">
+		
 	</td>
+	</form>
  </tr> 
  <%}%>
  
