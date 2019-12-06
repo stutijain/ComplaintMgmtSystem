@@ -98,11 +98,22 @@ th, td {
 			Institute of Technology)
 		</font> <br style="clear: both;" />
 	</div>
+<br>
+	
+	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+	<div class="topnav">
 
-	<br>
+
+  <p align="center"><font color="white" size="5">Complaint Management System </font></p>
+  <hr color="black" size="2" style="margin-bottom: 3vh; margin-top: 3vh;">
+  
+ </div>
+<center><h1>Complaints</h1></center>
+	
+	
 
 	<form action="Logout" method="post">
-	  <input type="submit" value="Logout">
+	  <input type="submit" value="Logout" style="float: right;">
 	</form>
 </div>
 
@@ -128,7 +139,6 @@ th, td {
 
 <br><br><br><br>
 
-<h3 style="margin-left: 45vw;">Complaints</h3>
 
 <br><br>
 
