@@ -83,9 +83,7 @@ th, td {
 
 <body>
 
-	<%
-		response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
-	%>
+	
 
 	<div style="margin: 10px 200px 0px 200px" align="center" id="Top">
 
