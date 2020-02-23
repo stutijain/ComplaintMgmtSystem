@@ -1,4 +1,3 @@
-
 <%@page import="com.entities.Complaint"%> 
 <%@page import="java.util.ArrayList"%> 
 <%@page import="java.sql.Connection"%> 
@@ -8,14 +7,14 @@
 <%@page import="java.sql.Statement"%> 
 <%@page import="java.io.IOException"%> 
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>User Profile</title>
+<title>Admin Profile</title>
 <style>
 body {
 	font-family: "Lato", sans-serif;
@@ -106,7 +105,7 @@ th, td {
   <hr color="black" size="2" style="margin-bottom: 3vh; margin-top: 3vh;">
   
  </div>
-<center><h1>Complaints</h1></center>
+<center><h1>Welcome Admin!</h1></center>
 	
 	
 
@@ -116,6 +115,7 @@ th, td {
 </div>
 
 <div style="display: flex;">
+    Search for Complaints:
 	<form action="status" method="post">
 	<select name="category" >
 		<option value="Pending">Pending</option>
@@ -132,18 +132,18 @@ th, td {
 	  <input type="search" name="searchByName" placeholder="Search by Name">
 	  <input type="submit" value="Search">
 	</form>
-	<br>
-	<form action="booking" method="post">
-	  <input type="submit" value="Book">
+</div>
+<br>
+<div>
+    <form action="engineerDetails" method="post">
+    Click for Details of Engineers
+    <input type="submit" value="Details">
 	</form>
-	
 
 </div>
 
 <br><br><br><br>
 
-
-<br><br>
 
 <table style="margin: auto;"> 
  <tr>
@@ -154,7 +154,7 @@ th, td {
   <th><b>Priority</b></th>
   <th><b>Status</b></th>
  </tr> 
-<%ArrayList<Complaint>allComplaints=(ArrayList<Complaint>)request.getAttribute("data");
+ <%ArrayList<Complaint>allComplaints=(ArrayList<Complaint>)request.getAttribute("data");
 for(Complaint comp:allComplaints){%>
  <tr> 
      <form action="expand" method="post">
@@ -169,9 +169,16 @@ for(Complaint comp:allComplaints){%>
 	     <input type="submit" value="Show Details">
 		
 	</td>
+	<td>
+	     
+	     <input type="submit" value="Delete Complaint">
+		
+	</td>
 	</form>
  </tr> 
  <%}%>
+ 
+
  
 </table>  
 <hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">

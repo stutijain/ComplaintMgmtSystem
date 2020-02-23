@@ -115,4 +115,22 @@
     <url-pattern>/book</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>AdminView</servlet-name>
+    <servlet-class>com.ComplaintMgmt.AdminInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminView</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>EngineerView</servlet-name>
+    <servlet-class>com.ComplaintMgmt.EngineerInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EngineerView</servlet-name>
+    <url-pattern>/engineerDetails</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
