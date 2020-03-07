@@ -162,11 +162,14 @@ for(Complaint comp:allComplaints){%>
 	Assign to:
 	<input list="users">
  	 <datalist id="users">
-   	 	<option value="Amrita Sharma">
- 		 <option value="Pradeep Singh">
-    		<option value="Sadhika Gupta">
-   		 <option value="Yash Goel">
-    		<option value="Rahul Sinha">
+<%ArrayList<String>engineers=(ArrayList<String>)request.getAttribute("level1");
+for(String names:engineers){%>
+   	 	<option value=names>
+ 		// <option value="Pradeep Singh">
+    		//<option value="Sadhika Gupta">
+   		 //<option value="Yash Goel">
+    		//<option value="Rahul Sinha">
+ <%}%>
   	</datalist> <br><br>
 	<button type="submit" formaction="/action_page2.php">Assign</button>
      </td>

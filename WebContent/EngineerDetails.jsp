@@ -87,6 +87,7 @@ form {
   <th><b>Contact</b></th> 
   <th><b>Email</b></th>
   <th><b>Date Of Birth</b></th>
+  <th><b>Level</b></th>
  </tr> 
  <tr> 
  
@@ -99,6 +100,7 @@ for(User comp:allComplaints){%>
      <td><%=comp.getContact() %></td> 
      <td><input type="hidden" name="email" value= <%=comp.getEmail()%> ><%=comp.getEmail() %></td> 
      <td><%=comp.getDob() %></td> 
+     <td><%=comp.getLevel() %></td> 
      <td><input type="text" name="level"></td>
      <td><input type="submit" value="Assign Level"></td>
 	</form>

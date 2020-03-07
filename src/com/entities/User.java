@@ -12,6 +12,15 @@ public class User {
 	String addr;
 	String pass;
 	String dob;
+	String level;
+	
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
 
 	public String getCategory() {
 		return category;

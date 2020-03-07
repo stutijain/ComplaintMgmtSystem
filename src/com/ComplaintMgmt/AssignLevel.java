@@ -37,9 +37,25 @@ public class AssignLevel extends HttpServlet{
 
 			Statement stmnt = con.createStatement();
 			stmnt.executeUpdate("UPDATE user_details SET level = '"+level+ "' where email ='"+email+"';");
+			
+			ResultSet rs = stmnt.executeQuery("SELECT * FROM user_details");
+			
+			if (rs.next()) {
+//				out.println("Login Successful");
+				
+				ArrayList<User> complaints=new ArrayList<>();
+				ResultSet allComplaints = stmnt.executeQuery("SELECT * from user_details ");
+				addComplaints(allComplaints,complaints);
+				
+				request.setAttribute("data", complaints);
+
+//				RequestDispatcher rd = request.getRequestDispatcher("EngineerDetails.jsp");
+//				rd.forward(request, response);
+
+			}
 
 			
-			RequestDispatcher rd = request.getRequestDispatcher("HomePage.html");
+			RequestDispatcher rd = request.getRequestDispatcher("EngineerDetails.jsp");
 			rd.forward(request, response);
 
 			
@@ -50,5 +66,27 @@ public class AssignLevel extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public void addComplaints(ResultSet allComplaints,ArrayList<User> complaints) throws NumberFormatException, SQLException{
+		while (allComplaints.next()) {
+			User complaint = new User();
+			complaint.setCategory(allComplaints.getString("category"));
+//			complaint.setLocation(allComplaints.getString("location"));
+//			complaint.setSub_location(allComplaints.getString("sub_location"));
+//			complaint.setDesignation(allComplaints.getString("designation"));
+//			complaint.setDetails(allComplaints.getString("details"));
+//			complaint.setPriority(allComplaints.getString("priority"));
+			complaint.setName(allComplaints.getString("name"));
+			complaint.setEmail(allComplaints.getString("email"));
+			complaint.setContact(allComplaints.getString("contact_no"));
+			complaint.setDob(allComplaints.getString("dob"));
+			complaint.setLevel(allComplaints.getString("level"));
+//			complaint.setComplaint_no(Integer.parseInt(allComplaints.getString("complaint_no")));
+//			complaint.setCom_status(allComplaints.getString("com_status"));
+
+			complaints.add(complaint);
+
+		}
+		
 	}
 }
