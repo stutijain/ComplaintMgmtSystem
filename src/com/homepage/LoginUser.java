@@ -28,12 +28,42 @@ public class LoginUser extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
 		PrintWriter out = response.getWriter();
+		String admin_id="admin@gmail.com";
+		String adminPass="pass";
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
 					"abcdef");
 
+			if(email.equals(admin_id)&&pass.equals(adminPass))
+			{
+				Statement stmnt = con.createStatement();
+				ResultSet rs = stmnt
+						.executeQuery("SELECT * FROM complaint_details");
+				if (rs.next()) {
+					
+					ArrayList<Complaint> complaints=new ArrayList<>();
+					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending';");
+					addComplaints(allComplaints,complaints);
+					
+					ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress';");
+					addComplaints(allComplaintsInP,complaints);
+					
+					ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed';");
+					addComplaints(allComplaintsComp,complaints);
+					
+					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed';");
+					addComplaints(allComplaintsNotComp,complaints);
+					
+					
+					request.setAttribute("data", complaints);
+
+					RequestDispatcher rd = request.getRequestDispatcher("AdminView.jsp");
+					rd.forward(request, response);
+			}
+			}
+			else{
 			Statement stmnt = con.createStatement();
 			ResultSet rs = stmnt
 					.executeQuery("SELECT * FROM user_details where email='" + email + "' and password='" + pass + "'");
@@ -68,6 +98,7 @@ public class LoginUser extends HttpServlet {
 			} else {
 				out.println("Incorrect Username or Password");
 			}
+			}
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -76,6 +107,7 @@ public class LoginUser extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
 	}
 	public void addComplaints(ResultSet allComplaints,ArrayList<Complaint> complaints) throws NumberFormatException, SQLException{
