@@ -133,4 +133,22 @@
     <url-pattern>/engineerDetails</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>DeleteComplaint</servlet-name>
+    <servlet-class>com.ComplaintMgmt.deleteComplaint</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteComplaint</servlet-name>
+    <url-pattern>/deleteComplaint</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AssignLevel</servlet-name>
+    <servlet-class>com.ComplaintMgmt.AssignLevel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AssignLevel</servlet-name>
+    <url-pattern>/assignLevel</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

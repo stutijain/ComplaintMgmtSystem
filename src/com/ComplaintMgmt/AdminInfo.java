@@ -58,6 +58,8 @@ public class AdminInfo extends HttpServlet {
 
 				RequestDispatcher rd = request.getRequestDispatcher("AdminView.jsp");
 				rd.forward(request, response);
+				
+				
 
 			} else {
 				out.println("Incorrect Username or Password");

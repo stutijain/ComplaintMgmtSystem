@@ -84,7 +84,7 @@ form {
 
 
   
-<table width=25% border=1 style="border:1px solid black;margin-left:auto;margin-right:auto;">
+<table width=50% border=1 style="border:1px solid black;margin-left:auto;margin-right:auto;">
 <tr>
 <td>Complaint number</td>
 <td><%=comp.getComplaint_no()%></td>

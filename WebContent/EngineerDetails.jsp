@@ -79,32 +79,28 @@ form {
   
  </div>
 <center><h1>Engineer details</h1></center>
-     <table width=25% border=1 style="border:1px solid black;margin-left:auto;margin-right:auto;">
+     <table width=70% border=1 style="border:1px solid black;margin-left:auto;margin-right:auto;">
  <tr>
    <th><b>Name</b></th> 
    <th><b>Department</b></th> 
  
   <th><b>Contact</b></th> 
   <th><b>Email</b></th>
-  <th><b>DOB</b></th>
+  <th><b>Date Of Birth</b></th>
  </tr> 
  <tr> 
  
 <%ArrayList<User>allComplaints=(ArrayList<User>)request.getAttribute("data");
 for(User comp:allComplaints){%>
  <tr> 
-     <form action="expand" method="post">
+     <form action="assignLevel" method="post">
      <td><%=comp.getName()%></td> 
      <td><%=comp.getCategory() %></td> 
-
      <td><%=comp.getContact() %></td> 
-     <td><%=comp.getEmail() %></td> 
+     <td><input type="hidden" name="email" value= <%=comp.getEmail()%> ><%=comp.getEmail() %></td> 
      <td><%=comp.getDob() %></td> 
-     <td>
-	     
-	     <input type="submit" value="Assign Level">
-		
-	</td>
+     <td><input type="text" name="level"></td>
+     <td><input type="submit" value="Assign Level"></td>
 	</form>
  </tr> 
  <%}%>

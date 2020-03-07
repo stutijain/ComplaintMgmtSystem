@@ -157,24 +157,24 @@ th, td {
  <%ArrayList<Complaint>allComplaints=(ArrayList<Complaint>)request.getAttribute("data");
 for(Complaint comp:allComplaints){%>
  <tr> 
-     <form action="expand" method="post">
-     <td><%=comp.getName()%></td> 
-     <td><%=comp.getCategory() %></td> 
-     <td><%=comp.getLocation() %></td> 
-     <td><input type="hidden" name="number" value= <%=comp.getComplaint_no()%> ><%=comp.getComplaint_no() %></td> 
-     <td><%=comp.getPriority() %></td> 
-     <td><%=comp.getCom_status() %></td> 
-     <td>
-	     
-	     <input type="submit" value="Show Details">
+	     <form action="expand" method="post">
+		     <td><%=comp.getName()%></td> 
+		     <td><%=comp.getCategory() %></td> 
+		     <td><%=comp.getLocation() %></td> 
+		     <td><input type="hidden" name="number" value= <%=comp.getComplaint_no()%> ><%=comp.getComplaint_no() %></td> 
+		     <td><%=comp.getPriority() %></td> 
+		     <td><%=comp.getCom_status() %></td> 
+		     <td> <input type="submit" value="Show Details"> </td>
+	     </form>
 		
-	</td>
-	<td>
-	     
-	     <input type="submit" value="Delete Complaint">
+		<form action="deleteComplaint" method="post">
+			<%--get complaint number to be used to delete the complaint --%>
+			<input type="hidden" name="com_number" value= <%=comp.getComplaint_no()%>>
+			<td><input type="submit" value="Delete Complaint"></td>
+		</form>
 		
-	</td>
-	</form>
+	
+	
  </tr> 
  <%}%>
  

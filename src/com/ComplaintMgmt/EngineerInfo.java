@@ -35,8 +35,7 @@ public class EngineerInfo extends HttpServlet {
 					"abcdef");
 
 			Statement stmnt = con.createStatement();
-			ResultSet rs = stmnt
-					.executeQuery("SELECT * FROM user_details");
+			ResultSet rs = stmnt.executeQuery("SELECT * FROM user_details");
 			if (rs.next()) {
 //				out.println("Login Successful");
 				
