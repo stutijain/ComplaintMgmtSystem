@@ -133,10 +133,6 @@ th, td {
 	  <input type="submit" value="Search">
 	</form>
 	<br>
-	<form action="booking" method="post">
-	  <input type="submit" value="Book">
-	</form>
-	
 
 </div>
 

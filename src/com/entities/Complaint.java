@@ -14,6 +14,14 @@ public class Complaint {
 	int complaint_no;
 	String date;
 	String time;
+	String assign_to;
+	
+	public String getAssignee(){
+		return assign_to;
+	}
+	public void setAssignee(String assign_to){
+		this.assign_to=assign_to;
+	}
 
 	public String getCategory() {
 		return category;

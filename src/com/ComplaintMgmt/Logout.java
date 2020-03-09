@@ -19,8 +19,14 @@ public class Logout extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("username");
+		
+//		  session.invalidate();
 		session.invalidate();
 		response.sendRedirect("HomePage.html");
+//		response.setHeader("Pragma","no-cache");
+//		  response.setHeader("Cache-Control","no-store");
+//		  response.setHeader("Expires","0");
+//		  response.setDateHeader("Expires",-1);
 	}
 
 }

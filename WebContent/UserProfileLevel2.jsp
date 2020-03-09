@@ -122,10 +122,6 @@ th, td {
 	  <input type="submit" value="Search">
 	</form>
 	<br>
-	<form action="booking" method="post">
-	  <input type="submit" value="Book">
-	</form>
-	
 
 </div>
 
@@ -164,11 +160,8 @@ for(Complaint comp:allComplaints){%>
  	 <datalist id="users">
 <%ArrayList<String>engineers=(ArrayList<String>)request.getAttribute("level1");
 for(String names:engineers){%>
-   	 	<option value=names>
- 		// <option value="Pradeep Singh">
-    		//<option value="Sadhika Gupta">
-   		 //<option value="Yash Goel">
-    		//<option value="Rahul Sinha">
+
+   	 	<option value=<%=names%>>
  <%}%>
   	</datalist> <br><br>
 	<button type="submit" formaction="/action_page2.php">Assign</button>
