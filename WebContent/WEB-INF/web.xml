@@ -151,4 +151,13 @@
     <url-pattern>/assignLevel</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>AssignComplaint</servlet-name>
+    <servlet-class>com.ComplaintMgmt.AssignComplaint</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AssignComplaint</servlet-name>
+    <url-pattern>/assignComplaint</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

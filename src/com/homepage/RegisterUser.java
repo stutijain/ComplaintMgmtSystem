@@ -55,15 +55,15 @@ public class RegisterUser extends HttpServlet {
 
 			} else {
 
-				String sql = "insert into user_details (category,name,email,contact_no,designation,department,address,password,dob)"
-						+ " values(?,?,?,?,?,?,?,?,?)";
+				String sql = "insert into user_details (category,name,email,contact_no,level,designation,department,address,password,dob)"
+						+ " values(?,?,?,?,?,?,?,?,?,?)";
 
 				PreparedStatement st = con.prepareStatement(sql);
 				st.setString(1, user.getCategory());
 				st.setString(2, user.getName());
 				st.setString(3, user.getEmail());
 				st.setString(4, user.getContact());
-//				st.setString(5, user.getLevel());
+				st.setString(5, "1");
 				st.setString(6, user.getDesg());
 				st.setString(7, user.getDept());
 				st.setString(8, user.getAddr());

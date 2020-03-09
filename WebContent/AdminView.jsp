@@ -167,8 +167,7 @@ for(Complaint comp:allComplaints){%>
 		     <td> <input type="submit" value="Show Details"> </td>
 	     </form>
 		
-		<form action="deleteComplaint" method="post">
-			<%--get complaint number to be used to delete the complaint --%>
+		<form action="deleteComplaint" method="post">		
 			<input type="hidden" name="com_number" value= <%=comp.getComplaint_no()%>>
 			<td><input type="submit" value="Delete Complaint"></td>
 		</form>

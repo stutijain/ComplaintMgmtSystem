@@ -15,6 +15,7 @@ public class Complaint {
 	String date;
 	String time;
 	String assign_to;
+	String assignTo;
 	
 	public String getAssignee(){
 		return assign_to;
@@ -125,6 +126,13 @@ public class Complaint {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public String getAssign() {
+		return assignTo;
+	}
+
+	public void setAssign(String assignTo) {
+		this.assignTo = assignTo;
 	}
 
 }

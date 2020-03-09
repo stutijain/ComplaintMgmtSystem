@@ -45,6 +45,7 @@ public class RegisterComplaint extends HttpServlet {
 		complaint.setDate(LocalTime.now().toString());
 		complaint.setTime(LocalDate.now().toString());
 		complaint.setCom_status("Pending");
+		complaint.setAssign("None");
 		InputStream inputStream = null; // input stream of the upload file
 
 		// obtains the upload file part in this multipart request
@@ -59,8 +60,8 @@ public class RegisterComplaint extends HttpServlet {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
 					"abcdef");
 
-			String sql = "insert into complaint_details (category,location,sub_location,details,priority,name,email,contact,attachment,time,date,designation,com_status)"
-					+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into complaint_details (category,location,sub_location,details,priority,name,email,contact,attachment,time,date,designation,com_status,assignTo)"
+					+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, complaint.getCategory());
@@ -76,6 +77,7 @@ public class RegisterComplaint extends HttpServlet {
 			st.setString(11, complaint.getDate());
 			st.setString(12, complaint.getDesignation());
 			st.setString(13, complaint.getCom_status());
+			st.setString(14, complaint.getAssign());
 
 			int flag = st.executeUpdate();
 			if (flag == 1) {
