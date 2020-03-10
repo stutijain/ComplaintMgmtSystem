@@ -74,6 +74,7 @@ public class EngineerInfo extends HttpServlet {
 			complaint.setEmail(allComplaints.getString("email"));
 			complaint.setContact(allComplaints.getString("contact_no"));
 			complaint.setDob(allComplaints.getString("dob"));
+			complaint.setLevel(allComplaints.getString("level"));
 //			complaint.setDate(allComplaints.getString("date"));
 //			complaint.setComplaint_no(Integer.parseInt(allComplaints.getString("complaint_no")));
 //			complaint.setCom_status(allComplaints.getString("com_status"));

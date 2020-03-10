@@ -1,6 +1,7 @@
 package com.ComplaintMgmt;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -16,39 +17,45 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.entities.Complaint;
 import com.entities.User;
+import com.sun.glass.ui.Window;
 
-public class AssignComplaint extends HttpServlet{
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		String userName = request.getParameter("userName");
+public class AssignComplaint extends HttpServlet {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		String userName = request.getParameter("category");
+//		out.println(userName);
 		int com_no = Integer.parseInt(request.getParameter("com_number"));
-		String cat = request.getParameter("category");		
+		String cat = request.getParameter("cat");
 		
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
 					"abcdef");
 
+			
 			Statement stmnt = con.createStatement();
-			stmnt.executeUpdate("UPDATE complaint_details SET assignTo= '"+userName+ "' where complaint_no =" +com_no+";");				
-			
-			ResultSet rs = stmnt
-					.executeQuery("SELECT * FROM complaint_details");
-			
-			if (rs.next()) {
-//				out.println("Login Successful");
-							
-				ArrayList<Complaint> complaints=new ArrayList<>();					
-				ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where category ='"+cat+"';");
-				addComplaints(allComplaints,complaints);																		
-								
-				request.setAttribute("data", complaints);
-			}
-			RequestDispatcher rd = request.getRequestDispatcher("UserProfileLevel2.jsp");
-			rd.forward(request, response);
-				
-		
-		}catch (ClassNotFoundException e) {
+			stmnt.executeUpdate(
+					"UPDATE complaint_details SET assignTo= '" + userName + "' where complaint_no =" + com_no + ";");
+
+//			Window.history.back();
+//			ResultSet rs = stmnt.executeQuery("SELECT * FROM complaint_details");
+//			// ArrayList<Complaint> complaints=new ArrayList<>();
+//			if (rs.next()) {
+//				ArrayList<Complaint> complaints = new ArrayList<>();
+//				ResultSet allComplaints = stmnt
+//						.executeQuery("SELECT * from complaint_details where category ='" + cat + "';");
+//				addComplaints(allComplaints, complaints);
+//
+//				request.setAttribute("data", complaints);
+////				response.setHeader("Refresh","1; UserProfileLevel2.jsp");
+////				RequestDispatcher rd = request.getRequestDispatcher("UserProfileLevel2.jsp");
+////				rd.forward(request, response);
+//			}
+
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -56,8 +63,9 @@ public class AssignComplaint extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
-	
-	public void addComplaints(ResultSet allComplaints,ArrayList<Complaint> complaints) throws NumberFormatException, SQLException{
+
+	public void addComplaints(ResultSet allComplaints, ArrayList<Complaint> complaints)
+			throws NumberFormatException, SQLException {
 		while (allComplaints.next()) {
 			Complaint complaint = new Complaint();
 			complaint.setCategory(allComplaints.getString("category"));
@@ -77,8 +85,7 @@ public class AssignComplaint extends HttpServlet{
 			complaints.add(complaint);
 
 		}
-		
-	}
 
+	}
 
 }

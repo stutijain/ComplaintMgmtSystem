@@ -38,8 +38,7 @@ public class deleteComplaint extends HttpServlet{
 				ResultSet rs = stmnt
 						.executeQuery("SELECT * FROM complaint_details");
 				if (rs.next()) {
-	//				out.println("Login Successful");
-					
+
 					ArrayList<Complaint> complaints=new ArrayList<>();
 					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending';");
 					addComplaints(allComplaints,complaints);
@@ -53,11 +52,8 @@ public class deleteComplaint extends HttpServlet{
 					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed';");
 					addComplaints(allComplaintsNotComp,complaints);
 					
-	//				
 					request.setAttribute("data", complaints);
-	//
-	//				RequestDispatcher rd = request.getRequestDispatcher("AdminView.jsp");
-	//				rd.forward(request, response);
+	
 				} 
 				RequestDispatcher rd = request.getRequestDispatcher("AdminView.jsp");
 				rd.forward(request, response);
@@ -71,12 +67,20 @@ public class deleteComplaint extends HttpServlet{
 						.executeQuery("SELECT * FROM complaint_details");
 				
 				if (rs.next()) {
-//					out.println("Login Successful");
-								
 					ArrayList<Complaint> complaints=new ArrayList<>();					
-					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where category ='"+cat+"';");
-					addComplaints(allComplaints,complaints);																		
-									
+				
+					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending' and category = "+cat+";");
+					addComplaints(allComplaints,complaints);
+					
+					ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' and category = "+cat+";");
+					addComplaints(allComplaintsInP,complaints);
+					
+					ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed' and category = "+cat+";");
+					addComplaints(allComplaintsComp,complaints);
+					
+					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' and category = "+cat+";");
+					addComplaints(allComplaintsNotComp,complaints);
+					
 					request.setAttribute("data", complaints);
 				}
 				RequestDispatcher rd = request.getRequestDispatcher("UserProfileLevel2.jsp");

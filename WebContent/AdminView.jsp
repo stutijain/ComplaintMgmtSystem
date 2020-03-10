@@ -164,9 +164,10 @@ for(Complaint comp:allComplaints){%>
 		     <td><input type="hidden" name="number" value= <%=comp.getComplaint_no()%> ><%=comp.getComplaint_no() %></td> 
 		     <td><%=comp.getPriority() %></td> 
 		     <td><%=comp.getCom_status() %></td> 
-		     <td> <input type="submit" value="Show Details"> </td>
 	     </form>
-		
+		<td><form action="expand" method="post"><input type="hidden" name="number" value= <%=comp.getComplaint_no()%>>
+	    <input type="submit" value="Show Details">
+	</form></td>
 		<form action="deleteComplaint" method="post">		
 			<input type="hidden" name="com_number" value= <%=comp.getComplaint_no()%>>
 			<td><input type="submit" value="Delete Complaint"></td>

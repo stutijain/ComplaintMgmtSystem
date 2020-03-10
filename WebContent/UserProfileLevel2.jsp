@@ -143,35 +143,30 @@ for(Complaint comp:allComplaints){%>
  <tr> 
      <form action="assignComplaint" method="post">    
      <td><%=comp.getName()%></td> 
-     <td><%=comp.getCategory() %></td> 
+     <td><input type="hidden" name="cat" value= <%=comp.getCategory()%> ><%=comp.getCategory() %></td> 
      <td><%=comp.getLocation() %></td> 
-     <td><input type="hidden" name="number" value= <%=comp.getComplaint_no()%> ><%=comp.getComplaint_no() %></td> 
+     <td><input type="hidden" name="com_number" value= <%=comp.getComplaint_no()%> ><%=comp.getComplaint_no() %></td> 
      <td><%=comp.getPriority() %></td> 
      <td><%=comp.getCom_status() %></td> 
      <td><%=comp.getAssign() %></td>
-     <td><input type="submit" value="Show Details"></td>
-     <td><br><input type="text" list="user" placeholder="Assign To" id="users"><datalist id="user">     	
-		<%ArrayList<String>engineers=(ArrayList<String>)request.getAttribute("level1");
-		for(String names:engineers){%>
-		   	 	<option value=<%=names%>></option>
-		 <%}%>
-  	</datalist>  	
-  	
-  	<br><br>
-	<div align="center"  onclick="getSelectedValue()">	
-			<input type="hidden" name="category" value= <%=comp.getCategory()%>>	
-			<input type="hidden" name="com_number" value= <%=comp.getComplaint_no()%> >
-			<input type="hidden" id="userName" name="userName">	
-			<script id="script">
-				function getSelectedValue(){
-					var username = document.getElementById("users").value;						
-					var s = document.getElementById("userName");
-					s.setAttribute("value",username);	
-				}				
-			</script>							
+     
+     <td><br><input type="text" list="user" placeholder="Assign To" id="users">     	
+		<%ArrayList<String>engineers=(ArrayList<String>)request.getAttribute("level1");%>
+		
+		<select name="category">
+            <%
+            for(int i=0;i<engineers.size();i++){
+            	String name=engineers.get(i);%>
+            	<option value="<%=name %>"><%=name %></option>	
+           <%}
+            %>
+        </select>	
 			<input type="submit" value="Assign">
-	</div><br></td>
+	</td>
 	</form>
+	<td><form action="expand" method="post"><input type="hidden" name="number" value= <%=comp.getComplaint_no()%>>
+	    <input type="submit" value="Show Details">
+	</form></td>
 		    
      <form action="deleteComplaint" method="post">
      	<input type="hidden" name="category" value= <%=comp.getCategory()%>>

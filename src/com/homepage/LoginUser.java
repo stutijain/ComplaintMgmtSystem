@@ -34,6 +34,8 @@ public class LoginUser extends HttpServlet {
 					"abcdef");
 
 			Statement stmnt = con.createStatement();
+			
+	
 			ResultSet rs = stmnt
 					.executeQuery("SELECT * FROM user_details where email='" + email + "' and password='" + pass + "'");
 
@@ -139,6 +141,7 @@ public class LoginUser extends HttpServlet {
 			complaint.setDate(allComplaints.getString("date"));
 			complaint.setComplaint_no(Integer.parseInt(allComplaints.getString("complaint_no")));
 			complaint.setCom_status(allComplaints.getString("com_status"));
+			complaint.setAssign(allComplaints.getString("assignTo"));
 
 			complaints.add(complaint);
 
