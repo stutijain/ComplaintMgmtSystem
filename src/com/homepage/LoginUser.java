@@ -47,19 +47,19 @@ public class LoginUser extends HttpServlet {
 				if (level.equals("9")) {
 					ArrayList<Complaint> complaints = new ArrayList<>();
 					ResultSet allComplaints = stmnt
-							.executeQuery("SELECT * from complaint_details where com_status like 'Pending';");
+							.executeQuery("SELECT * from complaint_details where com_status like 'Pending' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaints, complaints);
 
 					ResultSet allComplaintsInP = stmnt
-							.executeQuery("SELECT * from complaint_details where com_status like 'In Progress';");
+							.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsInP, complaints);
 
 					ResultSet allComplaintsComp = stmnt
-							.executeQuery("SELECT * from complaint_details where com_status like 'Completed';");
+							.executeQuery("SELECT * from complaint_details where com_status like 'Completed' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsComp, complaints);
 
 					ResultSet allComplaintsNotComp = stmnt
-							.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed';");
+							.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsNotComp, complaints);
 
 					request.setAttribute("data", complaints);
@@ -73,22 +73,22 @@ public class LoginUser extends HttpServlet {
 
 					ArrayList<Complaint> complaints = new ArrayList<>();
 					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where category like '"
-							+ user.getCategory() + "' and com_status like 'Pending';");
+							+ user.getCategory() + "' and com_status like 'Pending' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaints, complaints);
 
 					ResultSet allComplaintsInP = stmnt
 							.executeQuery("SELECT * from complaint_details where category like '" + user.getCategory()
-									+ "' and com_status like 'In Progress';");
+									+ "' and com_status like 'In Progress' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsInP, complaints);
 
 					ResultSet allComplaintsComp = stmnt
 							.executeQuery("SELECT * from complaint_details where category like '" + user.getCategory()
-									+ "' and com_status like 'Completed';");
+									+ "' and com_status like 'Completed' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsComp, complaints);
 
 					ResultSet allComplaintsNotComp = stmnt
 							.executeQuery("SELECT * from complaint_details where category like '" + user.getCategory()
-									+ "' and com_status like 'Not Completed';");
+									+ "' and com_status like 'Not Completed' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsNotComp, complaints);
 
 					request.setAttribute("data", complaints);

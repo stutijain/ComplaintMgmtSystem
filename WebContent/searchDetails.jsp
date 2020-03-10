@@ -1,7 +1,7 @@
-<%@page import="com.entities.Complaint"%> 
-<%@page import="java.util.ArrayList"%> 
+<%@page import="com.entities.Complaint"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -58,7 +58,7 @@ form {
 </head>
 
 <body>
-<div style="margin: 10px 200px 0px 200px" align="center" id="Top">
+	<div style="margin: 10px 200px 0px 200px" align="center" id="Top">
 
 		<img style="float: left; margin: 0px -120px 0px 120px"
 			src="https://upload.wikimedia.org/wikipedia/en/4/4e/Indira_Gandhi_Delhi_Technical_University_for_Women_logo.png"
@@ -76,33 +76,48 @@ form {
 	<div class="topnav">
 
 
-  <p align="center"><font color="white" size="5">Complaint Management System </font></p>
-  <hr color="black" size="2" style="margin-bottom: 3vh; margin-top: 3vh;">
-  
- </div>
-<center><h1>Search details</h1></center>
-     <table width=25% border=1 style="border:1px solid black;margin-left:auto;margin-right:auto;">
- <tr>
-   <th><b>Name</b></th> 
-   <th><b>Category</b></th> 
-  <th><b>Location</b></th> 
-  <th><b>Complaint No</b></th> 
-  <th><b>Priority</b></th>
-  <th><b>Status</b></th>
- </tr> 
- <tr> 
- <%ArrayList<Complaint>allComplaints=(ArrayList<Complaint>)request.getAttribute("data");
-for(Complaint comp:allComplaints){%>
- 
-     <td><%=comp.getName()%></td> 
-     <td><%=comp.getCategory() %></td> 
-     <td><%=comp.getLocation() %></td> 
-     <td><input type="hidden" name="number" value= <%=comp.getComplaint_no()%> ><%=comp.getComplaint_no() %></td> 
-     <td><%=comp.getPriority() %></td> 
-     <td><%=comp.getCom_status() %></td> 
-  
-	 </tr> 
-	 <%} %>
-	</table>  
+		<p align="center">
+			<font color="white" size="5">Complaint Management System </font>
+		</p>
+		<hr color="black" size="2"
+			style="margin-bottom: 3vh; margin-top: 3vh;">
+
+	</div>
+	<center>
+		<h1>Search details</h1>
+	</center>
+	<table width=25% border=1
+		style="border: 1px solid black; margin-left: auto; margin-right: auto;">
+		<tr>
+			<th><b>Name</b></th>
+			<th><b>Category</b></th>
+			<th><b>Location</b></th>
+			<th><b>Complaint No</b></th>
+			<th><b>Priority</b></th>
+			<th><b>Status</b></th>
+		</tr>
+		<tr>
+			<%
+				ArrayList<Complaint> allComplaints = (ArrayList<Complaint>) request.getAttribute("data");
+				for (Complaint comp : allComplaints) {
+			%>
+
+			<td><%=comp.getName()%></td>
+			<td><%=comp.getCategory()%></td>
+			<td><%=comp.getLocation()%></td>
+			<td><input type="hidden" name="number"
+				value=<%=comp.getComplaint_no()%>><%=comp.getComplaint_no()%></td>
+			<td><%=comp.getPriority()%></td>
+			<td><%=comp.getCom_status()%></td>
+
+		</tr>
+		<%
+			}
+		%>
+	</table>
+
+	<form>
+		<input type="button" value="Back!" onclick="history.back()">
+	</form>
 </body>
 </html>

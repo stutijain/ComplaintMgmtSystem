@@ -88,8 +88,10 @@ public class BookingDetails extends HttpServlet {
 				int flag = st.executeUpdate();
 				if(flag==1){
 					out.println("Booked Successfully");
+					response.setHeader("Refresh", "2; HomePage.html");
 				}else{
 					out.println("Failed");
+					response.setHeader("Refresh", "2; Booking.jsp");
 				}
 			}
 		} catch (Exception e) {

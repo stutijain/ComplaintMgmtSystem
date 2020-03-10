@@ -75,69 +75,80 @@ form {
 	<div class="topnav">
 
 
-  <p align="center"><font color="white" size="5">Complaint Management System </font></p>
-  <hr color="black" size="2" style="margin-bottom: 3vh; margin-top: 3vh;">
-  
- </div>
-<center><h1>Complaint details</h1></center>
-<%Complaint comp=(Complaint)request.getAttribute("data"); %>
+		<p align="center">
+			<font color="white" size="5">Complaint Management System </font>
+		</p>
+		<hr color="black" size="2"
+			style="margin-bottom: 3vh; margin-top: 3vh;">
+
+	</div>
+	<center>
+		<h1>Complaint details</h1>
+	</center>
+	<%
+		Complaint comp = (Complaint) request.getAttribute("data");
+	%>
 
 
-  
-<table width=50% border=1 style="border:1px solid black;margin-left:auto;margin-right:auto;">
-<tr>
-<td>Complaint number</td>
-<td><%=comp.getComplaint_no()%></td>
-</tr>
-<tr>
-<td>Category</td>
-<td><%=comp.getCategory()%></td>
-</tr>
-<tr>
-<td>Location</td>
-<td><%=comp.getLocation()%></td>
-</tr>
-<tr>
-<td>Sub Location</td>
-<td><%=comp.getSub_location()%></td>
-</tr>
-<tr>
-<td>Details</td>
-<td><%=comp.getDetails()%></td>
-</tr>
-<tr>
-<td>Priority</td>
-<td><%=comp.getPriority()%></td>
-</tr>
-<tr>
-<td>Name</td>
-<td><%=comp.getName()%></td>
-</tr>
-<tr>
-<td>Designation</td>
-<td><%=comp.getDesignation()%></td>
-</tr>
-<tr>
-<td>Email</td>
-<td><%=comp.getEmail()%></td>
-</tr>
-<tr>
-<td>Contact</td>
-<td><%=comp.getContact()%></td>
-</tr>
-<tr>
-<td>Time</td>
-<td><%=comp.getTime()%></td>
-</tr>
-<tr>
-<td>Date</td>
-<td><%=comp.getDate()%></td>
-</tr>
-<tr>
-<td>Complaint Status</td>
-<td><%=comp.getCom_status()%></td>
-</tr>
+
+	<table width=50% border=1
+		style="border: 1px solid black; margin-left: auto; margin-right: auto;">
+		<tr>
+			<td>Complaint number</td>
+			<td><%=comp.getComplaint_no()%></td>
+		</tr>
+		<tr>
+			<td>Category</td>
+			<td><%=comp.getCategory()%></td>
+		</tr>
+		<tr>
+			<td>Location</td>
+			<td><%=comp.getLocation()%></td>
+		</tr>
+		<tr>
+			<td>Sub Location</td>
+			<td><%=comp.getSub_location()%></td>
+		</tr>
+		<tr>
+			<td>Details</td>
+			<td><%=comp.getDetails()%></td>
+		</tr>
+		<tr>
+			<td>Priority</td>
+			<td><%=comp.getPriority()%></td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td><%=comp.getName()%></td>
+		</tr>
+		<tr>
+			<td>Designation</td>
+			<td><%=comp.getDesignation()%></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><%=comp.getEmail()%></td>
+		</tr>
+		<tr>
+			<td>Contact</td>
+			<td><%=comp.getContact()%></td>
+		</tr>
+		<tr>
+			<td>Time</td>
+			<td><%=comp.getTime()%></td>
+		</tr>
+		<tr>
+			<td>Date</td>
+			<td><%=comp.getDate()%></td>
+		</tr>
+		<tr>
+			<td>Complaint Status</td>
+			<td><%=comp.getCom_status()%></td>
+		</tr>
 	</table>
+	<form>
+		<input type="button" value="Back!" onclick="history.back()">
+	</form>
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="navbar">
 		<a

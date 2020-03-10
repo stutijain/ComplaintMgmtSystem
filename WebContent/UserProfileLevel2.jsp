@@ -1,13 +1,13 @@
-<%@page import="com.entities.Complaint"%> 
-<%@page import="java.util.ArrayList"%> 
-<%@page import="java.sql.Connection"%> 
-<%@page import="java.sql.DriverManager"%> 
-<%@page import="java.sql.ResultSet"%> 
-<%@page import="java.sql.SQLException"%> 
-<%@page import="java.sql.Statement"%> 
-<%@page import="java.io.IOException"%> 
+<%@page import="com.entities.Complaint"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.io.IOException"%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -18,11 +18,13 @@
 body {
 	font-family: "Lato", sans-serif;
 }
+
 .navbar {
 	overflow: hidden;
 	background-color: black;
 	top: 0;
 }
+
 .navbar a {
 	top: 0;
 	color: white;
@@ -31,11 +33,13 @@ body {
 	text-decoration: none;
 	font-size: 17px;
 }
+
 .topnav {
 	overflow: hidden;
 	background: linear-gradient(to bottom, #009933 0%, #003300 100%);
 	top: 0;
 }
+
 .topnav a {
 	color: #f2f2f2;
 	text-align: center;
@@ -43,13 +47,16 @@ body {
 	text-decoration: none;
 	font-size: 17px;
 }
+
 .topnav a:hover {
 	color: orange;
 }
+
 .topnav a.active {
 	background-color: #4CAF50;
 	color: white;
 }
+
 form {
 	vertical-align: top;
 }
@@ -60,9 +67,11 @@ th {
 	background-color: #00b300;
 	color: white;
 }
+
 table, th, td {
 	border: 1px solid black;
 }
+
 th, td {
 	padding-left: 2vw;
 	padding-right: 2vw;
@@ -72,7 +81,7 @@ th, td {
 
 <body>
 
-	
+
 
 	<div style="margin: 10px 200px 0px 200px" align="center" id="Top">
 
@@ -85,45 +94,48 @@ th, td {
 			Institute of Technology)
 		</font> <br style="clear: both;" />
 	</div>
-<br>
-	
+	<br>
+
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="topnav">
 
 
-  <p align="center"><font color="white" size="5">Complaint Management System </font></p>
-  <hr color="black" size="2" style="margin-bottom: 3vh; margin-top: 3vh;">
-  
- </div>
-<center><h1>Complaints</h1></center>
-	
-	
+		<p align="center">
+			<font color="white" size="5">Complaint Management System </font>
+		</p>
+		<hr color="black" size="2"
+			style="margin-bottom: 3vh; margin-top: 3vh;">
+
+	</div>
+	<center>
+		<h1>Complaints</h1>
+	</center>
+
+
 
 	<form action="Logout" method="post">
-	  <input type="submit" value="Logout" style="float: right;">
+		<input type="submit" value="Logout" style="float: right;">
 	</form>
-</div>
+	</div>
 
-<div style="display: flex;">
-	<form action="status" method="post">
-	<select name="category" >
-		<option value="Pending">Pending</option>
-		<option value="In Progress">In Progress</option>
-		<option value="Completed">Completed</option>
-		<option value="Not completed">Not completed</option>
-	</select>
-	  <input type="submit" value="Search">
-	</form>
-	
-	&nbsp;&nbsp;
-	
-	<form action="searchByName" method="post">
-	  <input type="search" name="searchByName" placeholder="Search by Name">
-	  <input type="submit" value="Search">
-	</form>
-	<br>
+	<div style="display: flex;">
+		<form action="status" method="post">
+			<select name="category">
+				<option value="Pending">Pending</option>
+				<option value="In Progress">In Progress</option>
+				<option value="Completed">Completed</option>
+				<option value="Not completed">Not completed</option>
+			</select> <input type="submit" value="Search">
+		</form>
 
-</div>
+		&nbsp;&nbsp;
+
+		<form action="searchByName" method="post">
+			<input type="search" name="searchByName" placeholder="Search by Name">
+			<input type="submit" value="Search">
+		</form>
+		<br>
+
 
 <br><br><br><br><br><br>
 
@@ -175,17 +187,25 @@ for(Complaint comp:allComplaints){%>
      </form>     
  </tr> 
  <%}%>
+ </table>
  
-</table>  
-<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
-<div class="navbar">  	   
-  <a href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
-  <a href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact Us</a>
-  <br>
-  <a href="#Top" style="float: right; color: red; font-size: 14px" > Top </a>
-</div>
-<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6" size="5">
-	
+
+
+	<form>
+		<input type="button" value="Back!" onclick="history.back()">
+	</form>
+	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+	<div class="navbar">
+		<a
+			href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
+		<a
+			href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact
+			Us</a> <br> <a href="#Top"
+			style="float: right; color: red; font-size: 14px"> Top </a>
+	</div>
+	<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6"
+		size="5">
+
 </body>
 
 </html>
