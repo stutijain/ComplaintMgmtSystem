@@ -179,7 +179,10 @@ for(Complaint comp:allComplaints){%>
  
 
  
-</table>  
+</table> 
+<form>
+  <input type="button" value="Back!" onclick="history.back()">
+</form> 
 <hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 <div class="navbar">  	   
   <a href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>

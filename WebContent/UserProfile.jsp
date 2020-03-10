@@ -1,14 +1,14 @@
 
-<%@page import="com.entities.Complaint"%> 
-<%@page import="java.util.ArrayList"%> 
-<%@page import="java.sql.Connection"%> 
-<%@page import="java.sql.DriverManager"%> 
-<%@page import="java.sql.ResultSet"%> 
-<%@page import="java.sql.SQLException"%> 
-<%@page import="java.sql.Statement"%> 
-<%@page import="java.io.IOException"%> 
+<%@page import="com.entities.Complaint"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.io.IOException"%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
 <!DOCTYPE html>
@@ -83,7 +83,7 @@ th, td {
 
 <body>
 
-	
+
 
 	<div style="margin: 10px 200px 0px 200px" align="center" id="Top">
 
@@ -96,89 +96,105 @@ th, td {
 			Institute of Technology)
 		</font> <br style="clear: both;" />
 	</div>
-<br>
-	
+	<br>
+
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="topnav">
 
 
-  <p align="center"><font color="white" size="5">Complaint Management System </font></p>
-  <hr color="black" size="2" style="margin-bottom: 3vh; margin-top: 3vh;">
-  
- </div>
-<center><h1>Complaints</h1></center>
-	
-	
+		<p align="center">
+			<font color="white" size="5">Complaint Management System </font>
+		</p>
+		<hr color="black" size="2"
+			style="margin-bottom: 3vh; margin-top: 3vh;">
+
+	</div>
+	<center>
+		<h1>Complaints</h1>
+	</center>
+
+
 
 	<form action="Logout" method="post">
-	  <input type="submit" value="Logout" style="float: right;">
+		<input type="submit" value="Logout" style="float: right;">
 	</form>
-</div>
+	</div>
 
-<div style="display: flex;">
-	<form action="status" method="post">
-	<select name="category" >
-		<option value="Pending">Pending</option>
-		<option value="In Progress">In Progress</option>
-		<option value="Completed">Completed</option>
-		<option value="Not completed">Not completed</option>
-	</select>
-	  <input type="submit" value="Search">
-	</form>
-	
-	&nbsp;&nbsp;
-	
-	<form action="searchByName" method="post">
-	  <input type="search" name="searchByName" placeholder="Search by Name">
-	  <input type="submit" value="Search">
-	</form>
+	<div style="display: flex;">
+		<form action="status" method="post">
+			<select name="category">
+				<option value="Pending">Pending</option>
+				<option value="In Progress">In Progress</option>
+				<option value="Completed">Completed</option>
+				<option value="Not completed">Not completed</option>
+			</select> <input type="submit" value="Search">
+		</form>
+
+		&nbsp;&nbsp;
+
+		<form action="searchByName" method="post">
+			<input type="search" name="searchByName" placeholder="Search by Name">
+			<input type="submit" value="Search">
+		</form>
+		<br>
+
+	</div>
+
+	<br>
+	<br>
+	<br>
 	<br>
 
-</div>
 
-<br><br><br><br>
+	<br>
+	<br>
 
+	<table style="margin: auto;">
+		<tr>
+			<th><b>Name</b></th>
+			<th><b>Category</b></th>
+			<th><b>Location</b></th>
+			<th><b>Complaint No</b></th>
+			<th><b>Priority</b></th>
+			<th><b>Status</b></th>
+		</tr>
+		<%
+			ArrayList<Complaint> allComplaints = (ArrayList<Complaint>) request.getAttribute("data");
+			for (Complaint comp : allComplaints) {
+		%>
+		<tr>
+			<form action="expand" method="post">
+				<td><%=comp.getName()%></td>
+				<td><%=comp.getCategory()%></td>
+				<td><%=comp.getLocation()%></td>
+				<td><input type="hidden" name="number"
+					value=<%=comp.getComplaint_no()%>><%=comp.getComplaint_no()%></td>
+				<td><%=comp.getPriority()%></td>
+				<td><%=comp.getCom_status()%></td>
+				<td><input type="submit" value="Show Details"></td>
+			</form>
+		</tr>
+		<%
+			}
+		%>
 
-<br><br>
+	</table>
 
-<table style="margin: auto;"> 
- <tr>
-   <th><b>Name</b></th> 
-   <th><b>Category</b></th> 
-  <th><b>Location</b></th> 
-  <th><b>Complaint No</b></th> 
-  <th><b>Priority</b></th>
-  <th><b>Status</b></th>
- </tr> 
-<%ArrayList<Complaint>allComplaints=(ArrayList<Complaint>)request.getAttribute("data");
-for(Complaint comp:allComplaints){%>
- <tr> 
-     <form action="expand" method="post">
-     <td><%=comp.getName()%></td> 
-     <td><%=comp.getCategory() %></td> 
-     <td><%=comp.getLocation() %></td> 
-     <td><input type="hidden" name="number" value= <%=comp.getComplaint_no()%> ><%=comp.getComplaint_no() %></td> 
-     <td><%=comp.getPriority() %></td> 
-     <td><%=comp.getCom_status() %></td> 
-     <td>
-	     
-	     <input type="submit" value="Show Details">
-		
-	</td>
+	<form>
+		<input type="button" value="Back!" onclick="history.back()">
 	</form>
- </tr> 
- <%}%>
- 
-</table>  
-<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
-<div class="navbar">  	   
-  <a href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
-  <a href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact Us</a>
-  <br>
-  <a href="#Top" style="float: right; color: red; font-size: 14px" > Top </a>
-</div>
-<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6" size="5">
-	
+	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+	<div class="navbar">
+		<a
+			href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
+		<a
+			href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact
+			Us</a> <br> <a href="#Top"
+			style="float: right; color: red; font-size: 14px"> Top </a>
+	</div>
+	<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6"
+		size="5">
+
 </body>
 
 </html>
