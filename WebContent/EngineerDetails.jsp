@@ -81,6 +81,14 @@ form {
 			style="margin-bottom: 3vh; margin-top: 3vh;">
 
 	</div>
+	
+	<br>
+	 
+	<form style="margin-left: 50px">
+		<a href="javascript:history.back()"><-- Go Back</a>
+	</form>
+
+		<br>
 	<center>
 		<h1>Engineer details</h1>
 	</center>
@@ -120,8 +128,6 @@ form {
 		%>
 
 	</table>
-	<form>
-		<input type="button" value="Back!" onclick="history.back()">
-	</form>
+	
 </body>
 </html>

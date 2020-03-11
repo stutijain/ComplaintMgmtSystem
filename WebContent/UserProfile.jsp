@@ -109,6 +109,15 @@ th, td {
 			style="margin-bottom: 3vh; margin-top: 3vh;">
 
 	</div>
+	
+	<br>
+	 
+	<form style="margin-left: 50px">
+		<a href="javascript:history.back()"><-- Go Back</a>
+	</form>
+
+		<br>
+	
 	<center>
 		<h1>Complaints</h1>
 	</center>
