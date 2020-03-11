@@ -68,7 +68,6 @@ form {
 			Institute of Technology)
 		</font> <br style="clear: both;" />
 	</div>
-
 	<br>
 
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
@@ -79,9 +78,13 @@ form {
 			href="https://igdtuw.ac.in/index.php?option=com_content&view=article&id=1&Itemid=2">About
 			Us</a>
 	</div>
-	<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6"
-		size="5">
+	<br>
+	 
+	<form style="margin-left: -180px">
+		<a href="javascript:history.back()"><-- Go Back</a>
+	</form>
 
+		
 	<h1 align="center">
 		<font color="green" size="5"> CANCEL BOOKING</font>
 	</h1>
@@ -92,9 +95,7 @@ form {
 		
 		<br> <input type="submit" value="Submit">
 	</form>
-	<form>
-		<input type="button" value="Back!" onclick="history.back()">
-	</form>
+	
 
 	<br>
 	<br>

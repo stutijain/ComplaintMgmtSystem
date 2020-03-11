@@ -96,8 +96,7 @@ th, td {
 			Institute of Technology)
 		</font> <br style="clear: both;" />
 	</div>
-	<br>
-
+	
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="topnav">
 
@@ -109,6 +108,13 @@ th, td {
 			style="margin-bottom: 3vh; margin-top: 3vh;">
 
 	</div>
+	<br>
+	 
+	<form style="margin-left: 20px">
+		<a href="javascript:history.back()"><-- Go Back</a>
+	</form>
+
+	
 	<center>
 		<h1>Complaints</h1>
 	</center>
@@ -180,9 +186,7 @@ th, td {
 
 	</table>
 
-	<form>
-		<input type="button" value="Back!" onclick="history.back()">
-	</form>
+	
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="navbar">
 		<a

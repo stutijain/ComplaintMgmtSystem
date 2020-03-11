@@ -94,7 +94,6 @@ th, td {
 			Institute of Technology)
 		</font> <br style="clear: both;" />
 	</div>
-	<br>
 
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="topnav">
@@ -107,6 +106,12 @@ th, td {
 			style="margin-bottom: 3vh; margin-top: 3vh;">
 
 	</div>
+	<br>
+	 <div>
+	<form style="margin-left: -1px">
+		<a href="javascript:history.back()"><-- Go Back</a>
+	</form>
+
 	<center>
 		<h1>Complaints</h1>
 	</center>
@@ -134,12 +139,13 @@ th, td {
 			<input type="search" name="searchByName" placeholder="Search by Name">
 			<input type="submit" value="Search">
 		</form>
+		</div>
 		<br>
+        <br>
+        <br>
 
+<table style="margin: auto;" > 
 
-<br><br><br><br><br>
-
-<table style="margin: auto;" width="15%"> 
  <tr> 	
    <th><b>Name</b></th> 
    <th><b>Category</b></th> 
@@ -162,7 +168,7 @@ for(Complaint comp:allComplaints){%>
      <td><%=comp.getCom_status() %></td> 
      <td><%=comp.getAssign() %></td>
      
-     <td><br><input type="text" list="user" placeholder="Assign To" id="users">     	
+     <td><br>    	
 		<%ArrayList<String>engineers=(ArrayList<String>)request.getAttribute("level1");%>
 		
 		<select name="category">
@@ -190,10 +196,6 @@ for(Complaint comp:allComplaints){%>
  </table>
  
 
-
-	<form>
-		<input type="button" value="Back!" onclick="history.back()">
-	</form>
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="navbar">
 		<a

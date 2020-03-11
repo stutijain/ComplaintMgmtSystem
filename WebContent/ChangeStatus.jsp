@@ -71,8 +71,13 @@ form {
 		</font> <br style="clear: both;" />
 	</div>
 
-	<br>
+<br>
+	 
+	<form style="margin-left: -150px">
+		<a href="javascript:history.back()"><-- Go Back</a>
+	</form>
 
+		<br>
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="topnav">
 
@@ -157,9 +162,7 @@ form {
 			<td><%=comp.getCom_status()%></td>
 		</tr>
 	</table>
-	<form>
-		<input type="button" value="Back!" onclick="history.back()">
-	</form>
+	
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="navbar">
 		<a

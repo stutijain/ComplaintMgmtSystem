@@ -8,6 +8,7 @@ import org.quartz.SimpleScheduleBuilder;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
+import org.quartz.ScheduleBuilder;
 
 public class ScheduleEmail {
 

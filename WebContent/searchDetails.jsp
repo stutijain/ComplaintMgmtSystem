@@ -70,7 +70,6 @@ form {
 		</font> <br style="clear: both;" />
 	</div>
 
-	<br>
 
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 	<div class="topnav">
@@ -83,6 +82,14 @@ form {
 			style="margin-bottom: 3vh; margin-top: 3vh;">
 
 	</div>
+	
+	<br>
+	 
+	<form style="margin-left: -1px">
+		<a href="javascript:history.back()"><-- Go Back</a>
+	</form>
+
+		<br>
 	<center>
 		<h1>Search details</h1>
 	</center>
@@ -116,8 +123,6 @@ form {
 		%>
 	</table>
 
-	<form>
-		<input type="button" value="Back!" onclick="history.back()">
-	</form>
+	
 </body>
 </html>
