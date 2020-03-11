@@ -36,25 +36,11 @@ public class ForgotPassword extends HttpServlet {
 
 			if (pass.equals("")) {
 
-				out.println("<!DOCTYPE html>");
-				out.println("<html>");
-				out.println("<body>");
-				out.println("<br>");
-				out.println("<h3>Password cannot be null!!</h3>");
-				out.println("</body>");
-				out.println("</html>");
-				response.setHeader("Refresh", "1; forgotPass.html");
+				out.print("<script>window.alert(\"Password cannot be null!\");window.location.replace(\"forgotPass.html\");</script>");
 
 			} else if (!cpass.equals(pass)) {
-
-				out.println("<!DOCTYPE html>");
-				out.println("<html>");
-				out.println("<body>");
-				out.println("<br>");
-				out.println("<h3>Password donot match!!</h3>");
-				out.println("</body>");
-				out.println("</html>");
-				response.setHeader("Refresh", "1; forgotPass.html");
+				
+				out.print("<script>window.alert(\"Passwords do not match!\");window.location.replace(\"forgotPass.html\");</script>");
 
 			} else {
 
@@ -74,38 +60,16 @@ public class ForgotPassword extends HttpServlet {
 					int flag = st.executeUpdate();
 
 					if (flag == 1) {
-
-						out.println("<!DOCTYPE html>");
-						out.println("<html>");
-						out.println("<body>");
-						out.println("<h1>Password Updated Successfully</h1>");
-						out.println("<br>Web page redirects in 3 seconds");
-						out.println("</body>");
-						out.println("</html>");
-
-						response.setHeader("Refresh", "3; HomePage.html");
+						
+						out.print("<script>window.alert(\"Password Updated Successfully!\");window.location.replace(\"HomePage.html\");</script>");
 
 					} else {
-						out.println("<!DOCTYPE html>");
-						out.println("<html>");
-						out.println("<body>");
-						out.println("<h1>Cannot Update Paasword</h1>");
-						out.println("<br>Web page redirects in 3 seconds");
-						out.println("</body>");
-						out.println("</html>");
-
-						response.setHeader("Refresh", "3; HomePage.html");
+						
+						out.print("<script>window.alert(\"Cannot Update Password!\");window.location.replace(\"HomePage.html\");</script>");
 					}
 				} else {
-
-					out.println("<!DOCTYPE html>");
-					out.println("<html>");
-					out.println("<body>");
-					out.println("<h1>Check Email ID and Date of Birth</h1>");
-					out.println("</body>");
-					out.println("</html>");
-
-					response.setHeader("Refresh", "1; forgotPass.html");
+					
+					out.print("<script>window.alert(\"Check Email ID and Date of Birth!\");window.location.replace(\"forgotPass.html\");</script>");
 				}
 
 			}

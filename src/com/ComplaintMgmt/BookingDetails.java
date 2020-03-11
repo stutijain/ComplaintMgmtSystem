@@ -87,11 +87,9 @@ public class BookingDetails extends HttpServlet {
 
 				int flag = st.executeUpdate();
 				if(flag==1){
-					out.println("Booked Successfully");
-					response.setHeader("Refresh", "2; HomePage.html");
+					out.print("<script>window.alert(\"Booked Successfully!\");window.location.replace(\"HomePage.html\");</script>");
 				}else{
-					out.println("Failed");
-					response.setHeader("Refresh", "2; Booking.jsp");
+					out.print("<script>window.alert(\"Booking failed!\");window.location.replace(\"Booking.jsp\");</script>");
 				}
 			}
 		} catch (Exception e) {

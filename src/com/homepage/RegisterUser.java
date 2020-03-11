@@ -26,19 +26,18 @@ public class RegisterUser extends HttpServlet {
 		user.setName((String) request.getParameter("name"));
 		user.setEmail(request.getParameter("email"));
 		user.setContact(request.getParameter("cont_no"));
-		
+
 		// this is level basically
-//		user.setEmp_id(Integer.parseInt(request.getParameter("emp_id")));
+		// user.setEmp_id(Integer.parseInt(request.getParameter("emp_id")));
 		user.setLevel(request.getParameter("level"));
 
 		user.setDesg(request.getParameter("desg"));
 		user.setDept(request.getParameter("dept"));
-		
-		
+
 		user.setAddr(request.getParameter("addr"));
 		user.setPass(request.getParameter("pass"));
 		user.setDob((String) request.getParameter("dob"));
-		
+
 		String email = request.getParameter("email");
 
 		PrintWriter out = response.getWriter();
@@ -47,17 +46,8 @@ public class RegisterUser extends HttpServlet {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
 					"abcdef");
 			Statement stmnt = con.createStatement();
-			
-			String query = "SELECT * FROM user_details where user_id=(select max(user_id) from user_details);";
-			ResultSet rs = stmnt.executeQuery(query);
-			int user_id = 0;
-			while (rs.next()) {
-				user_id = rs.getInt("user_id");
-			}
-			user.setEmp_id(user_id);
-			
-			
-			 rs = stmnt.executeQuery("SELECT * FROM user_details where email='" + email + "'");
+
+			ResultSet rs = stmnt.executeQuery("SELECT * FROM user_details where email='" + email + "'");
 
 			if (rs.next()) {
 				out.println("Already Registered!!!");
@@ -65,25 +55,31 @@ public class RegisterUser extends HttpServlet {
 
 			} else {
 
-				String sql = "insert into user_details (category,name,email,contact_no,user_id,designation,department,address,password,dob,level)"
-						+ " values(?,?,?,?,?,?,?,?,?,?,?)";
+				String sql = "insert into user_details (category,name,email,contact_no,designation,department,address,password,dob,level)"
+						+ " values(?,?,?,?,?,?,?,?,?,?)";
 
 				PreparedStatement st = con.prepareStatement(sql);
 				st.setString(1, user.getCategory());
 				st.setString(2, user.getName());
 				st.setString(3, user.getEmail());
 				st.setString(4, user.getContact());
-				st.setInt(5, user.getEmp_id());
-				st.setString(6, user.getDesg());
-				st.setString(7, user.getDept());
-				st.setString(8, user.getAddr());
-				st.setString(9, user.getPass());
-				st.setString(10, user.getDob());
-				st.setString(11, user.getLevel());
-//				out.println("hey");
+				st.setString(5, user.getDesg());
+				st.setString(6, user.getDept());
+				st.setString(7, user.getAddr());
+				st.setString(8, user.getPass());
+				st.setString(9, user.getDob());
+				st.setString(10, user.getLevel());
+				// out.println("hey");
 				int flag = st.executeUpdate();
-//				out.println("hey");
+				// out.println("hey");
 				if (flag == 1) {
+//					String query = "SELECT * FROM user_details where user_id=(select max(user_id) from user_details);";
+//					rs = stmnt.executeQuery(query);
+//
+//					int user_id = rs.getInt("user_id");
+//
+//					user.setEmp_id(user_id);
+
 					out.println("<!DOCTYPE html>");
 					out.println("<html>");
 					out.println("<body>");
