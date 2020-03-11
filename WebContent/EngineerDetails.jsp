@@ -84,6 +84,7 @@ form {
 	<br>
 	 
 	<form style="margin-left: 20px">
+
 		<a href="javascript:history.back()"><-- Go Back</a>
 	</form>
 

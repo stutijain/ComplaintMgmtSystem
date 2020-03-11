@@ -99,15 +99,17 @@ th, td {
   <hr color="black" size="2" style="margin-bottom: 3vh; margin-top: 3vh;">
   
  </div>
+
  <br>
 	 
 	<form style="margin-left: 20px">
 		<a href="javascript:history.back()"><-- Go Back</a>
 	</form>
 
+
 <center><h1>Booking</h1></center>
 
-<div style="text-align: left;">
+<div style="text-align: center;">
 
 		<form action="book" method="post">
 			<p style="margin: 0px 0px 0px 100px">
@@ -177,8 +179,7 @@ th, td {
 				<input type="submit" value="Submit">
 			</p>
 		</form>
-		
-		<br>
+</div>
 
 		<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 		<div class="navbar">

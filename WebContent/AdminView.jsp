@@ -104,13 +104,14 @@ th, td {
   <hr color="black" size="2" style="margin-bottom: 3vh; margin-top: 3vh;">
   
  </div>
+
  <br>
 	 
 	<form style="margin-left: 20px">
 		<a href="javascript:history.back()"><-- Go Back</a>
 	</form>
 
-		
+
 <center><h1>Welcome Admin!</h1></center>
 	
 	

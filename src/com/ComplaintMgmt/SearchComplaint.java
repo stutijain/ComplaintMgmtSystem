@@ -41,6 +41,7 @@ public class SearchComplaint extends HttpServlet {
 			out.print("<center><h1>Complaint details</h1></center>");
 
 			// ResultSetMetaData rsmd = rs.getMetaData();
+			
 			boolean complaintExists = false;
 
 			while (rs.next())
@@ -63,8 +64,9 @@ public class SearchComplaint extends HttpServlet {
 				// }
 				// if (rs.next())
 				// {
+				
 				complaintExists = true;
-
+				
 				Complaint complaint = new Complaint();
 				complaint.setCategory(rs.getString("category"));
 				complaint.setLocation(rs.getString("location"));
@@ -84,8 +86,10 @@ public class SearchComplaint extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("ComplaintDetails.jsp");
 				rd.forward(request, response);
 			}
+			// else
+			// out.print("no data");
 			if(!complaintExists) {
-				out.print("window.alert(\"Invalid Complaint Number!\");window.location.replace(\"HomePage.html\");");
+				out.print("<script>window.alert(\"Invalid Complaint Number!\");window.location.replace(\"HomePage.html\");</script>");
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

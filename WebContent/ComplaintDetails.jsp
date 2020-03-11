@@ -81,7 +81,7 @@ form {
 	<form style="margin-left: -150px">
 		<a style="float: left" href="javascript:history.back()"><-- Go Back</a>
 	</form>
-	
+
 	
 	<center>
 		<h1>Complaint details</h1>

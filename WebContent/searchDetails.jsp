@@ -85,11 +85,13 @@ form {
 	
 	<br>
 	 
+
 	<form style="margin-left: -1px">
+
 		<a href="javascript:history.back()"><-- Go Back</a>
 	</form>
 
-		<br>
+		
 	<center>
 		<h1>Search details</h1>
 	</center>
