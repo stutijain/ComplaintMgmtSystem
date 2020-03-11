@@ -10,7 +10,7 @@ public class Booking {
 	String email;
 	String contact;
 
-	int booking_no;
+	int book_id;
 	String date;
 	boolean occupiedStatus;
 	String time_from;
@@ -79,11 +79,11 @@ public class Booking {
 	}
 
 	public int getBooking_no() {
-		return booking_no;
+		return book_id;
 	}
 
-	public void setBooking_no(int booking_no) {
-		this.booking_no = booking_no;
+	public void setBooking_no(int book_id) {
+		this.book_id = book_id;
 	}
 
 	public String getDate() {

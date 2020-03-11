@@ -137,9 +137,9 @@ th, td {
 		<br>
 
 
-<br><br><br><br><br><br>
+<br><br><br><br><br>
 
-<table width=70% style="margin: auto;"> 
+<table style="margin: auto;" width="15%"> 
  <tr> 	
    <th><b>Name</b></th> 
    <th><b>Category</b></th> 

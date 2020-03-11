@@ -160,4 +160,16 @@
     <url-pattern>/assignComplaint</url-pattern>
   </servlet-mapping>
   
+  
+  <servlet>
+    <servlet-name>CancelBooking</servlet-name>
+    <servlet-class>com.ComplaintMgmt.CancelBooking</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CancelBooking</servlet-name>
+    <url-pattern>/cancelBooking</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 </web-app>

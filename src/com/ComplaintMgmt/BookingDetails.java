@@ -68,6 +68,7 @@ public class BookingDetails extends HttpServlet {
 				book.setTimeFrom(request.getParameter("time_from"));
 				book.setTimeTo(request.getParameter("time_to"));
 				book.setStatus(true);
+			
 				
 				String sql = "insert into booking_details (category,details,name,email,contact,date,time_from,time_to,occupiedStatus)"
 				+ " values(?,?,?,?,?,?,?,?,?)";
@@ -83,11 +84,21 @@ public class BookingDetails extends HttpServlet {
 				st.setString(7, book.getTimeFrom());
 				st.setString(8, book.getTimeTo());
 				st.setBoolean(9, book.getStatus());
+				
 //				st.setInt(10, book.getBooking_no());
-
+				
 				int flag = st.executeUpdate();
 				if(flag==1){
-					out.println("Booked Successfully");
+					rs=stmnt.executeQuery("SELECT * FROM booking_details where book_id=(select max(book_id) from booking_details);");
+					int book_no = 0;
+					while (rs.next()) {
+						// Retrieve by column name
+						book_no = rs.getInt("book_id");
+					}
+
+					book.setBooking_no(book_no);
+
+					out.println("Venue booked Successfully. Your Booking ID is "+book_no);
 					response.setHeader("Refresh", "2; HomePage.html");
 				}else{
 					out.println("Failed");
