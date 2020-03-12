@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.entities.Complaint;
 import com.entities.User;
-import com.sun.glass.ui.Window;
+//import com.sun.glass.ui.Window;
 
 public class AssignComplaint extends HttpServlet {
 
@@ -37,7 +37,7 @@ public class AssignComplaint extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
-					"abcdef");
+					"abcdefgh");
 
 			
 			Statement stmnt = con.createStatement();
@@ -50,16 +50,16 @@ public class AssignComplaint extends HttpServlet {
 			if (rs.next()) {
 				ArrayList<Complaint> complaints=new ArrayList<>();					
 			
-				ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending' and category = '"+cat+"' ;");
+				ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending' and category = '"+cat+"' ORDER BY complaint_no DESC;");
 				addComplaints(allComplaints,complaints);
 				
-				ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' and category = '"+cat+"' ;");
+				ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' and category = '"+cat+"' ORDER BY complaint_no DESC;");
 				addComplaints(allComplaintsInP,complaints);
 				
-				ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed' and category = '"+cat+"' ;");
+				ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed' and category = '"+cat+"' ORDER BY complaint_no DESC;");
 				addComplaints(allComplaintsComp,complaints);
 				
-				ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' and category = '"+cat+"' ;");
+				ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' and category = '"+cat+"' ORDER BY complaint_no DESC;");
 				addComplaints(allComplaintsNotComp,complaints);
 				
 				request.setAttribute("data", complaints);

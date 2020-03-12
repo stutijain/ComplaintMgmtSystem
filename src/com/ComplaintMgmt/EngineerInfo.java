@@ -32,7 +32,7 @@ public class EngineerInfo extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
-					"abcdef");
+					"abcdefgh");
 
 			Statement stmnt = con.createStatement();
 			ResultSet rs = stmnt.executeQuery("SELECT * FROM user_details");
@@ -40,7 +40,7 @@ public class EngineerInfo extends HttpServlet {
 //				out.println("Login Successful");
 				
 				ArrayList<User> complaints=new ArrayList<>();
-				ResultSet allComplaints = stmnt.executeQuery("SELECT * from user_details ");
+				ResultSet allComplaints = stmnt.executeQuery("SELECT * from user_details where level != 9");
 				addComplaints(allComplaints,complaints);
 				
 				request.setAttribute("data", complaints);

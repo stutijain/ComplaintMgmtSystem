@@ -29,7 +29,7 @@ public class deleteComplaint extends HttpServlet{
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
-					"abcdef");
+					"abcdefgh");
 
 			if(no2 == null){
 				int com_no = Integer.parseInt(no1);
@@ -41,16 +41,16 @@ public class deleteComplaint extends HttpServlet{
 				if (rs.next()) {
 
 					ArrayList<Complaint> complaints=new ArrayList<>();
-					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending';");
+					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaints,complaints);
 					
-					ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress';");
+					ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsInP,complaints);
 					
-					ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed';");
+					ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsComp,complaints);
 					
-					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed';");
+					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsNotComp,complaints);
 					
 					request.setAttribute("data", complaints);
@@ -70,16 +70,16 @@ public class deleteComplaint extends HttpServlet{
 				if (rs.next()) {
 					ArrayList<Complaint> complaints=new ArrayList<>();					
 				
-					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending' and category = '"+category+"' ;");
+					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending' and category = '"+category+"' ORDER BY complaint_no DESC;");
 					addComplaints(allComplaints,complaints);
 					
-					ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' and category = '"+category+"' ;");
+					ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' and category = '"+category+"' ORDER BY complaint_no DESC;");
 					addComplaints(allComplaintsInP,complaints);
 					
-					ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed' and category = '"+category+"' ;");
+					ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed' and category = '"+category+"' ORDER BY complaint_no DESC;");
 					addComplaints(allComplaintsComp,complaints);
 					
-					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' and category = '"+category+"' ;");
+					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' and category = '"+category+"' ORDER BY complaint_no DESC;");
 					addComplaints(allComplaintsNotComp,complaints);
 					
 					request.setAttribute("data", complaints);

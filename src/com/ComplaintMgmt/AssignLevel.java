@@ -33,7 +33,7 @@ public class AssignLevel extends HttpServlet{
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
-					"abcdef");
+					"abcdefgh");
 
 			Statement stmnt = con.createStatement();
 			stmnt.executeUpdate("UPDATE user_details SET level = '"+level+ "' where email ='"+email+"';");
