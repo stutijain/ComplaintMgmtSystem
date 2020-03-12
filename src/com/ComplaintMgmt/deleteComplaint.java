@@ -28,7 +28,7 @@ public class deleteComplaint extends HttpServlet{
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
-					"abcdef");
+					"abcdefgh");
 
 			if(no2 == null){
 				int com_no = Integer.parseInt(no1);

@@ -57,7 +57,7 @@ public class RegisterComplaint extends HttpServlet {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
-					"abcdef");
+					"abcdefgh");
 
 			String sql = "insert into complaint_details (category,location,sub_location,details,priority,name,email,contact,attachment,time,date,designation,com_status)"
 					+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";

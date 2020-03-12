@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.entities.Complaint;
 import com.entities.User;
-import com.sun.glass.ui.Window;
+//import com.sun.glass.ui.Window;
 
 public class AssignComplaint extends HttpServlet {
 
@@ -33,7 +33,7 @@ public class AssignComplaint extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
-					"abcdef");
+					"abcdefgh");
 
 			
 			Statement stmnt = con.createStatement();

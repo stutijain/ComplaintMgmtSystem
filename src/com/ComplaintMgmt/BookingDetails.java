@@ -39,7 +39,7 @@ public class BookingDetails extends HttpServlet {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root","abcdef");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root","abcdefgh");
 
 			Statement stmnt = con.createStatement();
 			ResultSet rs = stmnt.executeQuery("SELECT * FROM booking_details where category='" + category + "' and date='" + date + "' and time_to > '" + time_from + "' ;");
