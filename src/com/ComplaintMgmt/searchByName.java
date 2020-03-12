@@ -30,7 +30,7 @@ public class searchByName extends HttpServlet{
 					"abcdefgh");
 
 			Statement stmnt = con.createStatement();
-			ResultSet rs = stmnt.executeQuery("SELECT * FROM complaint_details where name='" + name+"'");
+			ResultSet rs = stmnt.executeQuery("SELECT * FROM complaint_details where name='" + name+"' ORDER BY complaint_no DESC ");
 			
 			ArrayList<Complaint> allComplaints=new ArrayList<>();
 			while(rs.next()){

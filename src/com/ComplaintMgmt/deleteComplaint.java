@@ -40,16 +40,16 @@ public class deleteComplaint extends HttpServlet{
 				if (rs.next()) {
 
 					ArrayList<Complaint> complaints=new ArrayList<>();
-					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending';");
+					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaints,complaints);
 					
-					ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress';");
+					ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsInP,complaints);
 					
-					ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed';");
+					ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsComp,complaints);
 					
-					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed';");
+					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsNotComp,complaints);
 					
 					request.setAttribute("data", complaints);
