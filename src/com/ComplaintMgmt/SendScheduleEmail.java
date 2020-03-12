@@ -18,6 +18,7 @@ public class SendScheduleEmail implements Job {
 	public static final String details = "details";
 	public static final String priority = "priority";
 	public static final String comp_no = "comp_no";
+	public static final String level = "level";
 
 	Complaint complaint;
 	ArrayList<String> emails;
@@ -33,6 +34,7 @@ public class SendScheduleEmail implements Job {
 		String det = dataMap.getString(details);
 		String prio = dataMap.getString(priority);
 		String c_no = dataMap.getString(comp_no);
+		String lev = dataMap.getString(level);
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -41,14 +43,28 @@ public class SendScheduleEmail implements Job {
 
 			Statement stmt = con.createStatement();
 
-			String query = "select email from user_details where level=2 AND category like '" + cat + "';";
+			String query = "Select com_status from complaint_details where comp_no = '" + c_no + "';";
 			ResultSet rs = stmt.executeQuery(query);
-			ArrayList<String> emails = new ArrayList<>();
-			while (rs.next())
-				emails.add(rs.getString("email"));
-
-			SchdMailSender es = new SchdMailSender();
-			es.schdEmail(emails, det, c_no, prio);
+			
+			rs = stmt.executeQuery(query);
+			String status = new String();
+			while(rs.next()) {
+				status = rs.getString("com_status");
+			}
+			if(status.equals("Pending") || status.equals("Not completed")) {
+				query = "select email from user_details where level = '" + lev + "' AND category like '" + cat + "';";
+				rs = stmt.executeQuery(query);
+				ArrayList<String> emails = new ArrayList<>();
+				while (rs.next())
+					emails.add(rs.getString("email"));
+	
+				SchdMailSender es = new SchdMailSender();
+				es.schdEmail(emails, det, c_no, prio);
+				
+				
+				ScheduleEmail se = new ScheduleEmail();
+				se.scdMail(cat, det, prio, c_no, 12, 6, 3, "3");
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

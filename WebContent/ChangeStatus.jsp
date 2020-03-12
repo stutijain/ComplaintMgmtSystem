@@ -71,11 +71,7 @@ form {
 		</font> <br style="clear: both;" />
 	</div>
 
-<br>
-	 
-	<form style="margin-left: -150px">
-		<a href="javascript:history.back()"><-- Go Back</a>
-	</form>
+
 
 		<br>
 	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
@@ -85,14 +81,13 @@ form {
 		<p align="center">
 			<font color="white" size="5">Complaint Management System </font>
 		</p>
-		<hr color="black" size="2"
-			style="margin-bottom: 3vh; margin-top: 3vh;">
+		<br>
 
 	</div>
-	
 	<br>
+
 	 
-	<form style="margin-left: -150px">
+	<form style="margin-left: 20px">
 		<a href="javascript:history.back()"><-- Go Back</a>
 	</form>
 

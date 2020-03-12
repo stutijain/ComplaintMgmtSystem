@@ -109,7 +109,7 @@ th, td {
 
 <center><h1>Booking</h1></center>
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 
 		<form action="book" method="post">
 			<p style="margin: 0px 0px 0px 100px">
@@ -179,7 +179,8 @@ th, td {
 				<input type="submit" value="Submit">
 			</p>
 		</form>
-</div>
+		</div>
+<br>
 
 		<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
 		<div class="navbar">
