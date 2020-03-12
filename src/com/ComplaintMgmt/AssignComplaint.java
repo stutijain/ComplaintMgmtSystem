@@ -21,11 +21,15 @@ import com.sun.glass.ui.Window;
 
 public class AssignComplaint extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String userName = request.getParameter("category");
-//		out.println(userName);
 		int com_no = Integer.parseInt(request.getParameter("com_number"));
 		String cat = request.getParameter("cat");
 		
@@ -38,22 +42,40 @@ public class AssignComplaint extends HttpServlet {
 			
 			Statement stmnt = con.createStatement();
 			stmnt.executeUpdate(
-					"UPDATE complaint_details SET assignTo= '" + userName + "' where complaint_no =" + com_no + ";");
-
-//			Window.history.back();
-//			ResultSet rs = stmnt.executeQuery("SELECT * FROM complaint_details");
-//			// ArrayList<Complaint> complaints=new ArrayList<>();
-//			if (rs.next()) {
-//				ArrayList<Complaint> complaints = new ArrayList<>();
-//				ResultSet allComplaints = stmnt
-//						.executeQuery("SELECT * from complaint_details where category ='" + cat + "';");
-//				addComplaints(allComplaints, complaints);
-//
-//				request.setAttribute("data", complaints);
-////				response.setHeader("Refresh","1; UserProfileLevel2.jsp");
-////				RequestDispatcher rd = request.getRequestDispatcher("UserProfileLevel2.jsp");
-////				rd.forward(request, response);
-//			}
+					"UPDATE complaint_details SET assignTo= '" + userName + "' where complaint_no = " + com_no + ";");
+			
+			ResultSet rs = stmnt
+					.executeQuery("SELECT * FROM complaint_details");
+			
+			if (rs.next()) {
+				ArrayList<Complaint> complaints=new ArrayList<>();					
+			
+				ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending' and category = '"+cat+"' ;");
+				addComplaints(allComplaints,complaints);
+				
+				ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' and category = '"+cat+"' ;");
+				addComplaints(allComplaintsInP,complaints);
+				
+				ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed' and category = '"+cat+"' ;");
+				addComplaints(allComplaintsComp,complaints);
+				
+				ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' and category = '"+cat+"' ;");
+				addComplaints(allComplaintsNotComp,complaints);
+				
+				request.setAttribute("data", complaints);
+				
+				ArrayList<String> engineers = new ArrayList<>();
+				ResultSet serviceEngineers = stmnt
+						.executeQuery("select name from user_details where category like '" + cat
+								+ "' and level = 1;");
+				
+				while (serviceEngineers.next()) {
+					engineers.add(serviceEngineers.getString("name"));
+					request.setAttribute("level1", engineers);	
+				}
+				RequestDispatcher rd = request.getRequestDispatcher("UserProfileLevel2.jsp");
+				rd.forward(request, response);
+			}
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -81,6 +103,7 @@ public class AssignComplaint extends HttpServlet {
 			complaint.setDate(allComplaints.getString("date"));
 			complaint.setComplaint_no(Integer.parseInt(allComplaints.getString("complaint_no")));
 			complaint.setCom_status(allComplaints.getString("com_status"));
+			complaint.setAssign(allComplaints.getString("assignTo"));
 
 			complaints.add(complaint);
 

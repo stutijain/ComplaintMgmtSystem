@@ -24,6 +24,7 @@ public class deleteComplaint extends HttpServlet{
 		 
 		String no1 = request.getParameter("com_number");	
 		String no2 = request.getParameter("number");
+		String category=request.getParameter("cate");
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -59,7 +60,7 @@ public class deleteComplaint extends HttpServlet{
 				rd.forward(request, response);
 			}else{
 				int com_no = Integer.parseInt(no2);
-				String cat = request.getParameter("category");
+//				String cat = request.getParameter("category");
 				Statement stmnt = con.createStatement();
 				stmnt.executeUpdate("DELETE FROM complaint_details where complaint_no=" + com_no);			
 				
@@ -69,23 +70,31 @@ public class deleteComplaint extends HttpServlet{
 				if (rs.next()) {
 					ArrayList<Complaint> complaints=new ArrayList<>();					
 				
-					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending' and category = "+cat+";");
+					ResultSet allComplaints = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Pending' and category = '"+category+"' ;");
 					addComplaints(allComplaints,complaints);
 					
-					ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' and category = "+cat+";");
+					ResultSet allComplaintsInP = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' and category = '"+category+"' ;");
 					addComplaints(allComplaintsInP,complaints);
 					
-					ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed' and category = "+cat+";");
+					ResultSet allComplaintsComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Completed' and category = '"+category+"' ;");
 					addComplaints(allComplaintsComp,complaints);
 					
-					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' and category = "+cat+";");
+					ResultSet allComplaintsNotComp = stmnt.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' and category = '"+category+"' ;");
 					addComplaints(allComplaintsNotComp,complaints);
 					
 					request.setAttribute("data", complaints);
+					
+					ArrayList<String> engineers = new ArrayList<>();
+					ResultSet serviceEngineers = stmnt
+							.executeQuery("select name from user_details where category like '" + category
+									+ "' and level = 1;");
+					while (serviceEngineers.next()) {
+						engineers.add(serviceEngineers.getString("name"));
+						request.setAttribute("level1", engineers);	
+					}
+					RequestDispatcher rd = request.getRequestDispatcher("UserProfileLevel2.jsp");
+					rd.forward(request, response);
 				}
-				RequestDispatcher rd = request.getRequestDispatcher("UserProfileLevel2.jsp");
-				rd.forward(request, response);
-				
 			}
 			
 			
@@ -114,6 +123,7 @@ public class deleteComplaint extends HttpServlet{
 			complaint.setDate(allComplaints.getString("date"));
 			complaint.setComplaint_no(Integer.parseInt(allComplaints.getString("complaint_no")));
 			complaint.setCom_status(allComplaints.getString("com_status"));
+			complaint.setAssign(allComplaints.getString("assignTo"));
 
 			complaints.add(complaint);
 
