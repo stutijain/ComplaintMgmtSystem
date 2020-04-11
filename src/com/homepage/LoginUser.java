@@ -111,7 +111,7 @@ public class LoginUser extends HttpServlet {
 				}
 
 			} else {
-				out.println("Incorrect Username or Password");
+				out.print("<script>window.alert(\"Incorrect Username or Password!\");window.location.replace(\"HomePage.html\");</script>");
 			}
 
 		} catch (ClassNotFoundException e) {
