@@ -52,6 +52,11 @@ form {
 	background-color: #4CAF50;
 	color: white;
 }
+
+a {
+	color: white;
+	text-decoration: none;
+}
 </style>
 
 </head>
@@ -80,24 +85,47 @@ form {
 	</div>
 
 	<br>
-	 
-	<form style="margin-left: 20px">
-		<a style="float: left" href="javascript:history.back()"><-- Go Back</a>
-	</form>
+
+	<div align="left" style="margin-left: 5px;">
+		<a style="color: blue;" href="javascript:history.back()">Go Back</a>
+	</div>
+
+	<div style="display: flex;">
+	
+		<div>
+			<a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=222:photo-gallery&catid=2:1&Itemid=576">
+				<img style="margin: 15vh 5vw 0vh 5vw; border: 2px solid black" alt="IGDTUW" src="https://img.collegepravesh.com/2015/12/IGDTUW.jpg" width="150" height="100">
+				<h3 align="center">
+					<font color="green" size="5">Photo Gallery</font>
+				</h3>
+			</a>
+		</div>
+		
+		<form action="ForgotPassword" method="post" style="margin: 0vh 0vw 0vh 8vw;">
+			<h1 align="center">
+				<font color="green" size="5"> UPDATE PASSWORD</font>
+			</h1>
+			Enter Email : <input type="text" name="email" required><br> <br>
+			Enter DOB : <input type="date" name="dob" required><br> <br>
+			New Password : <input type="password" name="pass" required><br> <br>
+			Confirm Password : <input type="password" name="cpass" required><br>
+			<br> <input type="submit" value="Submit">
+		</form>
+		
+		<ul style="list-style-type:none; padding: 20px 10px 10px 10px; background-color: ForestGreen; color: white; margin: 5vh 5vw 0vh 8vw; height: 30vh; border: 1px solid black">
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=464&Itemid=696">Student Notice Board</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=90:abouttnp&catid=2:1&Itemid=428">Training and Placement</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=227&Itemid=427">Notices and Circulars</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=161&Itemid=38">Library</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=346:rti&catid=2:1">Right To Information</a></li>
+		</ul>
 
 
-
-	<h1 align="center">
-		<font color="green" size="5"> UPDATE PASSWORD</font>
-	</h1>
-
-	<form action="ForgotPassword" method="post">
-		Enter Email : <input type="text" name="email"><br> <br>
-		Enter DOB : <input type="date" name="dob"><br> <br>
-		New Password : <input type="password" name="pass"><br> <br>
-		Confirm Password : <input type="password" name="cpass"><br>
-		<br> <input type="submit" value="Submit">
-	</form>
+	</div>
 
 	<br>
 	<br>
