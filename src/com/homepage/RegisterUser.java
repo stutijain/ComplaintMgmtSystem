@@ -29,7 +29,7 @@ public class RegisterUser extends HttpServlet {
 
 		// this is level basically
 		// user.setEmp_id(Integer.parseInt(request.getParameter("emp_id")));
-		user.setLevel(request.getParameter("level"));
+//		user.setLevel(request.getParameter("level"));
 
 		user.setDesg(request.getParameter("desg"));
 		user.setDept(request.getParameter("dept"));
@@ -68,7 +68,7 @@ public class RegisterUser extends HttpServlet {
 				st.setString(7, user.getAddr());
 				st.setString(8, user.getPass());
 				st.setString(9, user.getDob());
-				st.setString(10, user.getLevel());
+				st.setString(10, "1");
 				// out.println("hey");
 				int flag = st.executeUpdate();
 				// out.println("hey");

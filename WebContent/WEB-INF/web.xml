@@ -170,6 +170,15 @@
     <url-pattern>/cancelBooking</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>LoadDynamic</servlet-name>
+    <servlet-class>com.ComplaintMgmt.LoadDynamic</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadDynamic</servlet-name>
+    <url-pattern>/load</url-pattern>
+  </servlet-mapping>
+  
   
   
 </web-app>

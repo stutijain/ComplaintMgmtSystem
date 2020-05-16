@@ -1,5 +1,9 @@
 package com.ComplaintMgmt;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -39,7 +43,7 @@ public class MailSenderBean {
 			mailMessage.setFrom(new InternetAddress(fromEmail));
 			mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(complaint.getEmail()));
 			subject = "Complaint Registration";
-			message = "Your complaint has been successfully registered. Your complaint number is "
+			message = "Your complaint has been successfully registered. \nYour complaint number is "
 					+ complaint.getComplaint_no() + ".\nTo track the status of your complaint kindly visit the portal.";
 			mailMessage.setText(message);
 			mailMessage.setSubject(subject);
@@ -67,12 +71,18 @@ public class MailSenderBean {
 
 			Message userMsg = new MimeMessage(mailSession);
 			try {
+				
 
 				userMsg.setFrom(new InternetAddress(fromEmail));
 				userMsg.setRecipients(Message.RecipientType.TO, address);
-				message = "complaint no: " + complaint.getComplaint_no() + "\nDetails: " + complaint.getDetails()
-						+ "\nPriority: " + complaint.getPriority();
-				userMsg.setText(message);
+				if(complaint.getPriority().equals("Critical")){
+				message = "Critical Complaint!!! \n \nA complaint has been registered in your department with the following details- \nComplaint no: " + complaint.getComplaint_no()+ "\nDetails: " + complaint.getDetails() + "\nLocation: "+complaint.getLocation()+"\nSub-Location: "+complaint.getSub_location()+"\nPriority: " + complaint.getPriority();
+				}else{
+					message="A complaint has been registered in your department with the following details\n Complaint no: " + complaint.getComplaint_no()+ "\nDetails: " + complaint.getDetails() + "\nLocation: "+complaint.getLocation()+"\nSub-Location: "+complaint.getSub_location()+"\nPriority: " + complaint.getPriority();
+				}
+				
+				String stg="\n\nPlease resolve the complaint at the earliest. It will proceed on to your superiors after the deadline.";
+				userMsg.setText(message+stg);
 				userMsg.setSubject("New complaint");
 
 				Transport transport = mailSession.getTransport("smtp");

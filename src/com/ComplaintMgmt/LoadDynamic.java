@@ -1,4 +1,4 @@
-package com.homepage;
+package com.ComplaintMgmt;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,13 +18,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.entities.Complaint;
 import com.entities.User;
 
-public class LoginUser extends HttpServlet {
+public class LoadDynamic extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		doPost(request, response);
+	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String email = (String)request.getParameter("email");
-		String pass = (String)request.getParameter("password");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("password");
 		PrintWriter out = response.getWriter();
 
 		try {
@@ -34,8 +37,7 @@ public class LoginUser extends HttpServlet {
 					"abcdefgh");
 
 			Statement stmnt = con.createStatement();
-			
-	
+
 			ResultSet rs = stmnt
 					.executeQuery("SELECT * FROM user_details where email='" + email + "' and password='" + pass + "'");
 
@@ -43,23 +45,23 @@ public class LoginUser extends HttpServlet {
 				// out.println("Login Successful");
 
 				// admin level=9
-				String level=rs.getString("level");
+				String level = rs.getString("level");
 				if (level.equals("9")) {
 					ArrayList<Complaint> complaints = new ArrayList<>();
-					ResultSet allComplaints = stmnt
-							.executeQuery("SELECT * from complaint_details where com_status like 'Pending' ORDER BY complaint_no DESC ;");
+					ResultSet allComplaints = stmnt.executeQuery(
+							"SELECT * from complaint_details where com_status like 'Pending' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaints, complaints);
 
-					ResultSet allComplaintsInP = stmnt
-							.executeQuery("SELECT * from complaint_details where com_status like 'In Progress' ORDER BY complaint_no DESC ;");
+					ResultSet allComplaintsInP = stmnt.executeQuery(
+							"SELECT * from complaint_details where com_status like 'In Progress' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsInP, complaints);
 
-					ResultSet allComplaintsComp = stmnt
-							.executeQuery("SELECT * from complaint_details where com_status like 'Completed' ORDER BY complaint_no DESC ;");
+					ResultSet allComplaintsComp = stmnt.executeQuery(
+							"SELECT * from complaint_details where com_status like 'Completed' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsComp, complaints);
 
-					ResultSet allComplaintsNotComp = stmnt
-							.executeQuery("SELECT * from complaint_details where com_status like 'Not Completed' ORDER BY complaint_no DESC ;");
+					ResultSet allComplaintsNotComp = stmnt.executeQuery(
+							"SELECT * from complaint_details where com_status like 'Not Completed' ORDER BY complaint_no DESC ;");
 					addComplaints(allComplaintsNotComp, complaints);
 
 					request.setAttribute("data", complaints);
@@ -69,8 +71,6 @@ public class LoginUser extends HttpServlet {
 
 				} else {
 					User user = new User();
-					user.setEmail(email);
-					user.setPass(pass);
 					user.setCategory(rs.getString("category"));
 
 					ArrayList<Complaint> complaints = new ArrayList<>();
@@ -94,8 +94,7 @@ public class LoginUser extends HttpServlet {
 					addComplaints(allComplaintsNotComp, complaints);
 
 					request.setAttribute("data", complaints);
-					request.setAttribute("email", email);
-					request.setAttribute("pass", pass);
+					request.setAttribute("userInfo", user);
 					if (level.equals("1")) {
 						RequestDispatcher rd = request.getRequestDispatcher("UserProfile.jsp");
 						rd.forward(request, response);
@@ -128,6 +127,7 @@ public class LoginUser extends HttpServlet {
 
 	}
 
+	
 	public void addComplaints(ResultSet allComplaints, ArrayList<Complaint> complaints)
 			throws NumberFormatException, SQLException {
 		while (allComplaints.next()) {

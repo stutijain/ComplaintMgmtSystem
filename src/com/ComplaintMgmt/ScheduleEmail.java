@@ -1,6 +1,8 @@
 package com.ComplaintMgmt;
 
 import org.apache.log4j.BasicConfigurator;
+import org.quartz.DateBuilder;
+import org.quartz.DateBuilder.IntervalUnit;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
@@ -20,18 +22,32 @@ public class ScheduleEmail {
 			JobDetail j = JobBuilder.newJob(SendScheduleEmail.class).build();
 
 			String tName = "Trigger" + System.currentTimeMillis();
-
-			Trigger t1 = TriggerBuilder.newTrigger().withIdentity(tName)
-					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInHours(time1))
+			
+			Trigger t1 = TriggerBuilder.newTrigger().withIdentity(tName).startAt(DateBuilder.futureDate(time1, IntervalUnit.MINUTE))
+					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(0))
 					.build();
 
-			Trigger t2 = TriggerBuilder.newTrigger().withIdentity(tName)
-					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInHours(time2))
+			Trigger t2 = TriggerBuilder.newTrigger().withIdentity(tName).startAt(DateBuilder.futureDate(time2, IntervalUnit.MINUTE))
+					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(0))
 					.build();
 
-			Trigger t3 = TriggerBuilder.newTrigger().withIdentity(tName)
-					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInHours(time3))
+			Trigger t3 = TriggerBuilder.newTrigger().withIdentity(tName).startAt(DateBuilder.futureDate(time3, IntervalUnit.MINUTE))
+					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(0))
 					.build();
+			
+			
+//
+//			Trigger t1 = TriggerBuilder.newTrigger().withIdentity(tName)
+//					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInHours(time1))
+//					.build();
+//
+//			Trigger t2 = TriggerBuilder.newTrigger().withIdentity(tName)
+//					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInHours(time2))
+//					.build();
+//
+//			Trigger t3 = TriggerBuilder.newTrigger().withIdentity(tName)
+//					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withRepeatCount(1).withIntervalInHours(time3))
+//					.build();
 
 			j.getJobDataMap().put(SendScheduleEmail.category, category);
 			j.getJobDataMap().put(SendScheduleEmail.details, details);

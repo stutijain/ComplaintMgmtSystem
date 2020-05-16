@@ -103,7 +103,7 @@ th, td {
  <br>
 	 
 	<form style="margin-left: 20px">
-		<a href="javascript:history.back()"><-- Go Back</a>
+		<a href="HomePage.html"><-- Go Back</a>
 	</form>
 
 

@@ -16,11 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.entities.Complaint;
+import com.entities.User;
 
 public class AttendComplaint extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		PrintWriter out=response.getWriter();
 		int com_no = Integer.parseInt(request.getParameter("number"));
+//		User user=(User)(request.getParameter("userInfo"));
+		String userEmail=request.getParameter("email");
+		String userPass=request.getParameter("pass");
+		
 		String new_category=request.getParameter("category").toString();
 //		out.println(com_no);
 		try{
@@ -52,11 +57,15 @@ public class AttendComplaint extends HttpServlet {
 			complaint.setDate(rs.getString("date"));
 			complaint.setComplaint_no(Integer.parseInt(rs.getString("complaint_no")));
 			complaint.setCom_status(rs.getString("com_status"));
+			
 			request.setAttribute("data", complaint);
+			request.setAttribute("email", userEmail);
+			request.setAttribute("pass", userPass);
 
 			RequestDispatcher rd = request.getRequestDispatcher("ChangeStatus.jsp");
 			rd.forward(request, response);
 			}
+			
 			
 			
 		}catch(ClassNotFoundException e){

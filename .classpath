@@ -14,21 +14,17 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/mysql-connector-java-8.0.11.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/servlet-api.jar.zip"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/javax.activation-1.2.0.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/javax.ejb-api-3.2.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/javax.transaction-api-1.2.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/log4j-1.2.16.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/mail.jar.zip"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/mailapi-1.6.2.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/quartz-2.3.0-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/quartz-jobs-2.3.0-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/slf4j-api-1.7.7.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/slf4j-log4j12-1.7.7.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/smtp-1.6.2.jar"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/stuff_annotations_trainval2017.zip"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/activation.jar.zip"/>
-	<classpathentry kind="lib" path="/Users/cgoel/Downloads/c3p0-0.9.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/javax.ejb-api-3.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/javax.transaction-api-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/mailapi-1.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/mysql-connector-java-8.0.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/smtp-1.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/javax.activation-1.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/slf4j-log4j12-1.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/slf4j-api-1.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/quartz-jobs-2.3.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/c3p0-0.9.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Stuti/Downloads/quartz-2.3.0-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

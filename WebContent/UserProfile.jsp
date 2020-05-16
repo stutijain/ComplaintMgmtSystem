@@ -1,4 +1,4 @@
-
+<%@page import="com.entities.User"%>
 <%@page import="com.entities.Complaint"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Connection"%>
@@ -167,11 +167,15 @@ th, td {
 			<th><b>Status</b></th>
 		</tr>
 		<%
+		    String email=(String)request.getAttribute("email");
+		    String pass=(String)request.getAttribute("pass");
 			ArrayList<Complaint> allComplaints = (ArrayList<Complaint>) request.getAttribute("data");
 			for (Complaint comp : allComplaints) {
 		%>
 		<tr>
 			<form action="expand" method="post">
+			<%request.setAttribute("email",email);
+			  request.setAttribute("pass",pass); %>
 				<td><%=comp.getName()%></td>
 				<td><%=comp.getCategory()%></td>
 				<td><%=comp.getLocation()%></td>
@@ -179,7 +183,8 @@ th, td {
 					value=<%=comp.getComplaint_no()%>><%=comp.getComplaint_no()%></td>
 				<td><%=comp.getPriority()%></td>
 				<td><%=comp.getCom_status()%></td>
-				<td><input type="submit" value="Show Details"></td>
+				<td><input type="submit" value="Show Details">
+				</td>
 			</form>
 		</tr>
 		<%

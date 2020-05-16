@@ -104,7 +104,7 @@ public class RegisterComplaint extends HttpServlet {
 				
 				ScheduleEmail se = new ScheduleEmail();
 				se.scdMail(complaint.getCategory(), complaint.getDetails(), complaint.getPriority(),
-						Integer.toString(comp_no), 24, 12, 1, "2");
+						Integer.toString(comp_no), 24, 12, 2, "2");
 				
 				
 

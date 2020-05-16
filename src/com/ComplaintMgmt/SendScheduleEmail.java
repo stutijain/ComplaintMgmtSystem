@@ -43,7 +43,7 @@ public class SendScheduleEmail implements Job {
 
 			Statement stmt = con.createStatement();
 
-			String query = "Select com_status from complaint_details where comp_no = '" + c_no + "';";
+			String query = "Select com_status from complaint_details where complaint_no = '" + c_no + "';";
 			ResultSet rs = stmt.executeQuery(query);
 			
 			rs = stmt.executeQuery(query);

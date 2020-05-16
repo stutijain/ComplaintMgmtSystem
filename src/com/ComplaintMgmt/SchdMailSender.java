@@ -1,5 +1,10 @@
 package com.ComplaintMgmt;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -13,7 +18,7 @@ import javax.mail.internet.MimeMessage;
 
 public class SchdMailSender {
 
-	public void schdEmail(ArrayList<String> emails, String details, String comp_no, String priority) {
+	public void schdEmail(ArrayList<String> emails, String details, String comp_no, String priority) throws ClassNotFoundException, SQLException {
 
 		String fromEmail = "project.2020.final.year@gmail.com";
 		String password = "Project@20";
@@ -43,11 +48,29 @@ public class SchdMailSender {
 
 		Message userMsg = new MimeMessage(mailSession);
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root",
+					"abcdefgh");
+
+			
+			Statement stmnt = con.createStatement();
+			
+			
+			ResultSet rs = stmnt
+					.executeQuery("SELECT * FROM complaint_details where complaint_no="+comp_no+";");
+			
+			String location=rs.getString("location");
+		    String sub_location=rs.getString("sub_location");
 
 			userMsg.setFrom(new InternetAddress(fromEmail));
 			userMsg.setRecipients(Message.RecipientType.TO, address);
-			message = "complaint no: " + comp_no + "\nDetails: " + details + "\nPriority: " + priority;
-			userMsg.setText(message);
+			if(priority.equals("Critical")){
+				message="<h1>Critical Complaint!!!</h1> \nA complaint has been registered in your department with the following details\n Complaint no: " + comp_no + "\nDetails: " + details + "\nLocation: "+location+"\nSub-Location: "+sub_location+"\nPriority: " + priority;
+			}else
+			message = "A complaint has been registered in your department with the following details\n Complaint no: " + comp_no + "\nDetails: " + details + "\nLocation: "+location+"\nSub-Location: "+sub_location+"\nPriority: " + priority;
+			
+			String stg="\nPlease resolve the complaint at the earliest. It will proceed on to your superiors after the deadline";
+			userMsg.setText(message+stg);
 			userMsg.setSubject("New complaint");
 
 			Transport transport = mailSession.getTransport("smtp");

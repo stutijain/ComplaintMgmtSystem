@@ -1,4 +1,5 @@
 <%@page import="com.entities.Complaint"%>
+<%@page import="com.entities.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -87,7 +88,13 @@ form {
 	<br>
 
 	 
-	<form style="margin-left: 20px">
+	<form action ="load" method ="post" style="margin-left: 20px">
+	<%
+		String userEmail=(String)request.getAttribute("email");
+	    String userPass=(String)request.getAttribute("pass");
+	    request.setAttribute("email",userEmail);
+	    request.setAttribute("password",userPass);
+	%>
 		<a href="javascript:history.back()"><-- Go Back</a>
 	</form>
 
@@ -96,10 +103,9 @@ form {
 	<center>
 		<h1>Complaint details</h1>
 	</center>
-	<%
-		Complaint comp = (Complaint) request.getAttribute("data");
-	%>
+	
 
+<%Complaint comp = (Complaint) request.getAttribute("data");%>
 	<form action="attend" method="post"
 		style="margin-bottom: 3vh; margin-top: 3vh;">
 		<select name="category">
@@ -163,7 +169,7 @@ form {
 		</tr>
 		<tr>
 			<td>Complaint Status</td>
-			<td><%=comp.getCom_status()%></td>
+			<td><%=comp.getCom_status() %></td>
 		</tr>
 	</table>
 	
