@@ -52,6 +52,12 @@ form {
 	background-color: #4CAF50;
 	color: white;
 }
+
+a {
+	color: white;
+	text-decoration: none;
+}
+</style>
 </style>
 </head>
 <body>
@@ -81,21 +87,31 @@ form {
 
 	<br>
 	 
-	<form style="margin-left: 20px">
-		<a style="float: left" href="HomePage.html"><-- Go Back</a>
-	</form>
+
+	<div align="left" style="margin-left: 5px;">
+		<a style="color: blue;" href="javascript:history.back()">Go Back</a>
+	</div>
 
 
+
+
+	<div style="display: flex;">
+	
+		<div>
+			<a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=222:photo-gallery&catid=2:1&Itemid=576">
+				<img style="margin: 15vh 5vw 0vh 5vw; border: 2px solid black" alt="IGDTUW" src="https://img.collegepravesh.com/2015/12/IGDTUW.jpg" width="150" height="100">
+				<h3 align="center">
+					<font color="green" size="5">Photo Gallery</font>
+				</h3>
+			</a>
+		</div>
 		
-	<h1 align="center">
-		<font color="green" size="5"> FILE COMPLAINT</font>
-	</h1>
+		<form action="complaint" method="post" enctype='multipart/form-data' style="margin: 0vh 0vw 0vh 8vw;">
+		<h1 align="center">
+			<font color="green" size="5"> FILE COMPLAINT</font>
+		</h1>
 
-	<div style="text-align: left;">
-
-		<form action="complaint" method="post" enctype='multipart/form-data'>
-
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Complaint Category : </font> <select name="category"
 					required="required">
 					<option value="Select" />
@@ -105,30 +121,26 @@ form {
 				</select>
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Location : </font><input type="text" name="location"
 					required="required">
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Sub-Location : </font><input type="text"
 					name="sub_location" required="required">
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Complaint Details : </font><input type="text"
 					name="details" required="required">
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Priority : </font> <select name="priority"
 					required="required">
 					<option value="Select" />
@@ -138,71 +150,75 @@ form {
 				</select>
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Complainant Name : </font><input type="text"
 					name="name" required="required">
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Designation : </font><input type="text"
 					name="designation" required="required">
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Email : </font><input type="email" name="email"
 					required="required">
 			</p>
 
-			<br>
 
+<<<<<<< HEAD
 			<p style="margin: 0px 0px 0px 100px">
 				<font size="3">Contact : </font> <input type="tel"
 					pattern="[0-9]{10} name="contact"
+=======
+			<p>
+				<font size="3">Contact : </font><input type="text" name="contact"
+>>>>>>> e2c4cb9168c951dcadb68c74fed1c64bda645527
 					required="required">
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Attachment : </font><input type="file" name="attach"
 					accept=".gif, .jpg,.pdf, .doc"> <br> (pdf, jpg, gif
 				and doc accepted)
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 200px">
+			<p>
 				<input type="submit" value="Submit">
 			</p>
 
-			<br>
 		</form>
-
-		<form action="cancel">
-			<p style="margin: 0px 0px 0px 200px">
-				<input type="submit" value="Cancel">
-			</p>
-		</form>
-		</div>
+		
+		<ul style="list-style-type:none; padding: 20px 10px 10px 10px; background-color: ForestGreen; color: white; margin: 5vh 5vw 0vh 8vw; height: 30vh; border: 1px solid black">
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=464&Itemid=696">Student Notice Board</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=90:abouttnp&catid=2:1&Itemid=428">Training and Placement</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=227&Itemid=427">Notices and Circulars</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=161&Itemid=38">Library</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=346:rti&catid=2:1">Right To Information</a></li>
+		</ul>
+	</div>
 		
 		<br>
 
-		<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
-		<div class="navbar">
-			<a
-				href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
-			<a
-				href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact
-				Us</a> <br> <a href="#Top"
-				style="float: right; color: red; font-size: 14px"> Top </a>
-		</div>
-		<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6"
-			size="5">
+	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+	<div class="navbar">
+		<a
+			href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
+		<a
+			href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact
+			Us</a> <br> <a href="#Top"
+			style="float: right; color: red; font-size: 14px"> Top </a>
+	</div>
+	<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6"
+		size="5">
 </body>
 </html>

@@ -52,21 +52,24 @@ form {
 	background-color: #4CAF50;
 	color: white;
 }
+a {
+	color: white;
+	text-decoration: none;
+}
 </style>
 </head>
 <body>
 
 	<div style="margin: 10px 200px 0px 200px" align="center" id="Top">
 
-		    <img style="float: left; margin: 0px -120px 0px 170px"
+		<img style="float: left; margin: 0px -120px 0px 120px"
 			src="https://upload.wikimedia.org/wikipedia/en/4/4e/Indira_Gandhi_Delhi_Technical_University_for_Women_logo.png"
-			width="86" height="80" />         <font color="green" size="5"><b>
-				Indira Gandhi Delhi Technical University for Women </b></font><br>        
-		<font size="4">(Established by Govt. of Delhi vide Act 9 of
-			2012) </font><br>         <font color="green" size="4">(<i>Formerly</i>
-			Indira Gandhi Institute of Technology)
-		</font>     <br style="clear: both;" />
-
+			width="86" height="80" /> <font color="green" size="5"><b>
+				Indira Gandhi Delhi Technical University for Women </b></font><br> <font
+			size="4">(Established by Govt. of Delhi vide Act 9 of 2012) </font><br>
+		<font color="green" size="4">(<i>Formerly</i> Indira Gandhi
+			Institute of Technology)
+		</font> <br style="clear: both;" />
 	</div>
 
 	<br>
@@ -81,20 +84,30 @@ form {
 
 	<br>
 	 
-	<form style="margin-left: 20px">
-		<a style="float: left" href="HomePage.html"><-- Go Back</a>
-	</form>
+
+	<div align="left" style="margin-left: 5px;">
+		<a style="color: blue;" href="javascript:history.back()">Go Back</a>
+	</div>
 
 
 
-	<h1 align="center">
-		<font color="green" size="5"> REGISTRATION</font>
-	</h1>
+	<div style="display: flex;">
+	
+		<div>
+			<a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=222:photo-gallery&catid=2:1&Itemid=576">
+				<img style="margin: 15vh 5vw 0vh 5vw; border: 2px solid black" alt="IGDTUW" src="https://img.collegepravesh.com/2015/12/IGDTUW.jpg" width="150" height="100">
+				<h3 align="center">
+					<font color="green" size="5">Photo Gallery</font>
+				</h3>
+			</a>
+		</div>
 
-	<div style="text-align: left;">
 
-		<form action="register" method="post">
-			<p style="margin: 0px 0px 0px 100px">
+		<form action="register" method="post" style="margin: 0vh 0vw 0vh 8vw;">
+			<h1 align="center">
+				<font color="green" size="5"> REGISTRATION</font>
+			</h1>
+			<p>
 				<font size="3">Category : </font> <select name="category"
 					required="required">
 					<option value="ITS">IT-Services</option>
@@ -104,54 +117,52 @@ form {
 				</select>
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Name : </font><input type="text" name="name"
 					required="required">
 			</p>
 
-			<br>
-			<p style="margin: 0px 0px 0px 100px">
-				<font size="3">Email ID : </font><input type="email" name="email"
+
+			<p>
+				<font size="3">DOB : </font><input type="date" name="dob"
 					required="required">
 			</p>
 
-			<br>
-			<p style="margin: 0px 0px 0px 100px">
-				<font size="3">Contact No. : </font><input type="tel"
-					pattern="[0-9]{10}" name="cont_no" required="required">
+<<<<<<< HEAD
+=======
+
+			<p>
+				<font size="3">Level : </font><input type="text" required="required"
+					name="emp_id">
 			</p>
+>>>>>>> e2c4cb9168c951dcadb68c74fed1c64bda645527
 
 
-			<br>
-
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Designation : </font><input type="text" name="desg"
 					required="required">
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
+			<p>
 				<font size="3">Department : </font><input type="text" name="dept"
 					required="required">
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
-				<font size="3">Address : </font><input type="text" name="addr"
+			<p>
+				<font size="3">Email ID : </font><input type="email" name="email"
 					required="required">
 			</p>
 
-			<br>
 
-			<p style="margin: 0px 0px 0px 100px">
-				<font size="3">Password : </font><input type="password" name="pass"
+			<p>
+				<font size="3">Contact No. : </font><input type="tel" name="cont_no"
 					required="required">
 			</p>
 
+<<<<<<< HEAD
 			<br>
 			<p style="margin: 0px 0px 0px 100px">
 				<font size="3">DOB : </font><input type="date" id="datePickerId" name="dob"  min="1899-01-01""
@@ -159,26 +170,52 @@ form {
 					datePickerId.max = new Date().toISOString().split("T")[0];
 					</script>
 					
-			</p>
-			<br>
+=======
 
-			<p style="margin: 0px 0px 0px 200px">
+			<p>
+				<font size="3">Address : </font><input type="text" name="addr"
+					required="required">
+>>>>>>> e2c4cb9168c951dcadb68c74fed1c64bda645527
+			</p>
+
+
+			<p>
+				<font size="3">Password : </font><input type="password" name="pass"
+					required="required">
+			</p>
+
+
+			<p>
 				<input type="submit" value="Submit">
 			</p>
 		</form>
+		
+		<ul style="list-style-type:none; padding: 20px 10px 10px 10px; background-color: ForestGreen; color: white; margin: 5vh 5vw 0vh 8vw; height: 30vh; display: inline-block; border: 1px solid black">
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=464&Itemid=696">Student Notice Board</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=90:abouttnp&catid=2:1&Itemid=428">Training and Placement</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=227&Itemid=427">Notices and Circulars</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=161&Itemid=38">Library</a></li>
+		  <br>
+		  <li><a href="https://www.igdtuw.ac.in/index.php?option=com_content&view=article&id=346:rti&catid=2:1">Right To Information</a></li>
+		</ul>
+		
+	</div>
 
 
 
-		<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
-		<div class="navbar">
-			<a
-				href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
-			<a
-				href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact
-				Us</a> <br> <a href="#Top"
-				style="float: right; color: red; font-size: 14px"> Top </a>
-		</div>
-		<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6"
-			size="5">
+	<hr style="margin-bottom: -1px;" color="#e6e6e6" size="5">
+	<div class="navbar">
+		<a
+			href="https://igdtuw.ac.in/index.php?option=com_chronocontact&Itemid=124">Feedback</a>
+		<a
+			href="https://igdtuw.ac.in/index.php?option=com_contact&view=contact&id=1&Itemid=125">Contact
+			Us</a> <br> <a href="#Top"
+			style="float: right; color: red; font-size: 14px"> Top </a>
+	</div>
+	<hr style="margin-top: -1px; margin-bottom: -1px;" color="#e6e6e6"
+		size="5">
 </body>
 </html>
