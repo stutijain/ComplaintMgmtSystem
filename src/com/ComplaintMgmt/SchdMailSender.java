@@ -55,27 +55,32 @@ public class SchdMailSender {
 			
 			Statement stmnt = con.createStatement();
 			
+			int comp=Integer.parseInt(comp_no);
 			
 			ResultSet rs = stmnt
-					.executeQuery("SELECT * FROM complaint_details where complaint_no="+comp_no+";");
+					.executeQuery("SELECT * FROM complaint_details where complaint_no="+comp+";");
 			
-			String location=rs.getString("location");
-		    String sub_location=rs.getString("sub_location");
+			while(rs.next()){
+				String location=rs.getString("location");
+			    String sub_location=rs.getString("sub_location");
 
-			userMsg.setFrom(new InternetAddress(fromEmail));
-			userMsg.setRecipients(Message.RecipientType.TO, address);
-			if(priority.equals("Critical")){
-				message="<h1>Critical Complaint!!!</h1> \nA complaint has been registered in your department with the following details\n Complaint no: " + comp_no + "\nDetails: " + details + "\nLocation: "+location+"\nSub-Location: "+sub_location+"\nPriority: " + priority;
-			}else
-			message = "A complaint has been registered in your department with the following details\n Complaint no: " + comp_no + "\nDetails: " + details + "\nLocation: "+location+"\nSub-Location: "+sub_location+"\nPriority: " + priority;
+				userMsg.setFrom(new InternetAddress(fromEmail));
+				userMsg.setRecipients(Message.RecipientType.TO, address);
+				if(priority.equals("Critical")){
+					message="Critical Complaint!!! \nA complaint has been registered in your department with the following details\n Complaint no: " + comp_no + "\nDetails: " + details + "\nLocation: "+location+"\nSub-Location: "+sub_location+"\nPriority: " + priority;
+				}else
+				message = "A complaint has been registered in your department with the following details\n Complaint no: " + comp_no + "\nDetails: " + details + "\nLocation: "+location+"\nSub-Location: "+sub_location+"\nPriority: " + priority;
+				
+				String stg="\nPlease resolve the complaint at the earliest. It will proceed on to your superiors after the deadline";
+				userMsg.setText(message+stg);
+				userMsg.setSubject("New complaint");
+
+				Transport transport = mailSession.getTransport("smtp");
+				transport.connect("smtp.gmail.com", username, password);
+				transport.sendMessage(userMsg, userMsg.getAllRecipients());
+				
+			}
 			
-			String stg="\nPlease resolve the complaint at the earliest. It will proceed on to your superiors after the deadline";
-			userMsg.setText(message+stg);
-			userMsg.setSubject("New complaint");
-
-			Transport transport = mailSession.getTransport("smtp");
-			transport.connect("smtp.gmail.com", username, password);
-			transport.sendMessage(userMsg, userMsg.getAllRecipients());
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
