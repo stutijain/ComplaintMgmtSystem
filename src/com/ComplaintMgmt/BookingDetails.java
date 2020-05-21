@@ -42,7 +42,7 @@ public class BookingDetails extends HttpServlet {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/complaint_system", "root","abcdefgh");
 
 			Statement stmnt = con.createStatement();
-			ResultSet rs = stmnt.executeQuery("SELECT * FROM booking_details where category='" + category + "' and date='" + date + "' and time_to > '" + time_from + "' ;");
+			ResultSet rs = stmnt.executeQuery("SELECT * FROM booking_details where category='" + category + "' and date='" + date + "' and time_from < '"+time_to+"' and time_to > '"+time_from+"';");
 //			out.println(rs);
 			
 		    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
